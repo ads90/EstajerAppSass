@@ -1,0 +1,10 @@
+{
+    "unauthorized": "unauthorized",
+    "statusEnum1": "dd",
+    "statusEnum0": "ss",
+    "any": "Any",
+    "rememberMe":"Remember Me",
+    "forgotPassword":"Forgot password?",
+    "darkMode": "Dark Mode",
+    "language": "Language"
+}
