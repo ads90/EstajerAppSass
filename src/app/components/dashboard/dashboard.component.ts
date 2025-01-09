@@ -40,6 +40,7 @@ import { StorageLanguage } from '../../shared/models/enum';
 import { TranslateModule } from '@ngx-translate/core';
 import { ProductsApp } from '../products/products.component';
 import { ShipmentsApp } from "../shipments/shipments.component";
+import { CalendarApp } from '../calendar-app/calendar-app.component';
 
 @Component({
   selector: 'app-dashboard',
@@ -72,7 +73,8 @@ import { ShipmentsApp } from "../shipments/shipments.component";
     ProductsApp,
     ToggleSwitchModule,
     TranslateModule,
-    ShipmentsApp
+    ShipmentsApp,
+    CalendarApp
 ],
 })
 export class Dashboard implements OnInit, OnDestroy {
@@ -224,8 +226,6 @@ export class Dashboard implements OnInit, OnDestroy {
       { icon: 'pi pi-objects-column', title: 'Products' },
       { icon: 'pi pi-user', title: 'Customers' },
       { icon: 'pi pi-check', title: 'Check In/Out' },
-    //   { icon: 'pi pi-calculator', title: 'Price Calculator'},
-      { icon: 'pi pi-box', title: 'Box Types' },
       //   Only admin can see this
       { icon: 'pi pi-users', title: 'Accounts' }, 
     ];

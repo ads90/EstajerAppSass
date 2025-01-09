@@ -153,6 +153,7 @@
   </div>
   <div style="width: calc(100vw - 10rem);">
     <overview-app *ngIf="selectedSampleAppsSidebarNav === 'Overview'" />
+    <calendar-app *ngIf="selectedSampleAppsSidebarNav === 'Calendar'" />
     <customers-app *ngIf="selectedSampleAppsSidebarNav === 'Customers'" /> 
     <products-app *ngIf="selectedSampleAppsSidebarNav === 'Products'" /> 
     <shipments-app *ngIf="selectedSampleAppsSidebarNav === 'Shipments'" /> 

@@ -1,0 +1,24 @@
+<div class="calendar-layout">
+    <!-- FullCalendar -->
+    <div class="calendar-container">
+      <full-calendar
+        [options]="calendarOptions"
+        (eventClick)="onEventClick($event)"
+      ></full-calendar>
+    </div>
+  
+    <!-- Event Details -->
+    <div class="rentals-container">
+      <h3>Rental Details</h3>
+      <div *ngIf="selectedEvent">
+        <p><strong>ID:</strong> {{ selectedEvent.id }}</p>
+        <p><strong>Title:</strong> {{ selectedEvent.title }}</p>
+        <p><strong>Start:</strong> {{ selectedEvent.start }}</p>
+        <p><strong>End:</strong> {{ selectedEvent.end }}</p>
+      </div>
+      <div *ngIf="!selectedEvent">
+        <p>Select an event to view details.</p>
+      </div>
+    </div>
+  </div>
+  
