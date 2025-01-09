@@ -7,6 +7,7 @@ import { Signup } from "./components/authentication/signup/signup.component";
 import { ProductsApp } from "./components/products/products.component";
 
 export const routes: Routes = [
+    { path: '', component: Dashboard },
     { path: 'login', component: Login },
     { path: 'signup', component: Signup},
     { path: 'forgetpassword', component: ForgetPassword},

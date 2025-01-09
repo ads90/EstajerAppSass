@@ -91,7 +91,7 @@ export class Dashboard implements OnInit, OnDestroy {
 
   selectedSampleAppsSidebarNav: any;
 
-  isSlimMenu: boolean = true;
+  isSlimMenu: boolean = false;
 
   value1: number = 24;
 
@@ -154,6 +154,18 @@ export class Dashboard implements OnInit, OnDestroy {
         title: 'Overview',
       },
       {
+        icon: 'pi pi-calendar',
+        title: 'Calendar',
+      },
+      {
+        icon: 'pi pi-user',
+        title: 'Customers',
+      },
+      {
+        icon: 'pi pi-user',
+        title: 'Customers',
+      },
+      {
         icon: 'pi pi-user',
         title: 'Customers',
       },
@@ -208,15 +220,14 @@ export class Dashboard implements OnInit, OnDestroy {
 
     this.sampleAppsSidebarNavs = [
       { icon: 'pi pi-home', title: 'Overview' },
-      { icon: 'pi pi-user', title: 'Customers' },
+      { icon: 'pi pi-calendar', title: 'Calendar' },
       { icon: 'pi pi-objects-column', title: 'Products' },
-      { icon: 'pi pi-send', title: 'Shipments' },
+      { icon: 'pi pi-user', title: 'Customers' },
+      { icon: 'pi pi-check', title: 'Check In/Out' },
     //   { icon: 'pi pi-calculator', title: 'Price Calculator'},
       { icon: 'pi pi-box', title: 'Box Types' },
       //   Only admin can see this
       { icon: 'pi pi-users', title: 'Accounts' }, 
-      //   Only admin can see this
-      { icon: 'pi pi-truck', title: 'Carriers' },
     ];
     this.sampleAppsSidebarNavsMore = [{ icon: 'pi pi-cog', title: 'Settings' }];
 

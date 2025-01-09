@@ -108,95 +108,95 @@ export class OverviewApp {
       ];
 
       this.sampleAppsTableDatas = [
-          {
-              id: '#1254',
-              name: { text: 'Amy Yelsner', label: 'AY', color: 'blue' },
-              carrier: 'Estajer',
-              date: 'May 5th',
-              process: { value: 'Delivered' },
-              amount: '3.005 SR'
-          },
-          {
-              id: '#2355',
-              name: { text: 'Anna Fali', label: 'AF', color: '#ECFCCB' },
-              carrier: 'Aramix',
-              date: 'Mar 17th',
-              process: { value: 'Returned' },
-              amount: '0.050 SR'
-          },
-          {
-              id: '#1235',
-              name: { text: 'Stepen Shaw', label: 'SS', color: '#ECFCCB' },
-              carrier: 'DHL',
-              date: 'May 24th',
-              process: { value: 'Returned' },
-              amount: '3.050 SR'
-          },
-          {
-              id: '#2355',
-              name: { text: 'Anna Fali', label: 'AF', color: '#ECFCCB' },
-              carrier: 'Estajer',
-              date: 'Mar 17th',
-              process: { value: 'Delivered' },
-              amount: '0.050 SR'
-          },
-          {
-              id: '#2355',
-              name: { text: 'Anna Fali', label: 'AF', color: '#ECFCCB' },
-              carrier: 'Aramix',
-              date: 'Mar 17th',
-              process: { value: 'Delivered' },
-              amount: '0.050 SR'
-          },
-          {
-              id: '#7896',
-              name: { text: 'John Doe', label: 'JD', color: 'green' },
-              carrier: 'Estajer',
-              date: 'Jun 12th',
-              process: { value: 'Shipment On Hold' },
-              amount: '2.500 SR'
-          },
-          {
-              id: '#5648',
-              name: { text: 'Jane Smith', label: 'JS', color: '#FFDDC1' },
-              carrier: 'DHL',
-              date: 'Feb 23rd',
-              process: { value: 'Delivered' },
-              amount: '1.200 SR'
-          },
-          {
-              id: '#3265',
-              name: { text: 'Michael Johnson', label: 'MJ', color: '#FFD700' },
-              carrier: 'Estajer',
-              date: 'Apr 30th',
-              process: { value: 'Awaiting Pickup' },
-              amount: '4.000 SR'
-          },
-          {
-              id: '#1423',
-              name: { text: 'Emily Davis', label: 'ED', color: '#FFCCCB' },
-              carrier: 'Aramix',
-              date: 'Jan 15th',
-              process: { value: 'Pending Orders' },
-              amount: '5.050 SR'
-          },
-          {
-              id: '#6854',
-              name: { text: 'Robert Brown', label: 'RB', color: '#C0C0C0' },
-              carrier: 'Estajer',
-              date: 'Dec 2nd',
-              process: { value: 'Pending Orders' },
-              amount: '0.300 SR'
-          }
+        {
+          id: '#1254',
+          name: { text: 'Amy Yelsner', label: 'AY', color: 'blue' },
+          startTime: 'May 5th, 10:00 AM',
+          endTime: 'May 5th, 4:00 PM',
+          process: { value: 'Waiting for check-in' },
+          amount: '350 SR'
+        },
+        {
+          id: '#2355',
+          name: { text: 'Anna Fali', label: 'AF', color: '#ECFCCB' },
+          startTime: 'Mar 17th, 9:00 AM',
+          endTime: 'Mar 17th, 1:00 PM',
+          process: { value: 'Rented' },
+          amount: '50 SR'
+        },
+        {
+          id: '#1235',
+          name: { text: 'Stepen Shaw', label: 'SS', color: '#ECFCCB' },
+          startTime: 'May 24th, 11:00 AM',
+          endTime: 'May 24th, 3:30 PM',
+          process: { value: 'Returned' },
+          amount: '750 SR'
+        },
+        {
+          id: '#2355',
+          name: { text: 'Anna Fali', label: 'AF', color: '#ECFCCB' },
+          startTime: 'Mar 17th, 2:00 PM',
+          endTime: 'Mar 17th, 6:00 PM',
+          process: { value: 'Closed' },
+          amount: '85 SR'
+        },
+        {
+          id: '#2355',
+          name: { text: 'Anna Fali', label: 'AF', color: '#ECFCCB' },
+          startTime: 'Mar 17th, 8:00 AM',
+          endTime: 'Mar 17th, 12:00 PM',
+          process: { value: 'Draft' },
+          amount: '95 SR'
+        },
+        {
+          id: '#7896',
+          name: { text: 'John Doe', label: 'JD', color: 'green' },
+          startTime: 'Jun 12th, 10:30 AM',
+          endTime: 'Jun 12th, 3:00 PM',
+          process: { value: 'Overdue' },
+          amount: '400 SR'
+        },
+        {
+          id: '#5648',
+          name: { text: 'Jane Smith', label: 'JS', color: '#FFDDC1' },
+          startTime: 'Feb 23rd, 9:15 AM',
+          endTime: 'Feb 23rd, 12:45 PM',
+          process: { value: 'Waiting for check-out' },
+          amount: '650 SR'
+        },
+        {
+          id: '#3265',
+          name: { text: 'Michael Johnson', label: 'MJ', color: '#FFD700' },
+          startTime: 'Apr 30th, 1:00 PM',
+          endTime: 'Apr 30th, 5:00 PM',
+          process: { value: 'Draft' },
+          amount: '500 SR'
+        },
+        {
+          id: '#1423',
+          name: { text: 'Emily Davis', label: 'ED', color: '#FFCCCB' },
+          startTime: 'Jan 15th, 8:00 AM',
+          endTime: 'Jan 15th, 1:00 PM',
+          process: { value: 'Closed' },
+          amount: '930 SR'
+        },
+        {
+          id: '#6854',
+          name: { text: 'Robert Brown', label: 'RB', color: '#C0C0C0' },
+          startTime: 'Dec 2nd, 10:00 AM',
+          endTime: 'Dec 2nd, 2:00 PM',
+          process: { value: 'Returned' },
+          amount: '30 SR'
+        }
       ];
 
       this.metersData = [
-          { label: 'Pending Orders', color: '#F59E0B', value: 15, text: '27' },
-          { label: 'Awaiting Pickup', color: '#717179', value: 5, text: '4' },
-          { label: 'Currently Shipping', color: '#22C55E', value: 25, text: '147' },
-          { label: 'Shipment On Hold', color: '#84CC16', value: 11, text: '137' },
-          { label: 'Delivered', color: '#14B8A6', value: 29, text: '133' },
-          { label: 'Returned', color: '#EAB308', value: 29, text: '200' }
+          { label: 'Available', color: '#F59E0B', value: 15, text: '27' },
+          { label: 'Unavailable', color: '#717179', value: 5, text: '4' },
+          { label: 'Checked out', color: '#22C55E', value: 25, text: '147' },
+          { label: 'In mantainance', color: '#84CC16', value: 11, text: '137' },
+          { label: 'Lost', color: '#14B8A6', value: 29, text: '133' },
+          { label: 'Retired', color: '#EAB308', value: 29, text: '200' }
       ];
 
       this.initChart();
@@ -223,7 +223,7 @@ export class OverviewApp {
           datasets: [
               {
                   type: 'bar',
-                  label: 'Delivered Shipments',
+                  label: 'Rentals for Check-out',
                   backgroundColor: primary400,
                   hoverBackgroundColor: primary600,
                   data: datasets.data![0],
@@ -231,7 +231,7 @@ export class OverviewApp {
               },
               {
                   type: 'bar',
-                  label: 'Returned Shipments',
+                  label: 'Rentals for Check-in',
                   backgroundColor: primary300,
                   hoverBackgroundColor: primary500,
                   data: datasets.data![1],
@@ -239,7 +239,7 @@ export class OverviewApp {
               },
               {
                   type: 'bar',
-                  label: 'Cancled Shipments',
+                  label: 'Rentals Request',
                   backgroundColor: primary200,
                   hoverBackgroundColor: primary400,
                   data: datasets.data![2],
@@ -434,20 +434,23 @@ export class OverviewApp {
 
   getShipmentStatusTagColor(status: string): 'success' | 'secondary' | 'info' | 'warn' | 'danger' | 'contrast' | undefined {
     switch (status) {
-      case 'Pending Orders':
-        return 'warn'; // Corresponds to '#F59E0B'
-      case 'Awaiting Pickup':
-        return 'secondary'; // Corresponds to '#717179'
-      case 'Currently Shipping':
+      case 'Draft':
+        return 'secondary'; // Corresponds to a neutral or inactive state
+      case 'Closed':
         return 'success'; // Corresponds to '#22C55E'
-      case 'Shipment On Hold':
+      case 'Rented':
         return 'info'; // Corresponds to '#84CC16'
-      case 'Delivered':
-        return 'contrast'; // Corresponds to '#14B8A6'
+      case 'Overdue':
+        return 'danger'; // Corresponds to '#EAB308'
+      case 'Waiting for check-in':
+        return 'warn'; // Corresponds to '#F59E0B'
+      case 'Waiting for check-out':
+        return 'warn'; // Corresponds to '#F59E0B'
       case 'Returned':
         return 'danger'; // Corresponds to '#EAB308'
       default:
         return undefined; // Default case for undefined status
     }
-  }
+}
+
 }

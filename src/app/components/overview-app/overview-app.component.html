@@ -40,7 +40,7 @@
         <div class="flex gap-6 xl:flex-row flex-col">
             <div class="flex-1 border border-surface rounded-2xl py-5 px-7">
                 <div class="flex items-center gap-6 mb-4">
-                    <div class="flex-1 text-color font-semibold leading-6">Shipments</div>
+                    <div class="flex-1 text-color font-semibold leading-6">Rentals</div>
                     <p-button type="button" icon="pi pi-ellipsis-h" severity="secondary" text (click)="menu.toggle($event)" aria-haspopup="true" aria-controls="overlay_menu" />
                     <p-menu #menu id="overlay_menu" [model]="menuItems" [popup]="true" />
                 </div>
@@ -48,56 +48,54 @@
                     datakey="id"
                     [value]="sampleAppsTableDatas"
                     [paginator]="true"
-                    paginatorTemplate="PrevPageLink PageLinks NextPageLink  CurrentPageReport RowsPerPageDropdown"
+                    paginatorTemplate="PrevPageLink PageLinks NextPageLink CurrentPageReport RowsPerPageDropdown"
                     currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
                     [showCurrentPageReport]="true"
                     [rows]="5"
                     [tableStyle]="{ 'min-width': '50rem' }"
                     [showFirstLastIcon]="false"
-                    [dt]="tableTokens"
                     paginatorStyleClass="!bg-transparent"
-                >
+                    >
                     <ng-template #header>
                         <tr>
-                            <th class="w-1/12">Id</th>
-                            <th class="w-1/4">Recipients</th>
-                            <th class="w-1/6">Carrier</th>
-                            <th class="w-1/6">Date</th>
-                            <th class="w-1/6">Status</th>
-                            <th class="w-1/6">Amount</th>
+                        <th class="w-1/12">Id</th>
+                        <th class="w-1/4">Recipients</th>
+                        <th class="w-1/6">Timeframe</th>
+                        <th class="w-1/6">Status</th>
+                        <th class="w-1/6">Amount</th>
                         </tr>
                     </ng-template>
                     <ng-template #body let-item>
                         <tr>
-                            <td class="w-1/12">
-                                <div class="text-muted-color">{{ item.id }}</div>
-                            </td>
-                            <td class="w-1/4">
-                                <div class="flex items-center">
-                                    <p-avatar [label]="item.name.label" class="mr-2 text-xs font-medium" [style]="{ 'background-color': '#ece9fc', color: '#2a1261' }" shape="circle" />
-                                    <div class="leading-6 text-muted-color flex-1">{{ item.name.text }}</div>
-                                </div>
-                            </td>
-                            <td class="w-1/6">
-                                <div class="flex items-center">
-                                  
-                                    <img height="35" width="35" 
-                                         [src]="
-                                         item.carrier === 'DHL' ? 'dhl.svg' :
-                                         item.carrier === 'Aramix' ? 'aramex.svg': 'logo.svg'" 
-                                         alt="Conditional Image" 
-                                    />
-                                </div>
-                            </td>
-                            <td class="w-1/6">
-                                <div class="text-muted-color">{{ item.date }}</div>
-                            </td>
-                            <td class="w-1/6">
-                                <p-tag [severity]="getShipmentStatusTagColor(item.process.value)" [value]="item.process.value" styleClass="font-medium"></p-tag>
-                            </td>
-                            <td class="w-1/6">
-                                <div class="text-muted-color text-right">{{ item.amount }}</div>
-                            </td>
+                        <td class="w-1/12">
+                            <div class="text-muted-color">{{ item.id }}</div>
+                        </td>
+                        <td class="w-1/4">
+                            <div class="flex items-center">
+                            <p-avatar 
+                                [label]="item.name.label" 
+                                class="mr-2 text-xs font-medium" 
+                                [style]="{ 'background-color': '#ece9fc', color: '#2a1261' }" 
+                                shape="circle">
+                            </p-avatar>
+                            <div class="leading-6 text-muted-color flex-1">{{ item.name.text }}</div>
+                            </div>
+                        </td>
+                        <td class="w-1/6">
+                            <div class="text-muted-color">
+                            {{ item.startTime }} - {{ item.endTime }}
+                            </div>
+                        </td>
+                        <td class="w-1/6">
+                            <p-tag 
+                            [severity]="getShipmentStatusTagColor(item.process.value)" 
+                            [value]="item.process.value" 
+                            styleClass="font-medium">
+                            </p-tag>
+                        </td>
+                        <td class="w-1/6">
+                            <div class="text-muted-color text-right">{{ item.amount }}</div>
+                        </td>
                         </tr>
                     </ng-template>
                 </p-table>
@@ -105,7 +103,7 @@
             <div class="xl:w-96 border border-surface rounded-2xl py-5 px-7 flex flex-col justify-between">
                 <div>
                     <div class="flex items-center mb-6">
-                        <div class="flex-1 text-color font-semibold leading-6">Shipments Status</div>
+                        <div class="flex-1 text-color font-semibold leading-6">Product Status</div>
                         <p-button type="button" icon="pi pi-ellipsis-h" severity="secondary" text (click)="menu.toggle($event)" aria-haspopup="true" aria-controls="overlay_menu" />
                         <p-menu #menu id="overlay_menu" [model]="menuItems" [popup]="true" styleClass="ml-6" />
                     </div>
