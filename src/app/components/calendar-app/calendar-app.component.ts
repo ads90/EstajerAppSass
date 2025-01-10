@@ -1,5 +1,5 @@
 import { CommonModule, isPlatformBrowser } from '@angular/common';
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, effect, inject, OnInit, PLATFORM_ID } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, effect, inject, OnInit, PLATFORM_ID, ViewChild } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { MenuItem } from 'primeng/api';
@@ -21,9 +21,12 @@ import { AppConfigService } from '../../services/appconfigservice';
 import { DesignerService } from '../../services/designerservice';
 import { DrawerModule } from 'primeng/drawer';
 import { KnobModule } from 'primeng/knob';
-import { FullCalendarModule } from '@fullcalendar/angular';
+import { FullCalendarComponent, FullCalendarModule } from '@fullcalendar/angular';
 import { CalendarOptions } from '@fullcalendar/core';
 import dayGridPlugin from '@fullcalendar/daygrid';
+import { PanelModule } from 'primeng/panel';
+import timeGridPlugin from '@fullcalendar/timegrid';
+import interactionPlugin from '@fullcalendar/interaction';
 
 
 @Component({
@@ -50,13 +53,18 @@ import dayGridPlugin from '@fullcalendar/daygrid';
         OverlayBadgeModule,
         DatePickerModule,
         FullCalendarModule,
+        PanelModule,
+
+
   ],
 })
 export class CalendarApp  implements OnInit {
     calendarOptions: CalendarOptions = {};
-      
+    currentDate: string ='';
+    Showlist:boolean=true;
     selectedEvent: any = null;
-  
+    @ViewChild('calendar') calendarComponent!: FullCalendarComponent;
+
     events = [
       {
         id: '0003',
@@ -71,11 +79,38 @@ export class CalendarApp  implements OnInit {
         end: '2025-01-23T01:30:00',
       },
     ];
-  
+
+    list:any=[
+      {
+        date:'Today 4:30 am - Jan 17 10:15 am',
+        itemname:'Product once',
+        personname:'mohamed',
+        Status:'open',
+        days:'8 days',
+
+      },
+      {
+        date:'Today 4:30 am - Jan 17 10:15 am',
+        itemname:'Book',
+        personname:'Ahmed',
+        Status:'open',
+        days:'7 days',
+
+      },
+      {
+        date:'Today 4:30 am - Jan 17 10:15 am',
+        itemname:'Product once',
+        personname:'mohamed',
+        Status:'open',
+        days:'8 days',
+
+      }
+    ];
+
     ngOnInit(): void {
       this.calendarOptions = {
         initialView: 'dayGridMonth',
-        plugins: [dayGridPlugin],
+        plugins: [dayGridPlugin, timeGridPlugin, interactionPlugin],
         events: this.events,
         headerToolbar: {
           left: 'prev,next today',
@@ -84,8 +119,10 @@ export class CalendarApp  implements OnInit {
         },
         eventClick: (info) => this.onEventClick(info),
       };
+      const date = new Date();
+      this.currentDate = date.toDateString();
     }
-  
+
     onEventClick(info: any): void {
       this.selectedEvent = {
         id: info.event.id,
@@ -93,5 +130,18 @@ export class CalendarApp  implements OnInit {
         start: info.event.start.toISOString(),
         end: info.event.end?.toISOString(),
       };
+    }
+
+    showlist()
+    {
+      this.Showlist=!this.Showlist;
+      setTimeout(() => {
+        if (this.calendarComponent) {
+          const calendarApi = this.calendarComponent.getApi();
+          calendarApi.updateSize(); // Update the calendar size
+        }
+      }, 0);
+
+
     }
   }

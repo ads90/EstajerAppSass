@@ -1,12 +1,24 @@
-<div class="calendar-layout">
+<section>
+  <div class="header">
+    <h4>Cleander</h4>
+    <button class="btn" (click)="showlist()">
+      <i class="pi pi-align-justify"></i>
+      <span *ngIf="Showlist"> Hide list</span>
+      <span *ngIf="!Showlist"> Show list</span>
+    </button>
+  </div>
+  <div class="content">
+      <div [class]="Showlist?'calendar-layout':'Fullcleander'">
     <!-- FullCalendar -->
     <div class="calendar-container">
       <full-calendar
+      #calendar
         [options]="calendarOptions"
         (eventClick)="onEventClick($event)"
+        class="FullCalendar"
       ></full-calendar>
     </div>
-  
+
     <!-- Event Details -->
     <div class="rentals-container">
       <h3>Rental Details</h3>
@@ -21,4 +33,27 @@
       </div>
     </div>
   </div>
-  
+  @if (Showlist) {
+  <div class="List" >
+  @for (item of list; track $index) {
+    <div class="card flex justify-center">
+    <p-panel [header]="item.date" [toggleable]="true" [collapsed]="true">
+      <div class="item-info">
+      <div class="details">
+       <div class="date">{{item.date}}</div>
+       <div class="item-name">{{item.itemname}}</div>
+       <div class="person-name">{{item.personname}}</div>
+       <div class="Status">{{item.Status}}</div>
+      </div>
+      <div class="days">{{item.days}}</div>
+      </div>
+    </p-panel>
+</div>
+  }
+
+
+</div>
+  }
+
+  </div>
+</section>
