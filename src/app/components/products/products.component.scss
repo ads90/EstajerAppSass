@@ -1,0 +1,46 @@
+.table-box
+{
+  .header-bar{
+    display: flex;
+    justify-content: space-between;
+    .Right-side{
+      display: flex;
+      gap: 5px;
+    }
+
+  }
+  .Full-calender{
+    margin-top:10px;
+  }
+
+}
+
+.fc-datagrid-cell-frame{
+  height: auto !important;
+}
+::ng-deep.Resource-Section{
+  display: flex !important;
+  gap: 20px;
+  .image{
+    img{
+      width: 5vw;
+    }
+  }
+  .details{
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    .name{
+     font-size: 15px;
+     font-weight: 600;
+    }
+    .statue{
+      font-size: 12px;
+      font-weight: 600;
+    }
+  }
+}
+
+::ng-deep.fc-event-title-container{
+  cursor: pointer !important;
+}
