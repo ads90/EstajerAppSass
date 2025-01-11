@@ -5,16 +5,21 @@ import { Dashboard } from "./components/dashboard/dashboard.component";
 import { ForgetPassword } from "./components/authentication/forget-password/forget-password.component";
 import { Signup } from "./components/authentication/signup/signup.component";
 import { ProductsApp } from "./components/products/products.component";
+import {ReservationsApp} from './components/reservations/reservations.component';
+import {ReservationDetailsApp} from './components/reservation-details/reservation-details.component';
 import { ProductDetailsComponent } from "./components/product-details/product-details.component";
 
 export const routes: Routes = [
-    { path: '', component: Dashboard },
+    { path: '', component: Dashboard, children:[
+        { path: 'reservation-details/:id', component: ReservationDetailsApp },
+      ] },
     { path: 'login', component: Login },
     { path: 'signup', component: Signup},
     { path: 'forgetpassword', component: ForgetPassword},
     { path: 'overview', component: OverviewApp },
     { path: 'dashboard', component: Dashboard },
     { path: 'products', component: ProductsApp },
+    { path: 'reservations', component: ReservationsApp },
     { path: 'productDetails/:id', component: ProductDetailsComponent },
 
 ];

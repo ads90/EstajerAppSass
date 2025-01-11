@@ -5,6 +5,7 @@
       'w-auto': isSlimMenu,
       'w-72': !isSlimMenu
     }"
+
     class="rounded-2xl p-5 bg-surface-50 dark:bg-surface-900 h-full flex flex-col justify-between"
   >
     <div
@@ -48,7 +49,7 @@
           <i [class]="navItem.icon"></i>
           <span
             [ngClass]="{
-              hidden: isSlimMenu, 
+              hidden: isSlimMenu,
               'font-medium leading-8': !isSlimMenu
             }"
             >・</span
@@ -125,7 +126,7 @@
         class="px-4 py-1 flex items-center gap-1 cursor-pointer text-base rounded-lg transition-all select-none"
       >
         <p-avatar
-        
+
           (click)="dashboardSidebarVisible = true"
           image="https://www.primefaces.org/cdn/primevue/images/landing/apps/main-avatar.png"
           size="large"
@@ -154,9 +155,10 @@
   <div [style.width]="isSlimMenu ? 'calc(100vw - 10rem)' : 'calc(100vw)'" style="padding: 1rem;" class="flex-1 h-full overflow-y-auto pb-0.5">
     <overview-app *ngIf="selectedSampleAppsSidebarNav === 'Overview'" />
     <calendar-app *ngIf="selectedSampleAppsSidebarNav === 'Calendar'" />
-    <customers-app *ngIf="selectedSampleAppsSidebarNav === 'Customers'" /> 
-    <products-app *ngIf="selectedSampleAppsSidebarNav === 'Products'" /> 
-    <shipments-app *ngIf="selectedSampleAppsSidebarNav === 'Shipments'" /> 
+    <customers-app *ngIf="selectedSampleAppsSidebarNav === 'Customers'" />
+    <products-app *ngIf="selectedSampleAppsSidebarNav === 'Products'" />
+    <reservations-app *ngIf="selectedSampleAppsSidebarNav === 'Reservations'" />
+    <shipments-app *ngIf="selectedSampleAppsSidebarNav === 'Shipments'" />
   </div>
   <!-- <chat-app *ngIf="selectedSampleAppsSidebarNav === 'Chat'" />
                 <inbox-app *ngIf="selectedSampleAppsSidebarNav === 'Inbox'" />
@@ -197,12 +199,12 @@
           />
         </div>
       </div>
-     
+
       <div class="h-[calc(100%-72px)] flex flex-col gap-4 p-6" >
         <div class="flex items-center gap-3">
           <i class="pi pi-moon text-color text-xl"></i>
           <div class="leading-6 text-color flex-1">{{'darkMode' | translate}}</div>
-          <p-toggleswitch [(ngModel)]="darkMode" 
+          <p-toggleswitch [(ngModel)]="darkMode"
           (ngModelChange)="toggleDarkMode()"
           />
       </div>
@@ -211,17 +213,17 @@
         <p-selectbutton
         [options]="[
           { label: 'English', value: 'en' },
-          { label: 'العربية', value: 'ar' }]" 
-          optionLabel="label" 
-          optionValue="value" 
-          [(ngModel)]="selectedLanguage" 
+          { label: 'العربية', value: 'ar' }]"
+          optionLabel="label"
+          optionValue="value"
+          [(ngModel)]="selectedLanguage"
           (ngModelChange)="onLanguageChange($event)"
           aria-labelledby="language-selector">
         </p-selectbutton>
 
     </div>
       </div>
-      
+
     </div>
   </ng-template>
 </p-drawer>

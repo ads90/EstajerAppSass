@@ -41,6 +41,8 @@ import { TranslateModule } from '@ngx-translate/core';
 import { ProductsApp } from '../products/products.component';
 import { ShipmentsApp } from "../shipments/shipments.component";
 import { CalendarApp } from '../calendar-app/calendar-app.component';
+import {ReservationsApp} from '../reservations/reservations.component';
+import {ReservationDetailsApp} from '../reservation-details/reservation-details.component';
 
 @Component({
   selector: 'app-dashboard',
@@ -71,6 +73,8 @@ import { CalendarApp } from '../calendar-app/calendar-app.component';
     KnobModule,
     CustomersApp,
     ProductsApp,
+    ReservationsApp,
+    ReservationDetailsApp,
     ToggleSwitchModule,
     TranslateModule,
     ShipmentsApp,
@@ -82,7 +86,7 @@ export class Dashboard implements OnInit, OnDestroy {
   darkMode: boolean = false;
 
   selectedLanguage: string = 'en';
-  
+
   selectedSampleOption: any;
 
   sampleOptions: any;
@@ -148,7 +152,7 @@ export class Dashboard implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit() {
-    
+
     this.configService.appState.update((state) => ({ ...state, darkTheme: false }));
     this.sampleOptions = [
       {
@@ -224,10 +228,11 @@ export class Dashboard implements OnInit, OnDestroy {
       { icon: 'pi pi-home', title: 'Overview' },
       { icon: 'pi pi-calendar', title: 'Calendar' },
       { icon: 'pi pi-objects-column', title: 'Products' },
+      { icon: 'pi pi-calendar-plus', title: 'Reservations' },
       { icon: 'pi pi-user', title: 'Customers' },
       { icon: 'pi pi-check', title: 'Check In/Out' },
       //   Only admin can see this
-      { icon: 'pi pi-users', title: 'Accounts' }, 
+      { icon: 'pi pi-users', title: 'Accounts' },
     ];
     this.sampleAppsSidebarNavsMore = [{ icon: 'pi pi-cog', title: 'Settings' }];
 
