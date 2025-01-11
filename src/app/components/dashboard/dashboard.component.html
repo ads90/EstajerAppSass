@@ -1,11 +1,10 @@
 <!-- todo make navigation bar horiziontal in ombile -->
-<div class="w-full rounded-3xl flex gap-6 overflow-hidden" style="height: calc(100vh); ">
+<div class="w-full rounded-3xl flex gap-6 overflow-hidden" style="height: calc(100vh);  padding: 1rem 0rem 1rem 1rem" >
   <div
     [ngClass]="{
       'w-auto': isSlimMenu,
       'w-72': !isSlimMenu
     }"
-    
     class="rounded-2xl p-5 bg-surface-50 dark:bg-surface-900 h-full flex flex-col justify-between"
   >
     <div
@@ -13,6 +12,7 @@
         'w-12 flex flex-col items-center': isSlimMenu,
         'w-auto': !isSlimMenu
       }"
+    
     >
       <div class="flex items-center gap-3">
         <div
@@ -151,7 +151,7 @@
       </div>
     </div>
   </div>
-  <div style="width: calc(100vw - 10rem); padding: 1rem;;">
+  <div [style.width]="isSlimMenu ? 'calc(100vw - 10rem)' : 'calc(100vw)'" style="padding: 1rem;" class="flex-1 h-full overflow-y-auto pb-0.5">
     <overview-app *ngIf="selectedSampleAppsSidebarNav === 'Overview'" />
     <calendar-app *ngIf="selectedSampleAppsSidebarNav === 'Calendar'" />
     <customers-app *ngIf="selectedSampleAppsSidebarNav === 'Customers'" /> 

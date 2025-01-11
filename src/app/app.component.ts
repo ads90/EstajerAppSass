@@ -50,7 +50,7 @@ export class AppComponent {
     //         options: {
     //             cssLayer: {
     //                 name: 'primeng',
-    //                 order: 'tailwind-base, primeng, tailwind-utilities'
+    //                 order: 'primeng'
     //             }
     //         }
     //     })

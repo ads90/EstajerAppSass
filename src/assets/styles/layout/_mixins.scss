@@ -1,25 +1,13 @@
-@mixin focus-visible() {
-    &:focus-visible {
-        outline: 1px solid var(--primary-color);
-        outline-offset: var(--p-focus-ring-offset);
-    }
+@mixin focused() {
+    outline: 0 none;
+    outline-offset: 0;
+    transition: box-shadow .2s;
+    box-shadow: var(--focus-ring);
 }
 
-@mixin doc-link() {
-    color: var(--primary-text-color);
-    font-weight: 500;
-    transition: outline-color .2s, border-color .2s;
-    outline-color: transparent;
-    border-radius: 6px;
-    @include focus-visible();
-
-    &:hover {
-        text-decoration: underline;
-    }
-}
-
-@mixin mobile {
-    @media (max-width: 900px) {
-        @content;
-    }
+@mixin focused-inset() {
+    outline: 0 none;
+    outline-offset: 0;
+    transition: box-shadow .2s;
+    box-shadow: inset var(--focus-ring);
 }

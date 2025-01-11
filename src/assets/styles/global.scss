@@ -1,13 +1,6 @@
-// @import "primeflex/primeflex.css";
-@import './primeflex.css';
-@import './tailwind/main.css';
-@import 'primeicons/primeicons.css';
-@import 'quill/dist/quill.snow.css';
-@import './flags.css';
-@import '@docsearch/css/dist/style.css';
-@import './layout/layout.scss';
-
-// body {
-//     visibility: hidden;
-    // opacity: 0;
-// }
+@use './tailwind/main.css';
+@use 'primeicons/primeicons.css';
+@use 'quill/dist/quill.snow.css';
+@use './flags.css';
+@use '@docsearch/css/dist/style.css';
+@use './layout/layout.scss';

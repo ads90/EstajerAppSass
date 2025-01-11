@@ -4,7 +4,8 @@ import { CheckboxModule } from 'primeng/checkbox';
 import { InputTextModule } from 'primeng/inputtext';
 import { AppConfigService } from '../../../services/appconfigservice';
 import { TranslateModule } from '@ngx-translate/core';
-
+import { ImageModule } from 'primeng/image';
+import { PasswordModule } from 'primeng/password';
 
 @Component({
     selector: 'app-login',
@@ -14,7 +15,10 @@ import { TranslateModule } from '@ngx-translate/core';
         ButtonModule,
         CheckboxModule,
         InputTextModule,
-        TranslateModule
+        TranslateModule,
+        InputTextModule,
+        ImageModule,
+        PasswordModule,
     ]
 })
 export class Login  {
