@@ -13,7 +13,7 @@
         'w-12 flex flex-col items-center': isSlimMenu,
         'w-auto': !isSlimMenu
       }"
-    
+
     >
       <div class="flex items-center gap-3">
         <div
@@ -35,7 +35,7 @@
         <div
           *ngFor="let navItem of sampleAppsSidebarNavs"
           [pTooltip]="isSlimMenu ? navItem.title : null"
-          (click)="setSelectedSampleAppsSidebarNav(navItem.title)"
+          (click)="setSelectedSampleAppsSidebarNav(navItem)"
           class="px-4 py-1 flex items-center gap-1 cursor-pointer text-base rounded-lg transition-all select-none"
           [ngClass]="{
             'w-12 justify-center py-4': isSlimMenu,
@@ -153,12 +153,7 @@
     </div>
   </div>
   <div [style.width]="isSlimMenu ? 'calc(100vw - 10rem)' : 'calc(100vw)'" style="padding: 1rem;" class="flex-1 h-full overflow-y-auto pb-0.5">
-    <overview-app *ngIf="selectedSampleAppsSidebarNav === 'Overview'" />
-    <calendar-app *ngIf="selectedSampleAppsSidebarNav === 'Calendar'" />
-    <customers-app *ngIf="selectedSampleAppsSidebarNav === 'Customers'" />
-    <products-app *ngIf="selectedSampleAppsSidebarNav === 'Products'" />
-    <reservations-app *ngIf="selectedSampleAppsSidebarNav === 'Reservations'" />
-    <shipments-app *ngIf="selectedSampleAppsSidebarNav === 'Shipments'" />
+    <router-outlet></router-outlet>
   </div>
   <!-- <chat-app *ngIf="selectedSampleAppsSidebarNav === 'Chat'" />
                 <inbox-app *ngIf="selectedSampleAppsSidebarNav === 'Inbox'" />

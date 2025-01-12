@@ -11,7 +11,7 @@ import {
   PLATFORM_ID,
 } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { RouterModule } from '@angular/router';
+import {Router, RouterModule} from '@angular/router';
 import { MenuItem, SelectItem } from 'primeng/api';
 import { AvatarModule } from 'primeng/avatar';
 import { ButtonModule } from 'primeng/button';
@@ -41,8 +41,8 @@ import { TranslateModule } from '@ngx-translate/core';
 import { ProductsApp } from '../products/products.component';
 import { ShipmentsApp } from "../shipments/shipments.component";
 import { CalendarApp } from '../calendar-app/calendar-app.component';
-import {ReservationsApp} from '../reservations/reservations.component';
-import {ReservationDetailsApp} from '../reservation-details/reservation-details.component';
+import {ReservationsApp} from '../reservation/reservations/reservations.component';
+import {ReservationDetailsApp} from '../reservation/reservation-details/reservation-details.component';
 
 @Component({
   selector: 'app-dashboard',
@@ -148,7 +148,8 @@ export class Dashboard implements OnInit, OnDestroy {
   constructor(
     public translate: CustomTranslateService,
     @Inject(PLATFORM_ID) private platformId: any,
-    private cd: ChangeDetectorRef
+    private cd: ChangeDetectorRef,
+    private router: Router,
   ) {}
 
   ngOnInit() {
@@ -225,14 +226,13 @@ export class Dashboard implements OnInit, OnDestroy {
     this.selectedSampleOption = this.sampleOptions[0];
 
     this.sampleAppsSidebarNavs = [
-      { icon: 'pi pi-home', title: 'Overview' },
-      { icon: 'pi pi-calendar', title: 'Calendar' },
-      { icon: 'pi pi-objects-column', title: 'Products' },
-      { icon: 'pi pi-calendar-plus', title: 'Reservations' },
-      { icon: 'pi pi-user', title: 'Customers' },
-      { icon: 'pi pi-check', title: 'Check In/Out' },
-      //   Only admin can see this
-      { icon: 'pi pi-users', title: 'Accounts' },
+      { icon: 'pi pi-home', title: 'Overview', routerLink: '/overview' },
+      { icon: 'pi pi-calendar', title: 'Calendar', routerLink: '/calender'},
+      { icon: 'pi pi-objects-column', title: 'Products', routerLink: '/products'},
+      { icon: 'pi pi-calendar-plus', title: 'Reservations', routerLink: '/reservations'},
+      { icon: 'pi pi-user', title: 'Customers', routerLink: '/customers'},
+      { icon: 'pi pi-check', title: 'Check In/Out', routerLink: ''},
+      { icon: 'pi pi-users', title: 'Accounts', routerLink: ''},
     ];
     this.sampleAppsSidebarNavsMore = [{ icon: 'pi pi-cog', title: 'Settings' }];
 
@@ -636,8 +636,8 @@ export class Dashboard implements OnInit, OnDestroy {
     };
   }
 
-  setSelectedSampleAppsSidebarNav(title: any) {
-    this.selectedSampleAppsSidebarNav = title;
+  setSelectedSampleAppsSidebarNav(item: any) {
+    this.router.navigateByUrl(item.routerLink);
   }
 
   onLanguageChange(language: string): void {

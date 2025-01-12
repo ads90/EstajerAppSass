@@ -4,8 +4,8 @@ import { Dialog } from 'primeng/dialog';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { Tag } from 'primeng/tag';
 import { Table } from 'primeng/table';
-import { ReservationService } from '../../services/reservation.service';
-import { Reservation } from '../../domain/reservation';
+import { ReservationService } from '../../../services/reservation.service';
+import { Reservation } from '../../../domain/reservation';
 import { CommonModule } from '@angular/common';import { FormsModule } from '@angular/forms';
 import {Router, RouterModule} from '@angular/router';
 import { AvatarModule } from 'primeng/avatar';
@@ -75,6 +75,9 @@ interface ExportColumn {
     ]
 })
 export class ReservationsApp implements OnInit {
+
+  search: string = '';
+
   reservationDialog: boolean = false;
 
   reservations!: Reservation[];
@@ -249,5 +252,9 @@ export class ReservationsApp implements OnInit {
 
   showDetails(id: string){
     this.router.navigateByUrl('reservation-details/' + id);
+  }
+
+  createNewReservation(){
+    this.router.navigateByUrl('reservation-create');
   }
 }
