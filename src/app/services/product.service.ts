@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
+import { Product } from '../domain/product';
 
 @Injectable()
 export class ProductService {
-    getProductsData() {
+    getProductsData() : Product[]{
         return [
             {
                 id: '1000',
@@ -14,7 +15,13 @@ export class ProductService {
                 category: 'Accessories',
                 quantity: 24,
                 inventoryStatus: 'INSTOCK',
-                rating: 5
+                rating: 5,
+                event:[{
+                  resourceId: '1000',  // Product ID
+                  title: 'CHECK-OUT-1000: Bamboo Watch - Abdullah Tahan',
+                  start: '2025-01-08T21:30:00',
+                  end: '2025-01-09T03:15:00',
+                }]
             },
             {
                 id: '1001',
@@ -26,7 +33,14 @@ export class ProductService {
                 category: 'Accessories',
                 quantity: 61,
                 inventoryStatus: 'OUTOFSTOCK',
-                rating: 4
+                rating: 4,
+                event:[{
+                  resourceId: '1001',  // Product ID
+                  title: 'RESERVATION-1001: Black Watch - Abdullah Tahan',
+                  start: '2025-01-16T00:30:00',
+                  end: '2025-01-23T01:30:00',
+
+                }]
             },
             {
                 id: '1002',
@@ -38,7 +52,14 @@ export class ProductService {
                 category: 'Fitness',
                 quantity: 2,
                 inventoryStatus: 'LOWSTOCK',
-                rating: 3
+                rating: 3,
+                event:[{
+                  resourceId: '1002',  // Product ID
+                  title: 'RESERVATION-1002: Blue Band - Mohamed Ibrahem',
+                  start: '2025-02-16T00:30:00',
+                  end: '2025-03-23T01:30:00',
+
+                }]
             },
             {
                 id: '1003',
@@ -50,7 +71,14 @@ export class ProductService {
                 category: 'Clothing',
                 quantity: 25,
                 inventoryStatus: 'INSTOCK',
-                rating: 5
+                rating: 5,
+                event:[{
+                  resourceId: '1003',  // Product ID
+                  title: 'RESERVATION-1003: Blue T-Shirt - Samir',
+                  start: '2025-01-01T00:30:00',
+                  end: '2025-01-05T01:30:00',
+
+                }]
             },
             {
                 id: '1004',
@@ -62,7 +90,13 @@ export class ProductService {
                 category: 'Accessories',
                 quantity: 73,
                 inventoryStatus: 'INSTOCK',
-                rating: 4
+                rating: 4,
+                event:[{
+                  resourceId: '1004',  // Product ID
+                  title: 'RESERVATION-1004: Bracelet - Mohamed Ali',
+                  start: '2025-01-10T12:00:00',
+                  end: '2025-01-12T12:00:00',
+                }]
             },
             {
                 id: '1005',
@@ -74,7 +108,14 @@ export class ProductService {
                 category: 'Accessories',
                 quantity: 0,
                 inventoryStatus: 'OUTOFSTOCK',
-                rating: 4
+                rating: 4,
+                event:[{
+                  resourceId: '1005',
+                  title: 'CHECK-OUT-1005: Brown Purse - Lina',
+                  start: '2025-01-20T08:30:00',
+                  end: '2025-01-21T14:30:00',
+
+                }]
             },
             {
                 id: '1006',
@@ -86,7 +127,14 @@ export class ProductService {
                 category: 'Accessories',
                 quantity: 5,
                 inventoryStatus: 'LOWSTOCK',
-                rating: 3
+                rating: 3,
+                event:[{
+                  resourceId: '1006',
+                  title: 'RESERVATION-1006: Chakra Bracelet - John Doe',
+                  start: '2025-02-01T10:00:00',
+                  end: '2025-02-02T16:00:00',
+
+                }]
             },
             {
                 id: '1007',
@@ -98,7 +146,14 @@ export class ProductService {
                 category: 'Accessories',
                 quantity: 23,
                 inventoryStatus: 'INSTOCK',
-                rating: 5
+                rating: 5,
+                event:[{
+                  resourceId: '1007',
+                  title: 'CHECK-OUT-1007: Galaxy Earrings - Sarah',
+                  start: '2025-03-05T13:00:00',
+                  end: '2025-03-06T18:00:00',
+
+                }]
             },
             {
                 id: '1008',
@@ -1219,5 +1274,9 @@ export class ProductService {
 
     getProductsWithOrders() {
         return Promise.resolve(this.getProductsWithOrdersData());
+    }
+    getproductbyid(id:string)
+    {
+     return this.getProductsData().find(pro=>pro.id===id)
     }
 };

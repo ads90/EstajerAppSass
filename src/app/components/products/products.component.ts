@@ -12,7 +12,7 @@ import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { Tag } from 'primeng/tag';
 import { Table } from 'primeng/table';
 import { ProductService } from '../../services/product.service';
-import { Product } from '../../domain/product';
+import { event, Product } from '../../domain/product';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Route, Router, RouterModule } from '@angular/router';
@@ -48,6 +48,7 @@ import { DateClickArg } from '@fullcalendar/interaction/index.js';
 import timeGridPlugin from '@fullcalendar/timegrid';
 import interactionPlugin from '@fullcalendar/interaction';
 import resourceTimelinePlugin from '@fullcalendar/resource-timeline';
+import { Renderer2 } from '@angular/core';
 
 interface Column {
   field: string;
@@ -126,7 +127,8 @@ export class ProductsApp implements OnInit, AfterContentInit {
   @ViewChild('caleander', { static: true }) caleander!: TemplateRef<any>;
   isPaginatorEnabled:boolean=true;
   @ViewChild('calendar') calendarComponent!: FullCalendarComponent;
-  resourceData: Product = {};
+  resourceData: Product[] = [{}];
+  events2:event[]=[];
   events = [
     {
       resourceId: '1000',  // Product ID
@@ -186,6 +188,7 @@ export class ProductsApp implements OnInit, AfterContentInit {
     private confirmationService: ConfirmationService,
     private cd: ChangeDetectorRef,
     private router:Router,
+    private renderer: Renderer2
   ) {}
 
   ngAfterContentInit(): void {
@@ -193,6 +196,7 @@ export class ProductsApp implements OnInit, AfterContentInit {
   }
   ngOnInit(): void {
     this.loadDemoData();
+     this.getevents();
 
     this.calendarOptions = {
       initialView: 'resourceTimelineDay',
@@ -202,7 +206,7 @@ export class ProductsApp implements OnInit, AfterContentInit {
         timeGridPlugin,
         interactionPlugin,
       ],
-      events: this.events,
+      events: this.events2,
       headerToolbar: {
         left: 'prev,next today',
         center: 'title',
@@ -234,6 +238,13 @@ export class ProductsApp implements OnInit, AfterContentInit {
   </div>
 </div>
             `;
+            const nameElement = container.querySelector('.name');
+            if (nameElement) {
+              this.renderer.listen(nameElement, 'click', () => {
+                this.openproductdetais(resourceId);  // Call the function when clicked
+              });
+            }
+
         return { domNodes: [container] };
       },
     };
@@ -251,7 +262,7 @@ export class ProductsApp implements OnInit, AfterContentInit {
     this.currentTemplate = template;
     if (template === this.Table) {
       this.isPaginatorEnabled = true;
-      this.dt.reset(); 
+      this.dt.reset();
     } else {
       this.isPaginatorEnabled = false;
     }
@@ -265,6 +276,17 @@ export class ProductsApp implements OnInit, AfterContentInit {
     });
     return Item;
   }
+
+  getevents()
+  {
+    this.events2 = this.productService.getProductsData()
+    .map(product => product.event || [])  // Ensure empty array if events is undefined
+    .flat();  // Flattens the array to get a single array of events
+  }
+openproductdetais(id:any)
+{
+  this.router.navigate(["/productDetails", id]);
+}
 
   exportCSV() {
     this.dt.exportCSV();
