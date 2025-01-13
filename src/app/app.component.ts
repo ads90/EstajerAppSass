@@ -39,11 +39,6 @@ export class AppComponent {
   }
 
   constructor(private router: Router, private translateService: CustomTranslateService) {
-
-    //redirect to overview page:
-    this.router.navigate(['/overview']);
-
-
     // todo move this
    // translateService.setLanguage(StorageLanguage.Arabic);
     translateService.setLanguage(StorageLanguage.English);
@@ -55,4 +50,5 @@ export class AppComponent {
         this.currentRoute = event.urlAfterRedirects;
       });
     }
+
 }

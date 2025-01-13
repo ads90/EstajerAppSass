@@ -1,0 +1,118 @@
+<div class="flex-1 h-full overflow-y-auto pb-0.5">
+  <p-toolbar styleClass="mb-6">
+    <ng-template #start>
+      <p-button
+        label="New"
+        icon="pi pi-plus"
+        class="mr-2"
+        (onClick)="createNewChecksOut()"
+      />
+    </ng-template>
+
+    <ng-template #end>
+      <div class="grid grid-cols-2 gap-2">
+        <p-button
+          label="Check-in"
+          icon="pi pi-check"
+          severity="secondary"
+          (onClick)="exportCSV()"
+        />
+        <p-button
+          label="Export"
+          icon="pi pi-upload"
+          severity="secondary"
+          (onClick)="exportCSV()"
+        />
+      </div>
+    </ng-template>
+  </p-toolbar>
+
+<div class="flex-1 h-full overflow-y-auto pb-0.5">
+  <div class="flex items-start gap-2 justify-between">
+    <div>
+      <div class="text-2xl leading-8 text-color font-medium">Check-outs</div>
+      <div class="mt-1 leading-6 text-muted-color">
+        The analysis list here shows all check-outs
+      </div>
+    </div>
+  </div>
+  <div class="mt-10 mb-4 flex items-center justify-between">
+    <p-iconfield iconPosition="left">
+      <p-inputicon class="pi pi-search"> </p-inputicon>
+      <input pInputText type="text" [(ngModel)]="search" placeholder="Search" />
+    </p-iconfield>
+    <div class="flex items-center gap-3">
+      <p-button icon="pi pi-filter" outlined severity="secondary" />
+      <p-divider layout="vertical" class="m-0 p-0" />
+      <p-button icon="pi pi-refresh" outlined severity="secondary" />
+      <p-button label="1 of 15" outlined severity="secondary" />
+      <p-button icon="pi pi-chevron-left" outlined severity="secondary" />
+      <p-button icon="pi pi-chevron-right" outlined severity="secondary" />
+    </div>
+  </div>
+  <div
+    class="flex-1 last:[&>td]:border-0 rounded-lg border border-surface w-full overflow-auto"
+  >
+    <p-table
+      [value]="checksOuts"
+      [(selection)]="selectedChecksOuts"
+      dataKey="id"
+      [rows]="10"
+    >
+      <ng-template #header>
+        <tr>
+          <th style="width: 1rem">
+            <p-tableHeaderCheckbox />
+          </th>
+          <th>Name</th>
+          <th>From</th>
+          <th>To</th>
+          <th>Duration</th>
+          <th>User</th>
+          <th>Items</th>
+        </tr>
+      </ng-template>
+      <ng-template #body let-checksOut>
+        <tr (click)="showDetails(checksOut.id)">
+            <td style="width: 3rem">
+              <p-tableCheckbox [value]="checksOut" />
+            </td>
+            <td>{{ checksOut.name }}
+              <div class="row-meta">
+                <span class="status-badge status-converted"><div class="circle mr-1"></div>{{ checksOut.status }}</span>
+              </div>
+            </td>
+            <td>
+              <span>10 Jan</span>
+              <br>
+              <small>Fri 9:00 am</small>
+            </td>
+            <td>
+              <span>10 Jan</span>
+              <br>
+              <small>Fri 9:00 am</small>
+            </td>
+            <td>{{ checksOut.duration + ' days' }}</td>
+            <td>
+              <div class="grid grid-cols-3 gap-0 gap-sm-2">
+                <div class="col-span-1"><span class="hidden lg:inline"><span color="indigo" title="{{checksOut.user}}" class="  Avatarstyles__StyledAvatar-sc-ueoe40-0 deGDOT">{{checksOut.user[0]}}</span></span></div>
+                <div class="col-span-2"><span class="align-items-center">{{ checksOut.user }}</span></div>
+              </div>
+            </td>
+            <td>
+              <ul class="Stackstyles__StyledStack-sc-uxq0c0-0 fpQRIc ImageGroup___StyledStack-sc-1hv20lx-0 fnbGii">
+                @for (item of checksOut.items; track item) {
+                <li  class="ImageGroupstyles__StyledListItem-sc-fc089o-1 dZJniH">
+                    <img alt="" src="{{'https://primefaces.org/cdn/primeng/images/demo/product/' +item}}" class="Imagestyles__StyledImage-sc-ge4iq2-0 jwsKoM">
+                </li>
+                }
+                @empty {
+                <li>There are no items.</li>
+                }
+              </ul>
+            </td>
+          </tr>
+      </ng-template>
+    </p-table>
+  </div>
+</div>

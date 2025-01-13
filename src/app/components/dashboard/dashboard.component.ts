@@ -225,8 +225,8 @@ export class Dashboard implements OnInit, OnDestroy {
       { icon: 'pi pi-objects-column', title: 'Products', routerLink: '/products'},
       { icon: 'pi pi-calendar-plus', title: 'Reservations', routerLink: '/reservations'},
       { icon: 'pi pi-user', title: 'Customers', routerLink: '/customers'},
-      { icon: 'pi pi-check', title: 'Check In/Out', routerLink: ''},
-      { icon: 'pi pi-users', title: 'Accounts', routerLink: ''},
+      { icon: 'pi pi-check', title: 'Check In/Out', routerLink: '/checks-out-checks-in'},
+      { icon: 'pi pi-users', title: 'Accounts', routerLink: '/accounts'},
     ];
     this.sampleAppsSidebarNavsMore = [{ icon: 'pi pi-cog', title: 'Settings' }];
 
