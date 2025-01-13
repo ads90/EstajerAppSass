@@ -1,6 +1,6 @@
 
 import { NavigationEnd, Router, RouterModule } from '@angular/router';
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ToolbarModule } from 'primeng/toolbar';
 import { ButtonModule } from 'primeng/button';
@@ -9,16 +9,15 @@ import { InputTextModule } from 'primeng/inputtext';
 import { CheckboxModule } from 'primeng/checkbox';
 import { filter } from 'rxjs';
 import { CommonModule } from '@angular/common';
-import { PrimeNG } from 'primeng/config';
-import Aura from '@primeng/themes/aura';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
+import { CustomTranslateService } from './services/custom-translate.service';
+import { StorageLanguage } from './shared/models/enum';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
     imports: [
-      TranslateModule,
       RouterModule,
       CommonModule,
       FormsModule,
@@ -27,7 +26,6 @@ import { TranslateModule, TranslateService } from '@ngx-translate/core';
       MessageModule,
       InputTextModule,
       CheckboxModule,
-      
     ]
 })
 export class AppComponent {
@@ -40,20 +38,9 @@ export class AppComponent {
     this.msg = 'Welcome ' + this.text;
   }
 
-  constructor(private router: Router, private primeng: PrimeNG, private translate: TranslateService) {
-    this.translate.addLangs(['en', 'ar']);
-    this.translate.setDefaultLang('en');
-    this.translate.use('en');
-    // this.appState.update((state) => ({ ...state, primary: "yellow" }));
-    // this.primeng.theme.set({
-    //     preset: Aura,
-    //         options: {
-    //             cssLayer: {
-    //                 name: 'primeng',
-    //                 order: 'primeng'
-    //             }
-    //         }
-    //     })
+  constructor(private router: Router, private translateService: CustomTranslateService) {
+    // todo move this 
+    translateService.setLanguage(StorageLanguage.Arabic);
     }
 
   ngOnInit() {
@@ -61,5 +48,5 @@ export class AppComponent {
       .subscribe((event: any) => {
         this.currentRoute = event.urlAfterRedirects;
       });
-  }
+    }
 }

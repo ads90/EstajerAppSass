@@ -10,4 +10,13 @@ export interface Product {
     category?: string;
     image?: string;
     rating?: number;
+    event?:event[];
+}
+
+export interface event {
+  id?:string;
+  resourceId?:string;
+  title?:string;
+  start?:string;
+  end?:string;
 }

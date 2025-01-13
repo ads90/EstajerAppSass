@@ -3,7 +3,7 @@ const primeui = require('tailwindcss-primeui');
 module.exports = {
     darkMode: ['selector', '[class="p-dark"]'],
     content: ['./src/app/components/**/*.{html,ts,scss,css}', './src/index.html'],
-    plugins: [primeui],
+    plugins: [primeui, require('flowbite/plugin')],
     theme: {
         screens: {
             sm: '576px',

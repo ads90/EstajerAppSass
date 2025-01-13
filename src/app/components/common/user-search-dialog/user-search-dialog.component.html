@@ -1,0 +1,19 @@
+<p-dialog [(visible)]="visible" [closable]="false" [modal]="true" [style]="{width: '50vw'}" [resizable]="false">
+  <div class="flex justify-between items-center p-4">
+    <h2 class="text-xl font-semibold">Search User</h2>
+    <button class="text-gray-600 p-2 rounded-full hover:bg-gray-200 focus:outline-none" (click)="close()">
+      <i class="pi pi-times"></i>
+    </button>
+  </div>
+
+  <div class="p-4">
+    <ul class="space-y-2">
+      <li *ngFor="let user of users" class="border-b border-gray-200 py-2" (click)="selectUser({name: user})">
+        {{ user }}
+      </li>
+    </ul>
+  </div>
+  <div *ngIf="users.length === 0">
+    <p>No users found.</p>
+  </div>
+</p-dialog>

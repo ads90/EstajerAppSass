@@ -1,0 +1,36 @@
+<p-dialog  [(visible)]="displayDialog" [closable]="false" [modal]="true" [style]="{width: '50vw'}" [resizable]="false">
+  <div class="relative p-fluid">
+    <!-- Close Button -->
+    <div class="flex justify-between items-center p-4">
+      <h2 class="text-xl font-semibold">Add Items</h2>
+      <button class="text-gray-600 p-2 rounded-full hover:bg-gray-200 focus:outline-none" (click)="closeDialog()">
+        <i class="pi pi-times"></i>
+      </button>
+    </div>
+
+    <!-- Table of Items -->
+    <p-table [value]="items" selectionMode="multiple" [(selection)]="selectedItems">
+      <ng-template pTemplate="header">
+        <tr>
+          <th class="w-12"></th>  <!-- Checkbox column width -->
+          <th>Product Name</th>
+          <th>Code</th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-item>
+        <tr>
+          <td class="px-2 py-2">
+            <p-checkbox binary="true" [(ngModel)]="item.selected"></p-checkbox>
+          </td>
+          <td class="px-4 py-2">{{ item.productName }}</td>
+          <td class="px-4 py-2">{{ item.code }}</td>
+        </tr>
+      </ng-template>
+    </p-table>
+
+    <!-- Save Button -->
+    <div class="flex justify-end gap-2 mt-4">
+      <button pButton type="button" label="Save" icon="pi pi-check" (click)="saveItems()" class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600"></button>
+    </div>
+  </div>
+</p-dialog>

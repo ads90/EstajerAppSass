@@ -1,0 +1,29 @@
+section{
+  .header{
+    a{
+    color: #7B61FF;
+    cursor: pointer;
+    &:hover{
+      border-bottom: 2px solid #7B61FF;
+    }
+    }
+    span{
+      color:rgb(148 163 184 / var(--tw-text-opacity,1));
+    }
+
+  }
+  .up-box{
+.left-side{
+  .image{
+   img{
+   width: 7vw;
+   border-radius: 5px;
+   }
+  }
+}
+  }
+ ::ng-deep .p-tabpanels{
+    padding: 0px !important;
+    margin-top: 15px;
+  }
+}

@@ -1,369 +1,161 @@
 import { Injectable } from '@angular/core';
+import { Product } from '../domain/product';
 
 @Injectable()
 export class ProductService {
-    getProductsData() {
+    getProductsData() : Product[]{
         return [
             {
                 id: '1000',
                 code: 'f230fh0g3',
-                name: 'Bamboo Watch',
-                description: 'Product Description',
-                image: 'bamboo-watch.jpg',
-                price: 65,
-                category: 'Accessories',
+                name: 'كرسي جلوس',
+                description: 'يوفر راحة فائقة بفضل تصميمه المنحني ودعمه الممتاز للظهر',
+                image: 'https://estajer.com/wp-content/uploads/2024/08/qxkw2h50jt71yes4r93vgumpfzi6nbla.jpg',
+                price: 50.00,
+                category: 'أثاث',
                 quantity: 24,
-                inventoryStatus: 'INSTOCK',
-                rating: 5
+                inventoryStatus: 'مستعمل',
+                rating: 5,
+                event:[{
+                  resourceId: '1000',  // Product ID
+                  title: 'CHECK-OUT-1000: كرسي جلوس - عبدالله',
+                  start: '2025-01-08T21:30:00',
+                  end: '2025-01-09T03:15:00',
+                }]
             },
             {
                 id: '1001',
                 code: 'nvklal433',
-                name: 'Black Watch',
-                description: 'Product Description',
-                image: 'black-watch.jpg',
+                name: 'فوتوبوث مرايا',
+                description: 'صاروخ قص (Grinder) من ماركة Black+Decker، مصمم للاستخدامات الصناعية والمنزلية',
+                image: 'https://estajer.com/wp-content/uploads/2024/12/photobooth1.jpeg',
                 price: 72,
-                category: 'Accessories',
+                category: 'أثاث',
                 quantity: 61,
-                inventoryStatus: 'OUTOFSTOCK',
-                rating: 4
+                inventoryStatus: 'مستعمل',
+                rating: 4,
+                event:[{
+                  resourceId: '1001',  // Product ID
+                  title: 'RESERVATION-1001: فوتوبوث مرايا - احمد حامد',
+                  start: '2025-01-16T00:30:00',
+                  end: '2025-01-23T01:30:00',
+
+                }]
             },
             {
                 id: '1002',
                 code: 'zz21cz3c1',
-                name: 'Blue Band',
-                description: 'Product Description',
-                image: 'blue-band.jpg',
+                name: 'طاولة خدمة زجاجية',
+                description: 'طاولة خدمة زجاجية حديثة بإطار معدني أبيض مناسبة للتقديمات في الحفلات والاستقبالات',
+                image: 'https://estajer.com/wp-content/uploads/2024/07/uf0pqyztj84mxlrn7o9a23s6g5vid1bw.jpg',
                 price: 79,
-                category: 'Fitness',
+                category: 'أثاث',
                 quantity: 2,
-                inventoryStatus: 'LOWSTOCK',
-                rating: 3
+                inventoryStatus: 'جديد',
+                rating: 3,
+                event:[{
+                  resourceId: '1002',  // Product ID
+                  title: 'RESERVATION-1002: طاولة خدمة زجاجية - محمدابراهيم',
+                  start: '2025-02-16T00:30:00',
+                  end: '2025-03-23T01:30:00',
+
+                }]
             },
             {
                 id: '1003',
                 code: '244wgerg2',
-                name: 'Blue T-Shirt',
-                description: 'Product Description',
-                image: 'blue-t-shirt.jpg',
+                name: 'كنب مفرد من القماش',
+                description: 'كنب مفرد من القماش لون بيج مع ارجل خشبية ومساند جانبية',
+                image: 'https://estajer.com/wp-content/uploads/2024/08/ar48qj2uycg3hnsv5oel9m61fdiwtkxz.jpg',
                 price: 29,
-                category: 'Clothing',
+                category: 'أثاث',
                 quantity: 25,
-                inventoryStatus: 'INSTOCK',
-                rating: 5
+                inventoryStatus: 'مستعمل',
+                rating: 5,
+                event:[{
+                  resourceId: '1003',  // Product ID
+                  title: 'RESERVATION-1003: كنب مفرد من القماش - سالم',
+                  start: '2025-01-01T00:30:00',
+                  end: '2025-01-05T01:30:00',
+
+                }]
             },
             {
                 id: '1004',
                 code: 'h456wer53',
-                name: 'Bracelet',
+                name: 'طاولة خدمة خشبية',
                 description: 'Product Description',
-                image: 'bracelet.jpg',
+                image: 'https://estajer.com/wp-content/uploads/2024/07/6xoe0cypg8uribqt9mz341flk2vhaw75.jpg',
                 price: 15,
-                category: 'Accessories',
+                category: 'أثات',
                 quantity: 73,
-                inventoryStatus: 'INSTOCK',
-                rating: 4
+                inventoryStatus: 'جديد',
+                rating: 4,
+                event:[{
+                  resourceId: '1004',  // Product ID
+                  title: 'RESERVATION-1004: طاولة خدمة خشبية - سعد على',
+                  start: '2025-01-10T12:00:00',
+                  end: '2025-01-12T12:00:00',
+                }]
             },
             {
                 id: '1005',
                 code: 'av2231fwg',
-                name: 'Brown Purse',
-                description: 'Product Description',
-                image: 'brown-purse.jpg',
+                name: 'كرسي جلوس احمر',
+                description: 'كرسي جلوس احمر باطار ذهبي من المعدن مناسب للمناسبات',
+                image: 'https://estajer.com/wp-content/uploads/2024/07/a7lkiz4eboh65y83p1ug9fnm20xrcdtq.jpg',
                 price: 120,
-                category: 'Accessories',
+                category: 'أثات',
                 quantity: 0,
-                inventoryStatus: 'OUTOFSTOCK',
-                rating: 4
+                inventoryStatus: 'مستعمل',
+                rating: 4,
+                event:[{
+                  resourceId: '1005',
+                  title: 'CHECK-OUT-1005: كرسي جلوس احمر - رابح',
+                  start: '2025-01-20T08:30:00',
+                  end: '2025-01-21T14:30:00',
+
+                }]
             },
             {
                 id: '1006',
                 code: 'bib36pfvm',
-                name: 'Chakra Bracelet',
-                description: 'Product Description',
-                image: 'chakra-bracelet.jpg',
+                name: 'دراجة هوائية',
+                description: 'دراجة هوائية هجين، إطار ٢٦ انش مع سلة وقفل أمان واضاءة أمامية وخلفية',
+                image: 'https://estajer.com/wp-content/uploads/2024/08/24tnwdskyf6j3zo7p980lxbgaq1erhcv-1118x1006.jpeg',
                 price: 32,
-                category: 'Accessories',
+                category: 'أجهزة رياضية',
                 quantity: 5,
-                inventoryStatus: 'LOWSTOCK',
-                rating: 3
+                inventoryStatus: 'مستعمل',
+                rating: 3,
+                event:[{
+                  resourceId: '1006',
+                  title: 'RESERVATION-1006: دراجة هوائية - سالم',
+                  start: '2025-02-01T10:00:00',
+                  end: '2025-02-02T16:00:00',
+
+                }]
             },
             {
                 id: '1007',
                 code: 'mbvjkgip5',
                 name: 'Galaxy Earrings',
-                description: 'Product Description',
-                image: 'galaxy-earrings.jpg',
+                description: 'صحون تقديم مناسبة للحفلات والمناسبات',
+                image: 'https://estajer.com/wp-content/uploads/2024/04/rwtc8oa0upgj4iz1x3q2y7bnmlvkfe6s-1118x1006.jpeg',
                 price: 34,
-                category: 'Accessories',
+                category: 'حفلات ومناسبات',
                 quantity: 23,
-                inventoryStatus: 'INSTOCK',
-                rating: 5
+                inventoryStatus: 'جديد',
+                rating: 5,
+                event:[{
+                  resourceId: '1007',
+                  title: 'CHECK-OUT-1007: صحون تقديم - سارة',
+                  start: '2025-03-05T13:00:00',
+                  end: '2025-03-06T18:00:00',
+
+                }]
             },
-            {
-                id: '1008',
-                code: 'vbb124btr',
-                name: 'Game Controller',
-                description: 'Product Description',
-                image: 'game-controller.jpg',
-                price: 99,
-                category: 'Electronics',
-                quantity: 2,
-                inventoryStatus: 'LOWSTOCK',
-                rating: 4
-            },
-            {
-                id: '1009',
-                code: 'cm230f032',
-                name: 'Gaming Set',
-                description: 'Product Description',
-                image: 'gaming-set.jpg',
-                price: 299,
-                category: 'Electronics',
-                quantity: 63,
-                inventoryStatus: 'INSTOCK',
-                rating: 3
-            },
-            {
-                id: '1010',
-                code: 'plb34234v',
-                name: 'Gold Phone Case',
-                description: 'Product Description',
-                image: 'gold-phone-case.jpg',
-                price: 24,
-                category: 'Accessories',
-                quantity: 0,
-                inventoryStatus: 'OUTOFSTOCK',
-                rating: 4
-            },
-            {
-                id: '1011',
-                code: '4920nnc2d',
-                name: 'Green Earbuds',
-                description: 'Product Description',
-                image: 'green-earbuds.jpg',
-                price: 89,
-                category: 'Electronics',
-                quantity: 23,
-                inventoryStatus: 'INSTOCK',
-                rating: 4
-            },
-            {
-                id: '1012',
-                code: '250vm23cc',
-                name: 'Green T-Shirt',
-                description: 'Product Description',
-                image: 'green-t-shirt.jpg',
-                price: 49,
-                category: 'Clothing',
-                quantity: 74,
-                inventoryStatus: 'INSTOCK',
-                rating: 5
-            },
-            {
-                id: '1013',
-                code: 'fldsmn31b',
-                name: 'Grey T-Shirt',
-                description: 'Product Description',
-                image: 'grey-t-shirt.jpg',
-                price: 48,
-                category: 'Clothing',
-                quantity: 0,
-                inventoryStatus: 'OUTOFSTOCK',
-                rating: 3
-            },
-            {
-                id: '1014',
-                code: 'waas1x2as',
-                name: 'Headphones',
-                description: 'Product Description',
-                image: 'headphones.jpg',
-                price: 175,
-                category: 'Electronics',
-                quantity: 8,
-                inventoryStatus: 'LOWSTOCK',
-                rating: 5
-            },
-            {
-                id: '1015',
-                code: 'vb34btbg5',
-                name: 'Light Green T-Shirt',
-                description: 'Product Description',
-                image: 'light-green-t-shirt.jpg',
-                price: 49,
-                category: 'Clothing',
-                quantity: 34,
-                inventoryStatus: 'INSTOCK',
-                rating: 4
-            },
-            {
-                id: '1016',
-                code: 'k8l6j58jl',
-                name: 'Lime Band',
-                description: 'Product Description',
-                image: 'lime-band.jpg',
-                price: 79,
-                category: 'Fitness',
-                quantity: 12,
-                inventoryStatus: 'INSTOCK',
-                rating: 3
-            },
-            {
-                id: '1017',
-                code: 'v435nn85n',
-                name: 'Mini Speakers',
-                description: 'Product Description',
-                image: 'mini-speakers.jpg',
-                price: 85,
-                category: 'Clothing',
-                quantity: 42,
-                inventoryStatus: 'INSTOCK',
-                rating: 4
-            },
-            {
-                id: '1018',
-                code: '09zx9c0zc',
-                name: 'Painted Phone Case',
-                description: 'Product Description',
-                image: 'painted-phone-case.jpg',
-                price: 56,
-                category: 'Accessories',
-                quantity: 41,
-                inventoryStatus: 'INSTOCK',
-                rating: 5
-            },
-            {
-                id: '1019',
-                code: 'mnb5mb2m5',
-                name: 'Pink Band',
-                description: 'Product Description',
-                image: 'pink-band.jpg',
-                price: 79,
-                category: 'Fitness',
-                quantity: 63,
-                inventoryStatus: 'INSTOCK',
-                rating: 4
-            },
-            {
-                id: '1020',
-                code: 'r23fwf2w3',
-                name: 'Pink Purse',
-                description: 'Product Description',
-                image: 'pink-purse.jpg',
-                price: 110,
-                category: 'Accessories',
-                quantity: 0,
-                inventoryStatus: 'OUTOFSTOCK',
-                rating: 4
-            },
-            {
-                id: '1021',
-                code: 'pxpzczo23',
-                name: 'Purple Band',
-                description: 'Product Description',
-                image: 'purple-band.jpg',
-                price: 79,
-                category: 'Fitness',
-                quantity: 6,
-                inventoryStatus: 'LOWSTOCK',
-                rating: 3
-            },
-            {
-                id: '1022',
-                code: '2c42cb5cb',
-                name: 'Purple Gemstone Necklace',
-                description: 'Product Description',
-                image: 'purple-gemstone-necklace.jpg',
-                price: 45,
-                category: 'Accessories',
-                quantity: 62,
-                inventoryStatus: 'INSTOCK',
-                rating: 4
-            },
-            {
-                id: '1023',
-                code: '5k43kkk23',
-                name: 'Purple T-Shirt',
-                description: 'Product Description',
-                image: 'purple-t-shirt.jpg',
-                price: 49,
-                category: 'Clothing',
-                quantity: 2,
-                inventoryStatus: 'LOWSTOCK',
-                rating: 5
-            },
-            {
-                id: '1024',
-                code: 'lm2tny2k4',
-                name: 'Shoes',
-                description: 'Product Description',
-                image: 'shoes.jpg',
-                price: 64,
-                category: 'Clothing',
-                quantity: 0,
-                inventoryStatus: 'INSTOCK',
-                rating: 4
-            },
-            {
-                id: '1025',
-                code: 'nbm5mv45n',
-                name: 'Sneakers',
-                description: 'Product Description',
-                image: 'sneakers.jpg',
-                price: 78,
-                category: 'Clothing',
-                quantity: 52,
-                inventoryStatus: 'INSTOCK',
-                rating: 4
-            },
-            {
-                id: '1026',
-                code: 'zx23zc42c',
-                name: 'Teal T-Shirt',
-                description: 'Product Description',
-                image: 'teal-t-shirt.jpg',
-                price: 49,
-                category: 'Clothing',
-                quantity: 3,
-                inventoryStatus: 'LOWSTOCK',
-                rating: 3
-            },
-            {
-                id: '1027',
-                code: 'acvx872gc',
-                name: 'Yellow Earbuds',
-                description: 'Product Description',
-                image: 'yellow-earbuds.jpg',
-                price: 89,
-                category: 'Electronics',
-                quantity: 35,
-                inventoryStatus: 'INSTOCK',
-                rating: 3
-            },
-            {
-                id: '1028',
-                code: 'tx125ck42',
-                name: 'Yoga Mat',
-                description: 'Product Description',
-                image: 'yoga-mat.jpg',
-                price: 20,
-                category: 'Fitness',
-                quantity: 15,
-                inventoryStatus: 'INSTOCK',
-                rating: 5
-            },
-            {
-                id: '1029',
-                code: 'gwuby345v',
-                name: 'Yoga Set',
-                description: 'Product Description',
-                image: 'yoga-set.jpg',
-                price: 20,
-                category: 'Fitness',
-                quantity: 25,
-                inventoryStatus: 'INSTOCK',
-                rating: 8
-            }
+
         ];
     }
 
@@ -1219,5 +1011,9 @@ export class ProductService {
 
     getProductsWithOrders() {
         return Promise.resolve(this.getProductsWithOrdersData());
+    }
+    getproductbyid(id:string)
+    {
+     return this.getProductsData().find(pro=>pro.id===id)
     }
 };

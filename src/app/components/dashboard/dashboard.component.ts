@@ -1,9 +1,7 @@
 import { CommonModule, isPlatformBrowser } from '@angular/common';
 import {
-  ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
-  effect,
   Inject,
   inject,
   OnDestroy,
@@ -30,24 +28,23 @@ import { TooltipModule } from 'primeng/tooltip';
 import { Subscription } from 'rxjs';
 import { AppConfigService } from '../../services/appconfigservice';
 import { DividerModule } from 'primeng/divider';
-import { OverviewApp } from '../overview-app/overview-app.component';
 import { DrawerModule } from 'primeng/drawer';
 import { KnobModule } from 'primeng/knob';
-import { CustomersApp } from '../customers/customers.component';
 import { ToggleSwitchModule } from 'primeng/toggleswitch';
-import { CustomTranslateService } from '../../services/custom-translate.service';
 import { StorageLanguage } from '../../shared/models/enum';
-import { TranslateModule } from '@ngx-translate/core';
+import { CustomTranslateService } from '../../services/custom-translate.service';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { ProductsApp } from '../products/products.component';
 import { ShipmentsApp } from "../shipments/shipments.component";
 import { CalendarApp } from '../calendar-app/calendar-app.component';
-import {ReservationsApp} from '../reservations/reservations.component';
-import {ReservationDetailsApp} from '../reservation-details/reservation-details.component';
+import {ReservationsApp} from '../reservation/reservations/reservations.component';
+import {ReservationDetailsApp} from '../reservation/reservation-details/reservation-details.component';
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss',
+  providers:[CustomTranslateService],
   imports: [
     CommonModule,
     RouterModule,
@@ -68,24 +65,17 @@ import {ReservationDetailsApp} from '../reservation-details/reservation-details.
     OverlayBadgeModule,
     DatePickerModule,
     DividerModule,
-    OverviewApp,
     DrawerModule,
     KnobModule,
-    CustomersApp,
-    ProductsApp,
-    ReservationsApp,
-    ReservationDetailsApp,
     ToggleSwitchModule,
-    TranslateModule,
-    ShipmentsApp,
-    CalendarApp
+    TranslateModule
 ],
 })
 export class Dashboard implements OnInit, OnDestroy {
 
   darkMode: boolean = false;
 
-  selectedLanguage: string = 'en';
+  selectedLanguage: string = 'ar';
 
   selectedSampleOption: any;
 
@@ -143,10 +133,12 @@ export class Dashboard implements OnInit, OnDestroy {
     return this.configService.appState().darkTheme ?? false;
   }
 
+  customTranslateService = inject(CustomTranslateService);
   configService = inject(AppConfigService);
 
   constructor(
     public translate: CustomTranslateService,
+    private trans:TranslateService,
     @Inject(PLATFORM_ID) private platformId: any,
     private cd: ChangeDetectorRef,
     private router: Router,
@@ -641,28 +633,20 @@ export class Dashboard implements OnInit, OnDestroy {
   }
 
   onLanguageChange(language: string): void {
-    const isArabicSelected = language === 'ar';
-    this.configService.appState.update((state) => ({ ...state, RTL: isArabicSelected }));
-    this.toggleRTL(isArabicSelected);
-    this.changeLanguage(language);
+    // const isArabicSelected = language === 'ar';
+    // this.configService.appState.update((state) => ({ ...state, RTL: isArabicSelected }));
+
+    // this.changeLanguage(language);
+    this.customTranslateService.setLanguage( language === 'ar' ? StorageLanguage.Arabic : StorageLanguage.English);
   }
 
-  toggleRTL(value: boolean) {
-    const htmlElement = document.documentElement;
-
-    if (value) {
-        htmlElement.setAttribute('dir', 'rtl');
-    } else {
-        htmlElement.removeAttribute('dir');
-    }
-}
 
 toggleDarkMode() {
   this.configService.appState.update((state) => ({ ...state, darkTheme: !state.darkTheme }));
 }
-changeLanguage(language: string) {
-  this.translate.setLanguage(language  === 'en' ? StorageLanguage.English : StorageLanguage.Arabic);
-}
+// changeLanguage(language: string) {
+//   this.translate.setLanguage(language  === 'en' ? StorageLanguage.English : StorageLanguage.Arabic);
+// }
 
   ngOnDestroy(): void {
     if (this.subscription) {

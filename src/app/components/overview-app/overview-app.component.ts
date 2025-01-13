@@ -1,5 +1,5 @@
 import { CommonModule, isPlatformBrowser } from '@angular/common';
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, effect, inject, PLATFORM_ID } from '@angular/core';
+import { ChangeDetectorRef, Component, effect, inject, PLATFORM_ID } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { MenuItem } from 'primeng/api';
@@ -19,8 +19,8 @@ import { TagModule } from 'primeng/tag';
 import { TooltipModule } from 'primeng/tooltip';
 import { AppConfigService } from '../../services/appconfigservice';
 import { DesignerService } from '../../services/designerservice';
-import { DrawerModule } from 'primeng/drawer';
-import { KnobModule } from 'primeng/knob';
+import { TranslateModule } from '@ngx-translate/core';
+import { CustomTranslateService } from '../../services/custom-translate.service';
 
 
 @Component({
@@ -46,6 +46,7 @@ import { KnobModule } from 'primeng/knob';
         MeterGroupModule,
         OverlayBadgeModule,
         DatePickerModule,
+        TranslateModule
   ],
 })
 export class OverviewApp {
@@ -82,7 +83,8 @@ export class OverviewApp {
   configService = inject(AppConfigService);
 
   appState = this.configService.appState();
-
+  
+  customTranslateService = inject(CustomTranslateService);
   designerService = inject(DesignerService);
 
   constructor(private cd: ChangeDetectorRef) {}

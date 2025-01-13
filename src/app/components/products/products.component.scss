@@ -24,15 +24,22 @@
   .image{
     img{
       width: 5vw;
+      height: 15vh;
     }
   }
   .details{
     display: flex;
     flex-direction: column;
-    gap: 7px;
+    gap: 10px;
     .name{
-     font-size: 15px;
+     font-size: 16px;
      font-weight: 600;
+     color: rgb(123 97 255 / var(--tw-bg-opacity,1));
+     cursor: pointer;
+     &:hover{
+      color: rgb(105, 77, 244);
+
+    }
     }
     .statue{
       font-size: 12px;

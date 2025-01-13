@@ -1,1 +1,339 @@
-<p>product-details works!</p>
+<section class="flex">
+  <div class="flex-col w-screen">
+    <div class="header">
+      <a (click)="goback()" class="font-bold">Products</a>
+      <span class="font-medium"> > {{ product.name }}</span>
+    </div>
+    <div class="up-box mt-5 flex justify-between items-center">
+      <div class="left-side flex">
+        <div class="image">
+          <img [src]="
+              product.image
+            " alt="" />
+        </div>
+        <div class="mx-3">
+          <h1 class="mb-0">{{ product.name }}</h1>
+          <div class="flex">
+            <svg width="16" height="16" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" color="#334155"
+              focusable="false" style="
+                flex-shrink: 0;
+                --tw-text-opacity: 1;
+                color: rgb(16 185 129 / var(--tw-text-opacity, 1));
+                margin-top: 2px;
+              ">
+              <path fill-rule="evenodd" clip-rule="evenodd"
+                d="M7 12C7 9.23858 9.23858 7 12 7C14.7614 7 17 9.23858 17 12C17 14.7614 14.7614 17 12 17C9.23858 17 7 14.7614 7 12Z"
+                fill="currentColor"></path>
+            </svg>
+            <span>{{ product.inventoryStatus }}</span>
+          </div>
+        </div>
+      </div>
+      <div class="right-side flex gap-3">
+        <p-splitbutton label="Action" [model]="items" raised severity="secondary" />
+        <p-button label="Reserve" [raised]="true" severity="secondary" />
+        <p-button label="Check out" [raised]="true" severity="secondary" />
+      </div>
+    </div>
+    <div class="mt-5">
+      <p-tabView>
+        <p-tabPanel header="Dashboard">
+          <ng-template pTemplate="content" class="">
+            <div class="font-bold mb-5">Bookings</div>
+            <full-calendar class="max-h-96" #calendar [options]="calendarOptions"></full-calendar>
+          </ng-template>
+        </p-tabPanel>
+        <p-tabPanel header="Info" class="p-0">
+          <ng-template pTemplate="content" class="">
+            <div class="flex gap-3">
+              <div class="right-box border shadow-md flex flex-col gap-9 w-8/12 p-10 mb-9">
+                <div class="flex flex-col gap-3">
+                  <div class="flex justify-between">
+                    <h4 class="m-0">Information</h4>
+                    <p-splitbutton label="Action" [model]="items" raised severity="secondary" />
+                  </div>
+                  <hr class="border-t border border-slate-400 my-4" />
+                </div>
+
+                <form class="flex flex-col gap-3">
+                  <div class="flex items-center justify-between">
+                    <p class="m-0 text-base text-slate-500">Item name</p>
+                    <input type="text " pInputText formControlName="text" class="w-3/4" />
+                  </div>
+                  <div class="flex items-center justify-between">
+                    <p class="m-0 text-base text-slate-500">Brand</p>
+                    <input type="text " pInputText formControlName="text" class="w-3/4" />
+                  </div>
+                  <div class="flex items-center justify-between">
+                    <p class="m-0 text-base text-slate-500">Model</p>
+                    <input type="text " pInputText formControlName="text" class="w-3/4" />
+                  </div>
+                  <div class="flex items-center justify-between">
+                    <p class="m-0 text-base text-slate-500">Category</p>
+                    <input type="text " pInputText formControlName="text" class="w-3/4" />
+                  </div>
+                  <div class="flex items-center justify-between">
+                    <p class="m-0 text-base text-slate-500">Location</p>
+                    <input type="text " pInputText formControlName="text" class="w-3/4" />
+                  </div>
+                  <div class="flex items-center justify-between">
+                    <p class="m-0 text-base text-slate-500">Purchase date</p>
+                    <input type="text " pInputText formControlName="text" class="w-3/4" />
+                  </div>
+                  <div class="flex items-center justify-between">
+                    <p class="m-0 text-base text-slate-500">Purchase price</p>
+                    <input type="text " pInputText formControlName="text" class="w-3/4" />
+                  </div>
+                  <div class="flex items-center justify-between">
+                    <p class="m-0 text-base text-slate-500">Warranty date</p>
+                    <input type="text " pInputText formControlName="text" class="w-3/4" />
+                  </div>
+                  <div class="flex items-center justify-between">
+                    <p class="m-0 text-base text-slate-500">Residual value</p>
+                    <input type="text " pInputText formControlName="text" class="w-3/4" />
+                  </div>
+                  <hr class="border-t border border-slate-400 my-4" />
+                  <div class="flex items-center justify-between">
+                    <p class="m-0 text-base text-slate-500">Serial number</p>
+                    <input type="text " pInputText formControlName="text" class="w-3/4" />
+                  </div>
+                  <div class="flex items-center justify-between">
+                    <p class="m-0 text-base text-slate-500">Description</p>
+                    <input type="text " pInputText formControlName="text" class="w-3/4" />
+                  </div>
+                  <div class="flex items-center justify-between">
+                    <p class="m-0 text-base text-slate-500">Owner</p>
+                    <input type="text " pInputText formControlName="text" class="w-3/4" />
+                  </div>
+                  <div class="flex items-center justify-between">
+                    <p class="m-0 text-base text-slate-500">Hyperlink</p>
+                    <input type="text " pInputText formControlName="text" class="w-3/4" />
+                  </div>
+                  <div class="flex items-center justify-between">
+                    <p class="m-0 text-base text-slate-500">Price</p>
+                    <input type="text " pInputText formControlName="text" class="w-3/4" />
+                  </div>
+                </form>
+              </div>
+              <div class="left-box flex flex-col gap-6 w-4/12">
+                <div class="up-box border shadow-md">
+                  <div class="flex p-8 pb-5 justify-between items-center">
+                    <h5 class="m-0">Tracking codes</h5>
+                    <p-button label="Add code" [raised]="true" severity="secondary" icon="pi pi-plus" />
+                  </div>
+                  <div class="border-t border-y-slate-200"></div>
+                  <div class="flex items-center justify-between p-8 pt-5">
+                    <img
+                      src="https://utils.cheqroom.com/bwip/latest?bcid=qrcode&text=ff686449&width=10.583333332&height=10.583333332"
+                      alt="" />
+                    <p class="m-0">ff686449</p>
+                    <p-button icon="pi pi-times" severity="secondary" />
+                  </div>
+                </div>
+                <div class="up-box border shadow-md">
+                  <div class="flex p-5 pb-5 px-8 justify-between items-start">
+                    <h5 class="m-0">Settings</h5>
+                  </div>
+                  <div class="border-t border-y-slate-200"></div>
+                  <div class="flex items-center justify-between p-5 pb-5 px-8">
+                    <div class="flex flex-col">
+                      <div class="text-base font-medium">
+                        Available for reservation
+                      </div>
+                      <div class="text-sm text-slate-500">
+                        Item is available to be used in reservations
+                      </div>
+                    </div>
+                    <!-- <p-toggleswitch [(ngModel)]="checked" /> -->
+                  </div>
+                  <div class="border-t border-y-slate-200"></div>
+                  <div class="flex items-center justify-between p-5 pb-5 px-8">
+                    <div class="flex flex-col">
+                      <div class="text-base font-medium">
+                        Available for check out
+                      </div>
+                      <div class="text-sm text-slate-500">
+                        Item is available to be used in check out
+                      </div>
+                    </div>
+                    <!-- <p-toggleswitch [(ngModel)]="checked" /> -->
+                  </div>
+                  <div class="border-t border-y-slate-200"></div>
+                  <div class="flex items-center justify-between p-5 pb-5 px-8">
+                    <div class="flex flex-col">
+                      <div class="text-base font-medium">
+                        Available for custody
+                      </div>
+                      <div class="text-sm text-slate-500">
+                        Item can be taken into custody by a user
+                      </div>
+                    </div>
+                    <!-- <p-toggleswitch [(ngModel)]="checked" /> -->
+                  </div>
+                </div>
+              </div>
+            </div>
+          </ng-template>
+        </p-tabPanel>
+        <p-tabPanel header="Reservations">
+          <ng-template pTemplate="content">
+            <p-table #dt [value]="reservations" [rows]="10" [columns]="cols" [paginator]="true" [globalFilterFields]="[
+                'name',
+                'country.name',
+                'representative.name',
+                'status'
+              ]" [tableStyle]="{ 'min-width': '75rem' }" [rowHover]="true" dataKey="id"
+              currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+              [showCurrentPageReport]="true">
+              <ng-template #caption>
+                <div class="flex items-center justify-between">
+                  <h5 class="m-0">Reservations</h5>
+                  <p-iconfield>
+                    <p-inputicon styleClass="pi pi-search" />
+                    <input pInputText type="text" (input)="dt.filterGlobal($event.target, 'contains')"
+                      placeholder="Search..." />
+                  </p-iconfield>
+                </div>
+              </ng-template>
+              <ng-template pTemplate="header">
+                <tr>
+                  <th pSortableColumn="name" style="min-width: 16rem">
+                    Name
+                    <p-sortIcon field="name" />
+                  </th>
+                  <th pSortableColumn="from" style="min-width: 16rem">
+                    From
+                    <p-sortIcon field="from" />
+                  </th>
+                  <th pSortableColumn="to" style="min-width: 16rem">
+                    To
+                    <p-sortIcon field="to" />
+                  </th>
+                </tr>
+              </ng-template>
+              <ng-template #body let-reservation>
+                <tr (click)="showDetails(reservation.id)">
+                  <td style="min-width: 12rem">
+                    {{ reservation.name }}
+                    <div class="row-meta">
+                      <span class="status-badge status-converted" data-bind="css: css, text: text">
+                        <div class="circle mr-1"></div>
+                        {{ reservation.inventoryStatus }}
+                      </span>
+                    </div>
+                  </td>
+                  <td style="min-width: 16rem">
+                    {{ reservation.event[0].start }}
+                  </td>
+                  <td style="min-width: 16rem">
+                    {{ reservation.event[0].end }}
+                  </td>
+                </tr>
+              </ng-template>
+              <!-- <ng-template #summary>
+      <div class="flex items-center justify-between">
+        In total there are {{ reservations ? reservations.event.length : 0 }} reservations.
+      </div>
+    </ng-template> -->
+            </p-table>
+          </ng-template>
+        </p-tabPanel>
+        <p-tabPanel header="Check-outs">
+          <ng-template pTemplate="content">
+            <p-table #dt [value]="reservations" [rows]="10" [columns]="cols" [paginator]="true" [globalFilterFields]="[
+                'name',
+                'country.name',
+                'representative.name',
+                'status'
+              ]" [tableStyle]="{ 'min-width': '75rem' }" [rowHover]="true" dataKey="id"
+              currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+              [showCurrentPageReport]="true">
+              <ng-template #caption>
+                <div class="flex items-center justify-between">
+                  <h5 class="m-0">Check outs</h5>
+                  <p-iconfield>
+                    <p-inputicon styleClass="pi pi-search" />
+                    <input pInputText type="text" (input)="dt.filterGlobal($event.target, 'contains')"
+                      placeholder="Search..." />
+                  </p-iconfield>
+                </div>
+              </ng-template>
+              <ng-template pTemplate="header">
+                <tr>
+                  <th pSortableColumn="name" style="min-width: 16rem">
+                    Name
+                    <p-sortIcon field="name" />
+                  </th>
+                  <th pSortableColumn="from" style="min-width: 16rem">
+                    From
+                    <p-sortIcon field="from" />
+                  </th>
+                  <th pSortableColumn="to" style="min-width: 16rem">
+                    To
+                    <p-sortIcon field="to" />
+                  </th>
+                </tr>
+              </ng-template>
+              <ng-template #body let-reservation>
+                <tr (click)="showDetails(reservation.id)">
+                  <td style="min-width: 12rem">
+                    {{ reservation.name }}
+                    <div class="row-meta">
+                      <span class="status-badge status-converted" data-bind="css: css, text: text">
+                        <div class="circle mr-1"></div>
+                        {{ reservation.inventoryStatus }}
+                      </span>
+                    </div>
+                  </td>
+                  <td style="min-width: 16rem">
+                    {{ reservation.event[0].start }}
+                  </td>
+                  <td style="min-width: 16rem">
+                    {{ reservation.event[0].end }}
+                  </td>
+                </tr>
+              </ng-template>
+              <!-- <ng-template #summary>
+              <div class="flex items-center justify-between">
+                In total there are {{ reservations ? reservations.event.length : 0 }} reservations.
+              </div>
+            </ng-template> -->
+            </p-table>
+          </ng-template>
+        </p-tabPanel>
+
+        <p-tabPanel header="Map">
+          <ng-template pTemplate="content" >
+            <div class="flex flex-col gap-5">
+                <h5 class="font-bold ">Last known geo position</h5>
+            <div class="border shadow  rounded">
+              <div class="p-6 flex justify-end	">
+                <p-splitbutton label="Set to current" icon="pi pi-arrows-alt" [model]="Location" raised severity="secondary" />
+              </div>
+              <hr class=" border divide-zinc-300 m-1" />
+              <div class="p-6 flex flex-col gap-3 items-center min-h-80 justify-center		">
+                <i class="pi pi-map-marker" style="font-size: 8rem"></i>
+                <div class="text-lg">Item geo position isn't known yet</div>
+              </div>
+
+
+            </div>
+            </div>
+
+
+          </ng-template>
+        </p-tabPanel>
+        <p-tabPanel header="History">
+          <ng-template pTemplate="content">
+            Complex Content to Lazy Load
+          </ng-template>
+        </p-tabPanel>
+        <p-tabPanel header="Attachments">
+          <ng-template pTemplate="content">
+            Complex Content to Lazy Load
+          </ng-template>
+        </p-tabPanel>
+      </p-tabView>
+    </div>
+  </div>
+</section>
