@@ -133,6 +133,7 @@ export class Dashboard implements OnInit, OnDestroy {
     return this.configService.appState().darkTheme ?? false;
   }
   
+  customTranslateService = inject(CustomTranslateService);
   configService = inject(AppConfigService);
 
   constructor(
@@ -632,28 +633,20 @@ export class Dashboard implements OnInit, OnDestroy {
   }
 
   onLanguageChange(language: string): void {
-    const isArabicSelected = language === 'ar';
-    this.configService.appState.update((state) => ({ ...state, RTL: isArabicSelected }));
-    this.toggleRTL(isArabicSelected);
-    this.changeLanguage(language);
+    // const isArabicSelected = language === 'ar';
+    // this.configService.appState.update((state) => ({ ...state, RTL: isArabicSelected }));
+    
+    // this.changeLanguage(language);
+    this.customTranslateService.setLanguage( language === 'ar' ? StorageLanguage.Arabic : StorageLanguage.English);
   }
 
-  toggleRTL(value: boolean) {
-    const htmlElement = document.documentElement;
-
-    if (value) {
-        htmlElement.setAttribute('dir', 'rtl');
-    } else {
-        htmlElement.removeAttribute('dir');
-    }
-}
 
 toggleDarkMode() {
   this.configService.appState.update((state) => ({ ...state, darkTheme: !state.darkTheme }));
 }
-changeLanguage(language: string) {
-  this.translate.setLanguage(language  === 'en' ? StorageLanguage.English : StorageLanguage.Arabic);
-}
+// changeLanguage(language: string) {
+//   this.translate.setLanguage(language  === 'en' ? StorageLanguage.English : StorageLanguage.Arabic);
+// }
 
   ngOnDestroy(): void {
     if (this.subscription) {

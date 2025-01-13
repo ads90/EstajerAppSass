@@ -1,5 +1,5 @@
 import { PrimeNG } from 'primeng/config';
-import { Injectable, Inject } from '@angular/core';
+import { Injectable, Inject, inject } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { DOCUMENT } from '@angular/common';
 import { StorageKey } from '../shared/constants/storage-key';
@@ -7,11 +7,15 @@ import { StorageLanguage } from '../shared/models/enum';
 import { ConstVaribale } from '../shared/models/language';
 import { IdentityService } from './identity.service';
 import { StorageService } from './storage.service';
+import { AppConfigService } from './appconfigservice';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CustomTranslateService {
+  
+  configService = inject(AppConfigService);
+
   public ArabicIsDefaultLang: any;
   private currentLanguage: StorageLanguage = StorageLanguage.English;
   public globalDectionary: Record<string, string> = {
@@ -62,7 +66,10 @@ export class CustomTranslateService {
     this.storageService.set(StorageKey.Language, lang);
     this.translate.setDefaultLang(ConstVaribale.Language[lang]);
     this.translate.use(ConstVaribale.Language[lang]);
-
+    const isArabicSelected = lang === StorageLanguage.Arabic
+    this.configService.appState.update((state) => ({ ...state, RTL: isArabicSelected }));
+    this.toggleRTL(isArabicSelected);
+    
     //for primeng default component translation
     this.translate
       .get('primeng')
@@ -139,7 +146,17 @@ export class CustomTranslateService {
     });
   }
 
-  initialize(): Promise<boolean> {
+  private toggleRTL(value: boolean) {
+    const htmlElement = document.documentElement;
+
+    if (value) {
+      htmlElement.setAttribute('dir', 'rtl');
+    } else {
+      htmlElement.removeAttribute('dir');
+    }
+  }
+
+  private initialize(): Promise<boolean> {
     this.setGlobalDictionary()
       .then((languageTranslate) => {
         console.log('Translate API loaded');

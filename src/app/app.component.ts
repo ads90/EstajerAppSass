@@ -38,10 +38,9 @@ export class AppComponent {
     this.msg = 'Welcome ' + this.text;
   }
 
-  constructor(private router: Router, private translateService: TranslateService) {
-    this.translateService.addLangs(['en', 'ar']);
-    this.translateService.use('en');
-    this.translateService.setDefaultLang("en");
+  constructor(private router: Router, private translateService: CustomTranslateService) {
+    // todo move this 
+    translateService.setLanguage(StorageLanguage.Arabic);
     }
 
   ngOnInit() {
