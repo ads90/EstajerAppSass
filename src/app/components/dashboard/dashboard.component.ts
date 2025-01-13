@@ -220,13 +220,13 @@ export class Dashboard implements OnInit, OnDestroy {
     this.selectedSampleOption = this.sampleOptions[0];
 
     this.sampleAppsSidebarNavs = [
-      { icon: 'pi pi-home', title: 'Overview', routerLink: '/overview' },
-      { icon: 'pi pi-calendar', title: 'Calendar', routerLink: '/calender'},
-      { icon: 'pi pi-objects-column', title: 'Products', routerLink: '/products'},
-      { icon: 'pi pi-calendar-plus', title: 'Reservations', routerLink: '/reservations'},
-      { icon: 'pi pi-user', title: 'Customers', routerLink: '/customers'},
-      { icon: 'pi pi-check', title: 'Check In/Out', routerLink: '/checks-out-checks-in'},
-      { icon: 'pi pi-users', title: 'Accounts', routerLink: '/accounts'},
+      { icon: 'pi pi-home', title: this.trans.instant('Overview'), routerLink: '/overview' },
+      { icon: 'pi pi-calendar', title:this.trans.instant('calendar'), routerLink: '/calender'},
+      { icon: 'pi pi-objects-column', title:this.trans.instant('product'), routerLink: '/products'},
+      { icon: 'pi pi-calendar-plus', title: this.trans.instant('Reservations'), routerLink: '/reservations'},
+      { icon: 'pi pi-user', title: this.trans.instant('Customers'), routerLink: '/customers'},
+      { icon: 'pi pi-check', title: this.trans.instant('CheckIn/Out'), routerLink: 'checks-out-checks-in'},
+      { icon: 'pi pi-users', title: this.trans.instant('Accounts'), routerLink: '/accounts'},
     ];
     this.sampleAppsSidebarNavsMore = [{ icon: 'pi pi-cog', title: this.trans.instant('Settings') }];
 
