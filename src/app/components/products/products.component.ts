@@ -49,6 +49,7 @@ import timeGridPlugin from '@fullcalendar/timegrid';
 import interactionPlugin from '@fullcalendar/interaction';
 import resourceTimelinePlugin from '@fullcalendar/resource-timeline';
 import { Renderer2 } from '@angular/core';
+import { TranslateModule } from '@ngx-translate/core';
 
 interface Column {
   field: string;
@@ -96,6 +97,8 @@ interface ExportColumn {
     RadioButton,
     InputNumberModule,
     FullCalendarModule,
+     TranslateModule,
+
   ],
 })
 export class ProductsApp implements OnInit, AfterContentInit {
@@ -231,7 +234,7 @@ export class ProductsApp implements OnInit, AfterContentInit {
         const container = document.createElement('div');
         container.innerHTML = `
               <div class="Resource-Section">
-  <div class="image"><img src="https://primefaces.org/cdn/primeng/images/demo/product/${resourceImage}" alt="image"></div>
+  <div class="image"><img src="${resourceImage}" alt="image"></div>
   <div class="details">
 <div class="name">${resourceName}</div>
 <div class="statue">${resourceStatue}</div>

@@ -257,5 +257,17 @@
   "ordersCount": "عدد الطلبيات",
   "darkMode": "الوضع الداكن",
   "language": "اللغة",
-  "overview_title": "ملخص"
+  "Overview":"ملخص",
+  "code":"رمز",
+  "Name":"الأسم",
+  "Image":"صورة",
+  "Price":"السعر",
+  "Category":"التصنيف",
+  "Status":"الحالة",
+  "ManageProducts":"إدارة المنتجات",
+  "searchpleaceholder":"بحث",
+  "New":"جديد",
+  "Delete":"حذف",
+  "Import":"أستيراد",
+  "Export":"تصدير"
 }

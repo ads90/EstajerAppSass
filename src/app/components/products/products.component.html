@@ -2,14 +2,14 @@
   <p-toolbar styleClass="mb-6">
     <ng-template #start>
       <p-button
-        label="New"
+        [label]="'New'|translate"
         icon="pi pi-plus"
         class="mr-2"
         (onClick)="openNew()"
       />
       <p-button
         severity="danger"
-        label="Delete"
+        [label]="'Delete'|translate"
         icon="pi pi-trash"
         outlined
         (onClick)="deleteSelectedProducts()"
@@ -23,7 +23,7 @@
         accept="image/*"
         [maxFileSize]="1000000"
         label="Import"
-        chooseLabel="Import"
+        [chooseLabel]="'Import'|translate"
         auto
         customUpload
         class="mr-2 inline-block"
@@ -31,7 +31,7 @@
 
       />
       <p-button
-        label="Export"
+        [label]="'Export'|translate"
         icon="pi pi-upload"
         severity="secondary"
         (onClick)="exportCSV()"
@@ -60,7 +60,7 @@
   >
     <ng-template #caption>
       <div class="flex items-center justify-between header-bar">
-        <h5 class="m-0">Manage Products</h5>
+        <h5 class="m-0">{{'ManageProducts'|translate}}</h5>
         <div class="Right-side">
                   <p-button  variant="outlined" severity="secondary"  icon="pi pi-table" (onClick)="setTemplate(Table)"/>
                   <p-button  variant="outlined" severity="secondary"  icon="pi pi-calendar" (onClick)="setTemplate(caleander)"/>
@@ -70,7 +70,7 @@
             pInputText
             type="text"
             (input)="dt.filterGlobal($event.target, 'contains')"
-            placeholder="Search..."
+            [placeholder]="'searchpleaceholder'|translate"
           />
         </p-iconfield>
 
@@ -85,23 +85,23 @@
         <th style="width: 3rem">
           <p-tableHeaderCheckbox />
         </th>
-        <th style="min-width: 16rem">Code</th>
+        <th style="min-width: 16rem">{{'code'| translate}}</th>
         <th pSortableColumn="name" style="min-width: 16rem">
-          Name
+          {{'Name'| translate}}
           <p-sortIcon field="name" />
         </th>
-        <th>Image</th>
+        <th>{{'Image'| translate}}</th>
         <th pSortableColumn="price" style="min-width: 8rem">
-          Price
+          {{'Price'| translate}}
           <p-sortIcon field="price" />
         </th>
         <th pSortableColumn="category" style="min-width: 10rem">
-          Category
+          {{'Category'| translate}}
           <p-sortIcon field="category" />
         </th>
 
         <th pSortableColumn="inventoryStatus" style="min-width: 12rem">
-          Status
+           {{'Status'| translate}}
           <p-sortIcon field="inventoryStatus" />
         </th>
         <th style="min-width: 12rem"></th>
@@ -117,7 +117,7 @@
         <td>
           <img
             [src]="
-              'https://primefaces.org/cdn/primeng/images/demo/product/' +
+
               product.image
             "
             [alt]="product.name"
@@ -125,7 +125,7 @@
             class="rounded"
           />
         </td>
-        <td>{{ product.price | currency : "USD" }}</td>
+        <td>{{ product.price | currency: 'SAR':'symbol' }}</td>
         <td>{{ product.category }}</td>
 
         <td>
@@ -180,7 +180,6 @@
     <div class="flex flex-col gap-6">
       <img
         [src]="
-          'https://primefaces.org/cdn/primeng/images/demo/product/' +
           product.image
         "
         [alt]="product.image"

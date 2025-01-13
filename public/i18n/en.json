@@ -7,5 +7,17 @@
     "forgotPassword":"Forgot password?",
     "darkMode": "Dark Mode",
     "language": "Language",
-    "overview_title": "Overview"
+    "Overview":"Overview",
+    "code":"code",
+    "Name":"Name",
+    "Image":"Image",
+    "Price":"Price",
+    "Category":"Category",
+    "Status":"Status",
+    "ManageProducts":"Manage Products",
+    "searchpleaceholder":"Search",
+    "New":"New",
+    "Delete":"Delete",
+    "Import":"Import",
+    "Export":"Export"
 }
