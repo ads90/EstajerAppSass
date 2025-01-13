@@ -1,172 +1,115 @@
-<p-toolbar styleClass="mb-6">
-  <ng-template #start>
-    <h3>{{ 'NEW_RESERVATION' | translate }}</h3>
-  </ng-template>
-  <ng-template #end>
-    <p-button
-    label="{{ 'RESERVE' | translate }}"
-    class="mr-2"
-    />
-    <p-button
-    label="{{ 'CANCEL' | translate }}"
-    severity="secondary"
-      class="mr-2"
-      (onClick)="onCancelClick()"
-    />
-  </ng-template>
-</p-toolbar>
 <div >
-  <input class="w-full mb-2" type="text" pInputText [(ngModel)]="reservation.name" />
+  <h3>Check-out one</h3>
   <div class="mb-5">
     <div class="flex items-center m-2">
-      <div class="w-3 h-3 border-2 border-blue-500 rounded-full mr-2"></div>
-      <span class="text-md">{{reservation.status}}</span>
+      <div class="w-3 h-3 bg-green-500 rounded-full mr-2"></div>
+      <span class="text-md">Completed</span>
     </div>
+    <span>#CHECK-OUT-0009</span>
   </div>
+  <span>
+    This check-out came back an hour ago
+	</span>
 </div>
 
 <p-tabs value="0">
   <p-tablist>
-    <p-tab value="0">{{ 'INFO' | translate }}</p-tab>
-    <p-tab value="1">{{ 'COMMENTS' | translate }}</p-tab>
-    <p-tab value="2">{{ 'ATTACHMENTS' | translate }}</p-tab>
+    <p-tab value="0">Info</p-tab>
+    <p-tab value="1">Comments</p-tab>
+    <p-tab value="2">Attachments</p-tab>
   </p-tablist>
   <p-tabpanels>
     <p-tabpanel value="0">
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-        <div class="md:col-span-2 p-4 bg-gray-100 rounded-[10px]">
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
+        <div class="lg:col-span-2 p-4 bg-gray-100 rounded-[10px]">
           <div class=" gap-4 ">
             <div class="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-4">
               <div class="p-4">
-                <h6>{{ 'WHEN' | translate }}</h6>
-                <div class="pb-2 min-w-5">
+                  <h6>WHEN</h6>
+                  <div class="pb-2 min-w-5">
                     <p-floatlabel variant="in">
-                      <p-datepicker inputId="calendar-12h-1" [(ngModel)]="reservation.from" [showTime]="true" [showIcon]="true" [hourFormat]="'12'" />
-                      <label for="calendar-12h-1">{{ 'FROM' | translate }}</label>
+                      <p-datepicker inputId="calendar-12h-1" [disabled]="true" [(ngModel)]="datetime12h1" [showTime]="true" [showIcon]="true" [hourFormat]="'12'" />
+                      <label for="calendar-12h-1">From</label>
                     </p-floatlabel>
                   </div>
                   <div class="min-w-5">
                     <p-floatlabel variant="in">
-                      <p-datepicker inputId="calendar-12h-2" [(ngModel)]="reservation.to" [showTime]="true" [showIcon]="true" [hourFormat]="'12'" />
-                      <label for="calendar-12h-2">{{ 'TO' | translate }}</label>
+                      <p-datepicker inputId="calendar-12h-2" [disabled]="true" [(ngModel)]="datetime12h2" [showTime]="true" [showIcon]="true" [hourFormat]="'12'" />
+                      <label for="calendar-12h-2">To</label>
                     </p-floatlabel>
                   </div>
               </div>
               <div class="p-4">
-                <h6>{{ 'USER' | translate }}</h6>
-                <p-card *ngIf="reservation!.user" >
-                    <div class="relative">
-                      <!-- Close Button -->
-                      <button class="absolute top-2 right-2 text-gray-500 hover:text-gray-700 text-2xl" (click)="closeCard()">
-                        &times;
-                      </button>
-                      <div class="flex flex-col sm:flex-row sm:items-center p-6 gap-4">
-                      <div class="lg:w-40 md:w-20 relative">
-                        <span color="indigo" title="{{user.name}}" class="bg-gray-500 text-white py-6 px-10 rounded-lg text-center text-2xl Avatarstyles__StyledAvatar-sc-ueoe40-0">{{reservation.user.split(' ')[0][0]+reservation.user.split(' ')[1][0]}}</span>
+                  <h6>USER</h6>
+                  <p-card >
+                    <div class="flex flex-col sm:flex-row sm:items-center p-6 gap-4">
+                      <div class="lg:w-40 md:w-20 sm:w-10 relative ">
+                        <span color="indigo" title="{{user.name}}" class="bg-gray-500 text-white text-2xl py-6 px-10 rounded-lg text-center  Avatarstyles__StyledAvatar-sc-ueoe40-0">{{user.name.split(' ')[0][0]+user.name.split(' ')[1][0]}}</span>
                       </div>
                       <div class="flex flex-col md:flex-row justify-between md:items-center flex-1 gap-6">
                         <div class="flex flex-row md:flex-col justify-between items-start gap-2">
                           <div>
-                            <span class="font-medium text-secondary text-sm">{{ reservation.user }}</span>
+                            <span class="font-medium text-secondary text-sm">{{ user.name }}</span>
                             <div class="text-lg font-medium text-surface-900 dark:text-surface-0 mt-2">{{ user.email }}</div>
                           </div>
                         </div>
                       </div>
                     </div>
-                    </div>
                   </p-card>
-                  <div *ngIf="!reservation!.user" pRipple (click)="isDialogVisible = true" class="flex items-center justify-center w-full h-32 border rounded-lg border-gray-300 p-4">
-                    <div class="flex items-center">
-                      <i class="pi pi-user"></i>
-                      <p class="text-lg font-semibold ml-3">{{ 'SET_USER' | translate }}</p>
-                    </div>
-                  </div>
-
-<!--                Adding Users Dialog-->
-                <app-user-search-dialog
-                  [visible]="isDialogVisible"
-                  [users]="users"
-                  (closeDialog)="isDialogVisible = false"
-                  (userSelected)="onUserSelected($event)">
-                </app-user-search-dialog>
-
-
               </div>
             </div>
             <div class="p-4">
               <p-table [value]="products">
-                <!-- Caption Section with Add Items Button -->
                 <ng-template #caption>
                   <div class="flex items-center justify-between">
-                    <span class="text-xl font-bold">{{ 'EQUIPMENT' | translate }}</span>
-                    <!-- Add Items Button in the top right corner -->
-                    <button
-                      pButton
-                      type="button"
-                      label="{{ 'ADD_ITEMS' | translate }}"
-                      icon="pi pi-plus"
-                      class="bg-green-500 text-white px-4 py-2 rounded-md hover:bg-green-600"
-                      (click)="showItemsDialog()">
-                    </button>
+                    <span class="text-xl font-bold">EQUIPMENT</span>
                   </div>
                 </ng-template>
-
-                <!-- Header Section -->
                 <ng-template #header>
                   <tr>
-                    <th class="text-left px-4 py-2">{{ 'IMAGE' | translate }}</th>
-                    <th class="text-left px-4 py-2">{{ 'NAME' | translate }}</th>
-                    <th class="text-left px-4 py-2">{{ 'QUANTITY' | translate }}</th>
+                    <th>Image</th>
+                    <th>Name</th>
+                    <th></th>
+                    <th>Quantity</th>
                   </tr>
                 </ng-template>
-
-                <!-- Body Section -->
                 <ng-template #body let-product>
                   <tr>
-                    <td class="px-4 py-2">
-                      <!-- Image with a default fallback -->
+                    <td>
                       <img
-                        [src]="product.base64Img || 'assets/default-product-image.png'"
+                        [src]="product.base64Img"
                         [alt]="product.name"
-                        class="w-24 h-24 object-cover rounded"
+                        class="w-24 rounded"
                       />
                     </td>
-                    <td class="px-4 py-2">{{ product.name }}</td>
-                    <td class="px-4 py-2">{{ product.quantity }}</td>
+                    <td>{{ product.name }}</td>
+                    <td><span class="inline-block bg-green-200 text-green-800 px-3 py-1 rounded-full text-sm">Checked In</span></td>
+                    <td>{{ product.quantity }}</td>
                   </tr>
                 </ng-template>
-
-                <!-- Footer Section -->
-                <ng-template #footer>
-                  <div class="flex justify-end text-sm text-gray-500">
-                    <span *ngIf="products && products.length > 0">
-                      {{ 'TOTAL_PRODUCTS' | translate }} {{ products.length }}.
-                    </span>
-                    <span *ngIf="!products || products.length === 0">
-                      {{ 'NO_PRODUCTS' | translate }}.
-                    </span>
-                  </div>
-                </ng-template>
+                <ng-template #footer> In total there are {{ products ? products.length : 0 }} products. </ng-template>
               </p-table>
-
-              <app-add-items-dialog
-                [displayDialog]="displayItemsDialog"
-                (saveSelectedItems)="handleSavedItems($event)"
-                (closeDialog)="displayItemsDialog = false">
-              </app-add-items-dialog>
             </div>
           </div>
         </div>
         <div class="p-8 bg-gray-100 rounded-[10px]">
           <div class="mb-5">
-            <h6>{{ 'EXTRA_INFO' | translate }}</h6>
-            <p-floatlabel variant="in">
-              <input class="w-full" pInputText id="in_label"  autocomplete="off" />
-              <label for="in_label">{{ 'PROJECT_CODE' | translate }}</label>
-            </p-floatlabel>
+            <h6>EXTRA INFO</h6>
+            <div class="pb-2">
+              <p-floatlabel variant="in">
+                <input class="w-full" pInputText id="in_label"  autocomplete="off" />
+                <label for="in_label">Project Code</label>
+              </p-floatlabel>
+            </div>
+            <div>
+              <p-floatlabel variant="in">
+                <input class="w-full" pInputText id="in_label"  autocomplete="off" />
+                <label for="in_label">Tracking Code</label>
+              </p-floatlabel>
+            </div>
           </div>
           <div class="align-self-center">
-            <h6>{{ 'TIMELINE' | translate }}</h6>
+            <h6>TIMELINE</h6>
             <p-timeline [value]="events">
               <ng-template #opposite let-event>
                 <small class="text-surface-500 dark:text-surface-400">{{ event.date }}</small>
@@ -188,38 +131,39 @@
     <p-tabpanel value="1">
       <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div class="p-4 bg-gray-100 rounded-[10px]">
-          <h6>{{ 'COMMENTS' | translate }}</h6>
+          <h6>COMMENTS</h6>
           <div class="m-1">
             @for (comment of comments; track comment) {
             <div class="flex flex-row mb-7 gap-2">
               <div class="basis-1/12 circle-img">
-                <img class="p-1" style="border-radius: 50%" alt="سعود الحمدان" class="lazyload" loading="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAAAAXNSR0IArs4c6QAABU9JREFUeF7tmltMVFcUhv9BB5C23qqCWpGqjWAVtSIqKiVUtE7QBlBCEGO1LWnjJabRxBffjSZ9sFYTG2+JJQQLxEumWKKlk3g3EYgWGotaotZqW61aCs5MMWeQI5zZw9lnZpqVzF7zOuvsNfN/59//Ohfbx5t2dII/ZArYGACZ9r7GDIBWfwZArD8DYADUChD35wxgAMQKELdnBzAAYgWI27MDGACxAsTt2QEMgFgB4vbsAAZArABxe3YAAyBWgLg9O4ABECtA3J4dwACIFSBuzw5gAMQKELdnBzAAYgWI27MDGACxAsTt2QEqA8jKmIZljncRE2PXZfB6/0Ot6zIqnS4paVYtX4R56VOkakMtevT3U+wrd6L5l9ZQl9KPJ3XA+jX5SE0Z5/dnWu/cx4495WjveGb6RxmAqUTignFjR6J0xRK8PmSgX0FHhxvfOn9E3dl609UZgKlE4oICRyZyMtPQr1+Ur6CzsxM2m00vbmy6gS/3V5muzgBMJRIXbFlbjPFJo3Txb92+h6Q3EnQIj5+04UDFd7jafDPIDv6HzZkxCcV5CxAbE61/2XS9FV/srQhbD6sLkWTArOkpKM57D3EDYn2/t+OZG67zDZiXnooBsV3iWA1jmT/OAF6oVJKfg8zZqfrZrk0XB4/UoHBJFkbFD9O1tBLGDEBGAQDxw4dg3eo8JAwfqh/Rcusutn1VhlWFizA3bQq6o8BKGMu0ZwcAyJ47HfmOTMREd83+WvjWnatHWfUpZKRNRtEH2fo2pH0vG8YMQEYBAMbZ/5+2dhyurMXlxp994bj5syIkjh6hrxbOMFbeAckTEvFRkQODB70acJ835kNPh0gyDlimPADR7N+9/XSrlpY6ESUFOXglrmtC0j7hCmPlAWzduBKJo+N1YZ88bcOhIyfR8FNLr7O25zWCb0y1cGXcl0uUBmCc/TWhrt+8je27y/00MzolXGGsNADjiOnxelHzw0UcPXnGD8Dk5DexunAxBr4WF9YwVhaAaPb/8+Fj7P3mOG78+ptw1/i8tBApbyXq32lh7DrfiMNVtUFnsbIA3s9Kx9KFGbDb++vimc33juxZyM2ZA3v/l8eEGsbKAjDO/m63B8e+P4uauosBz+akMQn4dKV2u3qQXhNqGCsJQLSf3//jEXbur8TvDx72uZ2UluRi5tTkXjVmzuEpyKCA/+wPXKpvxtdlJ0z3ctEjy1CujJV0gHH2t7KNiMI7lDBWDoBo9jc97SUK7j34C7sOVJtuYcallAPwSXEuZk5L1m8vS2grVWLFRT0XVAqAaPuQUleyKJgwVgqAaI73eLzQroCtfrSH9dF2ey8nBRPGSgEwzv6hhKfoFZZg1lMGgGj2D3TnU9YN6z7Mw9S3x/cqtxrGygBYnpuFBfPfQVRU1zs/2ifQnU9ZAKJrAu1tiiqnC6fPXJFaRgkAoseKfd35lFIOED6u1I61EsZKABDN/mZ3PmUhiJxlJYyVACCa/RuutWDXwWpZnQPWibLFShhHPABt9t+wpgAjhg0O2x1MIw3RG9WyYRzxAESzv6w4svYwvlekHef2eHCi9hycpy/0uUzEA/g/nmIZFQ10hS0TxhENQLQ/t/3b7nvj7cKVJtkTXKrO+O6QdpBMGEc0ACnluMhPAZLX05nDSwUYAPHZwAAYALECxO3ZAQyAWAHi9uwABkCsAHF7dgADIFaAuD07gAEQK0Dcnh3AAIgVIG7PDmAAxAoQt2cHMABiBYjbswMYALECxO3ZAQyAWAHi9uwABkCsAHF7dgADIFaAuD07gAEQK0Dcnh3AAIgVIG7PDiAG8BzHt8xOrPdwAAAAAABJRU5ErkJggg==">
+                <img class="p-1" style="border-radius: 50%" alt="Abdullah Tahan" class="lazyload" loading="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAAAAXNSR0IArs4c6QAABU9JREFUeF7tmltMVFcUhv9BB5C23qqCWpGqjWAVtSIqKiVUtE7QBlBCEGO1LWnjJabRxBffjSZ9sFYTG2+JJQQLxEumWKKlk3g3EYgWGotaotZqW61aCs5MMWeQI5zZw9lnZpqVzF7zOuvsNfN/59//Ohfbx5t2dII/ZArYGACZ9r7GDIBWfwZArD8DYADUChD35wxgAMQKELdnBzAAYgWI27MDGACxAsTt2QEMgFgB4vbsAAZArABxe3YAAyBWgLg9O4ABECtA3J4dwACIFSBuzw5gAMQKELdnBzAAYgWI27MDGACxAsTt2QEqA8jKmIZljncRE2PXZfB6/0Ot6zIqnS4paVYtX4R56VOkakMtevT3U+wrd6L5l9ZQl9KPJ3XA+jX5SE0Z5/dnWu/cx4495WjveGb6RxmAqUTignFjR6J0xRK8PmSgX0FHhxvfOn9E3dl609UZgKlE4oICRyZyMtPQr1+Ur6CzsxM2m00vbmy6gS/3V5muzgBMJRIXbFlbjPFJo3Txb92+h6Q3EnQIj5+04UDFd7jafDPIDv6HzZkxCcV5CxAbE61/2XS9FV/srQhbD6sLkWTArOkpKM57D3EDYn2/t+OZG67zDZiXnooBsV3iWA1jmT/OAF6oVJKfg8zZqfrZrk0XB4/UoHBJFkbFD9O1tBLGDEBGAQDxw4dg3eo8JAwfqh/Rcusutn1VhlWFizA3bQq6o8BKGMu0ZwcAyJ47HfmOTMREd83+WvjWnatHWfUpZKRNRtEH2fo2pH0vG8YMQEYBAMbZ/5+2dhyurMXlxp994bj5syIkjh6hrxbOMFbeAckTEvFRkQODB70acJ835kNPh0gyDlimPADR7N+9/XSrlpY6ESUFOXglrmtC0j7hCmPlAWzduBKJo+N1YZ88bcOhIyfR8FNLr7O25zWCb0y1cGXcl0uUBmCc/TWhrt+8je27y/00MzolXGGsNADjiOnxelHzw0UcPXnGD8Dk5DexunAxBr4WF9YwVhaAaPb/8+Fj7P3mOG78+ptw1/i8tBApbyXq32lh7DrfiMNVtUFnsbIA3s9Kx9KFGbDb++vimc33juxZyM2ZA3v/l8eEGsbKAjDO/m63B8e+P4uauosBz+akMQn4dKV2u3qQXhNqGCsJQLSf3//jEXbur8TvDx72uZ2UluRi5tTkXjVmzuEpyKCA/+wPXKpvxtdlJ0z3ctEjy1CujJV0gHH2t7KNiMI7lDBWDoBo9jc97SUK7j34C7sOVJtuYcallAPwSXEuZk5L1m8vS2grVWLFRT0XVAqAaPuQUleyKJgwVgqAaI73eLzQroCtfrSH9dF2ey8nBRPGSgEwzv6hhKfoFZZg1lMGgGj2D3TnU9YN6z7Mw9S3x/cqtxrGygBYnpuFBfPfQVRU1zs/2ifQnU9ZAKJrAu1tiiqnC6fPXJFaRgkAoseKfd35lFIOED6u1I61EsZKABDN/mZ3PmUhiJxlJYyVACCa/RuutWDXwWpZnQPWibLFShhHPABt9t+wpgAjhg0O2x1MIw3RG9WyYRzxAESzv6w4svYwvlekHef2eHCi9hycpy/0uUzEA/g/nmIZFQ10hS0TxhENQLQ/t/3b7nvj7cKVJtkTXKrO+O6QdpBMGEc0ACnluMhPAZLX05nDSwUYAPHZwAAYALECxO3ZAQyAWAHi9uwABkCsAHF7dgADIFaAuD07gAEQK0Dcnh3AAIgVIG7PDmAAxAoQt2cHMABiBYjbswMYALECxO3ZAQyAWAHi9uwABkCsAHF7dgADIFaAuD07gAEQK0Dcnh3AAIgVIG7PDiAG8BzHt8xOrPdwAAAAAABJRU5ErkJggg==">
               </div>
               <div class="basis-11/12">
-                <div class="mb-2"><strong>{{"سعود الحمدان"}}</strong></div>
+                <div class="mb-2"><strong>{{"Abdullah Tahan"}}</strong></div>
                 <p-card>{{comment.text}}</p-card>
                  <small>
                     <span>{{comment.date}} <small>{{comment.time}}</small></span>
                     -
-                    <a>{{ 'EDIT' | translate }}</a> -
-                    <a>{{ 'DELETE' | translate }}</a>
+                    <a>Edit</a>
+                    -
+                    <a>Delete</a>
                  </small>
             </div>
           </div>
             }
             @empty {
-              <li>{{ 'NO_COMMENTS' | translate }}</li>
+            <li>There are no comments.</li>
             }
           </div>
         </div>
         <div class="p-4 bg-gray-100 rounded-[10px]">
-          <h6>{{ 'ADD_NEW_COMMENT' | translate }}</h6>
+          <h6>ADD NEW COMMENT</h6>
           <div class="flex flex-row m-1">
             <div class="basis-1/12 circle-img mr-1">
               <img style="border-radius: 50%" alt="Abdullah Tahan" class="lazyload" loading="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAAAAXNSR0IArs4c6QAABU9JREFUeF7tmltMVFcUhv9BB5C23qqCWpGqjWAVtSIqKiVUtE7QBlBCEGO1LWnjJabRxBffjSZ9sFYTG2+JJQQLxEumWKKlk3g3EYgWGotaotZqW61aCs5MMWeQI5zZw9lnZpqVzF7zOuvsNfN/59//Ohfbx5t2dII/ZArYGACZ9r7GDIBWfwZArD8DYADUChD35wxgAMQKELdnBzAAYgWI27MDGACxAsTt2QEMgFgB4vbsAAZArABxe3YAAyBWgLg9O4ABECtA3J4dwACIFSBuzw5gAMQKELdnBzAAYgWI27MDGACxAsTt2QEqA8jKmIZljncRE2PXZfB6/0Ot6zIqnS4paVYtX4R56VOkakMtevT3U+wrd6L5l9ZQl9KPJ3XA+jX5SE0Z5/dnWu/cx4495WjveGb6RxmAqUTignFjR6J0xRK8PmSgX0FHhxvfOn9E3dl609UZgKlE4oICRyZyMtPQr1+Ur6CzsxM2m00vbmy6gS/3V5muzgBMJRIXbFlbjPFJo3Txb92+h6Q3EnQIj5+04UDFd7jafDPIDv6HzZkxCcV5CxAbE61/2XS9FV/srQhbD6sLkWTArOkpKM57D3EDYn2/t+OZG67zDZiXnooBsV3iWA1jmT/OAF6oVJKfg8zZqfrZrk0XB4/UoHBJFkbFD9O1tBLGDEBGAQDxw4dg3eo8JAwfqh/Rcusutn1VhlWFizA3bQq6o8BKGMu0ZwcAyJ47HfmOTMREd83+WvjWnatHWfUpZKRNRtEH2fo2pH0vG8YMQEYBAMbZ/5+2dhyurMXlxp994bj5syIkjh6hrxbOMFbeAckTEvFRkQODB70acJ835kNPh0gyDlimPADR7N+9/XSrlpY6ESUFOXglrmtC0j7hCmPlAWzduBKJo+N1YZ88bcOhIyfR8FNLr7O25zWCb0y1cGXcl0uUBmCc/TWhrt+8je27y/00MzolXGGsNADjiOnxelHzw0UcPXnGD8Dk5DexunAxBr4WF9YwVhaAaPb/8+Fj7P3mOG78+ptw1/i8tBApbyXq32lh7DrfiMNVtUFnsbIA3s9Kx9KFGbDb++vimc33juxZyM2ZA3v/l8eEGsbKAjDO/m63B8e+P4uauosBz+akMQn4dKV2u3qQXhNqGCsJQLSf3//jEXbur8TvDx72uZ2UluRi5tTkXjVmzuEpyKCA/+wPXKpvxtdlJ0z3ctEjy1CujJV0gHH2t7KNiMI7lDBWDoBo9jc97SUK7j34C7sOVJtuYcallAPwSXEuZk5L1m8vS2grVWLFRT0XVAqAaPuQUleyKJgwVgqAaI73eLzQroCtfrSH9dF2ey8nBRPGSgEwzv6hhKfoFZZg1lMGgGj2D3TnU9YN6z7Mw9S3x/cqtxrGygBYnpuFBfPfQVRU1zs/2ifQnU9ZAKJrAu1tiiqnC6fPXJFaRgkAoseKfd35lFIOED6u1I61EsZKABDN/mZ3PmUhiJxlJYyVACCa/RuutWDXwWpZnQPWibLFShhHPABt9t+wpgAjhg0O2x1MIw3RG9WyYRzxAESzv6w4svYwvlekHef2eHCi9hycpy/0uUzEA/g/nmIZFQ10hS0TxhENQLQ/t/3b7nvj7cKVJtkTXKrO+O6QdpBMGEc0ACnluMhPAZLX05nDSwUYAPHZwAAYALECxO3ZAQyAWAHi9uwABkCsAHF7dgADIFaAuD07gAEQK0Dcnh3AAIgVIG7PDmAAxAoQt2cHMABiBYjbswMYALECxO3ZAQyAWAHi9uwABkCsAHF7dgADIFaAuD07gAEQK0Dcnh3AAIgVIG7PDiAG8BzHt8xOrPdwAAAAAABJRU5ErkJggg==">
             </div>
             <div class="basis-11/12">
-              <div><strong>{{"سعود الحمدان"}}</strong></div>
+              <div><strong>{{"Abdullah Tahan"}}</strong></div>
               <div class="pt-2"><textarea class="w-full" pInputTextarea></textarea></div>
          </div>
           </div>
@@ -229,7 +173,7 @@
     <p-tabpanel value="2">
       <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div class="p-4 bg-gray-100 rounded-[10px]">
-          <h6>{{ 'ATTACHMENTS' | translate }}</h6>
+          <h6>ATTACHMENTS</h6>
           <div class="m-1">
             @for (file of files; track file) {
             <div class="flex flex-row mb-7 gap-2">
@@ -260,28 +204,28 @@
                  <small>
                   <span>{{file.date}} <small>{{file.time}}</small></span>
                   -
-                  <a>{{ 'DELETE' | translate }}</a>
-                </small>
+                  <a>Delete</a>
+               </small>
             </div>
           </div>
             }
             @empty {
-              <li>{{ 'NO_ATTACHMENTS' | translate }}</li>
+            <li>There are no attachments.</li>
             }
           </div>
         </div>
         <div class="p-4 bg-gray-100 rounded-[10px]">
-          <h6>{{ 'ADD_NEW_ATTACHMENT' | translate }}</h6>
+          <h6>ADD NEW ATTACHMENT</h6>
           <div class="flex flex-row m-1">
             <div class="basis-1/12 circle-img mr-1">
-              <img style="border-radius: 50%" alt="سعود الحمدان" class="lazyload" loading="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAAAAXNSR0IArs4c6QAABU9JREFUeF7tmltMVFcUhv9BB5C23qqCWpGqjWAVtSIqKiVUtE7QBlBCEGO1LWnjJabRxBffjSZ9sFYTG2+JJQQLxEumWKKlk3g3EYgWGotaotZqW61aCs5MMWeQI5zZw9lnZpqVzF7zOuvsNfN/59//Ohfbx5t2dII/ZArYGACZ9r7GDIBWfwZArD8DYADUChD35wxgAMQKELdnBzAAYgWI27MDGACxAsTt2QEMgFgB4vbsAAZArABxe3YAAyBWgLg9O4ABECtA3J4dwACIFSBuzw5gAMQKELdnBzAAYgWI27MDGACxAsTt2QEqA8jKmIZljncRE2PXZfB6/0Ot6zIqnS4paVYtX4R56VOkakMtevT3U+wrd6L5l9ZQl9KPJ3XA+jX5SE0Z5/dnWu/cx4495WjveGb6RxmAqUTignFjR6J0xRK8PmSgX0FHhxvfOn9E3dl609UZgKlE4oICRyZyMtPQr1+Ur6CzsxM2m00vbmy6gS/3V5muzgBMJRIXbFlbjPFJo3Txb92+h6Q3EnQIj5+04UDFd7jafDPIDv6HzZkxCcV5CxAbE61/2XS9FV/srQhbD6sLkWTArOkpKM57D3EDYn2/t+OZG67zDZiXnooBsV3iWA1jmT/OAF6oVJKfg8zZqfrZrk0XB4/UoHBJFkbFD9O1tBLGDEBGAQDxw4dg3eo8JAwfqh/Rcusutn1VhlWFizA3bQq6o8BKGMu0ZwcAyJ47HfmOTMREd83+WvjWnatHWfUpZKRNRtEH2fo2pH0vG8YMQEYBAMbZ/5+2dhyurMXlxp994bj5syIkjh6hrxbOMFbeAckTEvFRkQODB70acJ835kNPh0gyDlimPADR7N+9/XSrlpY6ESUFOXglrmtC0j7hCmPlAWzduBKJo+N1YZ88bcOhIyfR8FNLr7O25zWCb0y1cGXcl0uUBmCc/TWhrt+8je27y/00MzolXGGsNADjiOnxelHzw0UcPXnGD8Dk5DexunAxBr4WF9YwVhaAaPb/8+Fj7P3mOG78+ptw1/i8tBApbyXq32lh7DrfiMNVtUFnsbIA3s9Kx9KFGbDb++vimc33juxZyM2ZA3v/l8eEGsbKAjDO/m63B8e+P4uauosBz+akMQn4dKV2u3qQXhNqGCsJQLSf3//jEXbur8TvDx72uZ2UluRi5tTkXjVmzuEpyKCA/+wPXKpvxtdlJ0z3ctEjy1CujJV0gHH2t7KNiMI7lDBWDoBo9jc97SUK7j34C7sOVJtuYcallAPwSXEuZk5L1m8vS2grVWLFRT0XVAqAaPuQUleyKJgwVgqAaI73eLzQroCtfrSH9dF2ey8nBRPGSgEwzv6hhKfoFZZg1lMGgGj2D3TnU9YN6z7Mw9S3x/cqtxrGygBYnpuFBfPfQVRU1zs/2ifQnU9ZAKJrAu1tiiqnC6fPXJFaRgkAoseKfd35lFIOED6u1I61EsZKABDN/mZ3PmUhiJxlJYyVACCa/RuutWDXwWpZnQPWibLFShhHPABt9t+wpgAjhg0O2x1MIw3RG9WyYRzxAESzv6w4svYwvlekHef2eHCi9hycpy/0uUzEA/g/nmIZFQ10hS0TxhENQLQ/t/3b7nvj7cKVJtkTXKrO+O6QdpBMGEc0ACnluMhPAZLX05nDSwUYAPHZwAAYALECxO3ZAQyAWAHi9uwABkCsAHF7dgADIFaAuD07gAEQK0Dcnh3AAIgVIG7PDmAAxAoQt2cHMABiBYjbswMYALECxO3ZAQyAWAHi9uwABkCsAHF7dgADIFaAuD07gAEQK0Dcnh3AAIgVIG7PDiAG8BzHt8xOrPdwAAAAAABJRU5ErkJggg==">
+              <img style="border-radius: 50%" alt="Abdullah Tahan" class="lazyload" loading="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAAAAXNSR0IArs4c6QAABU9JREFUeF7tmltMVFcUhv9BB5C23qqCWpGqjWAVtSIqKiVUtE7QBlBCEGO1LWnjJabRxBffjSZ9sFYTG2+JJQQLxEumWKKlk3g3EYgWGotaotZqW61aCs5MMWeQI5zZw9lnZpqVzF7zOuvsNfN/59//Ohfbx5t2dII/ZArYGACZ9r7GDIBWfwZArD8DYADUChD35wxgAMQKELdnBzAAYgWI27MDGACxAsTt2QEMgFgB4vbsAAZArABxe3YAAyBWgLg9O4ABECtA3J4dwACIFSBuzw5gAMQKELdnBzAAYgWI27MDGACxAsTt2QEqA8jKmIZljncRE2PXZfB6/0Ot6zIqnS4paVYtX4R56VOkakMtevT3U+wrd6L5l9ZQl9KPJ3XA+jX5SE0Z5/dnWu/cx4495WjveGb6RxmAqUTignFjR6J0xRK8PmSgX0FHhxvfOn9E3dl609UZgKlE4oICRyZyMtPQr1+Ur6CzsxM2m00vbmy6gS/3V5muzgBMJRIXbFlbjPFJo3Txb92+h6Q3EnQIj5+04UDFd7jafDPIDv6HzZkxCcV5CxAbE61/2XS9FV/srQhbD6sLkWTArOkpKM57D3EDYn2/t+OZG67zDZiXnooBsV3iWA1jmT/OAF6oVJKfg8zZqfrZrk0XB4/UoHBJFkbFD9O1tBLGDEBGAQDxw4dg3eo8JAwfqh/Rcusutn1VhlWFizA3bQq6o8BKGMu0ZwcAyJ47HfmOTMREd83+WvjWnatHWfUpZKRNRtEH2fo2pH0vG8YMQEYBAMbZ/5+2dhyurMXlxp994bj5syIkjh6hrxbOMFbeAckTEvFRkQODB70acJ835kNPh0gyDlimPADR7N+9/XSrlpY6ESUFOXglrmtC0j7hCmPlAWzduBKJo+N1YZ88bcOhIyfR8FNLr7O25zWCb0y1cGXcl0uUBmCc/TWhrt+8je27y/00MzolXGGsNADjiOnxelHzw0UcPXnGD8Dk5DexunAxBr4WF9YwVhaAaPb/8+Fj7P3mOG78+ptw1/i8tBApbyXq32lh7DrfiMNVtUFnsbIA3s9Kx9KFGbDb++vimc33juxZyM2ZA3v/l8eEGsbKAjDO/m63B8e+P4uauosBz+akMQn4dKV2u3qQXhNqGCsJQLSf3//jEXbur8TvDx72uZ2UluRi5tTkXjVmzuEpyKCA/+wPXKpvxtdlJ0z3ctEjy1CujJV0gHH2t7KNiMI7lDBWDoBo9jc97SUK7j34C7sOVJtuYcallAPwSXEuZk5L1m8vS2grVWLFRT0XVAqAaPuQUleyKJgwVgqAaI73eLzQroCtfrSH9dF2ey8nBRPGSgEwzv6hhKfoFZZg1lMGgGj2D3TnU9YN6z7Mw9S3x/cqtxrGygBYnpuFBfPfQVRU1zs/2ifQnU9ZAKJrAu1tiiqnC6fPXJFaRgkAoseKfd35lFIOED6u1I61EsZKABDN/mZ3PmUhiJxlJYyVACCa/RuutWDXwWpZnQPWibLFShhHPABt9t+wpgAjhg0O2x1MIw3RG9WyYRzxAESzv6w4svYwvlekHef2eHCi9hycpy/0uUzEA/g/nmIZFQ10hS0TxhENQLQ/t/3b7nvj7cKVJtkTXKrO+O6QdpBMGEc0ACnluMhPAZLX05nDSwUYAPHZwAAYALECxO3ZAQyAWAHi9uwABkCsAHF7dgADIFaAuD07gAEQK0Dcnh3AAIgVIG7PDmAAxAoQt2cHMABiBYjbswMYALECxO3ZAQyAWAHi9uwABkCsAHF7dgADIFaAuD07gAEQK0Dcnh3AAIgVIG7PDiAG8BzHt8xOrPdwAAAAAABJRU5ErkJggg==">
             </div>
             <div class="basis-11/12">
-              <div><strong>{{"سعود الحمدان"}}</strong></div>
+              <div><strong>{{"Abdullah Tahan"}}</strong></div>
               <div class="pt-2" >
                 <p-fileupload name="demo[]" url="https://www.primefaces.org/cdn/api/upload.php"  [multiple]="true" accept="image/*" maxFileSize="1000000" mode="advanced">
                   <ng-template #empty>
-                    <div>{{ 'DRAG_AND_DROP' | translate }}</div>
+                    <div>Drag and drop files to here to upload.</div>
                   </ng-template>
                   <ng-template #content>
                     <ul *ngIf="uploadedFiles.length">

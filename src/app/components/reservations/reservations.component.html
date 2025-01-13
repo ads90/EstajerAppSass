@@ -1,0 +1,133 @@
+<div class="flex-1 h-full overflow-y-auto pb-0.5">
+  <p-toolbar styleClass="mb-6">
+    <ng-template #start>
+      <p-button
+        label="New"
+        icon="pi pi-plus"
+        class="mr-2"
+        (onClick)="openNew()"
+      />
+    </ng-template>
+
+    <ng-template #end>
+      <p-button
+        label="Export"
+        icon="pi pi-upload"
+        severity="secondary"
+        (onClick)="exportCSV()"
+      />
+    </ng-template>
+  </p-toolbar>
+
+  <p-table
+    #dt
+    [value]="reservations"
+    [rows]="10"
+    [columns]="cols"
+    [paginator]="true"
+    [globalFilterFields]="[
+      'name',
+      'country.name',
+      'representative.name',
+      'status'
+    ]"
+    [tableStyle]="{ 'min-width': '75rem' }"
+    [(selection)]="selectedReservations"
+    [rowHover]="true"
+    dataKey="id"
+    currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+    [showCurrentPageReport]="true"
+  >
+    <ng-template #caption>
+      <div class="flex items-center justify-between">
+        <h5 class="m-0">Manage Reservations</h5>
+        <p-iconfield>
+          <p-inputicon styleClass="pi pi-search" />
+          <input
+            pInputText
+            type="text"
+            (input)="dt.filterGlobal($event.target, 'contains')"
+            placeholder="Search..."
+          />
+        </p-iconfield>
+      </div>
+    </ng-template>
+    <ng-template #header>
+      <tr>
+        <th style="width: 3rem">
+          <p-tableHeaderCheckbox />
+        </th>
+        <th pSortableColumn="name" style="min-width: 16rem">
+          Name
+          <p-sortIcon field="name" />
+        </th>
+        <th pSortableColumn="from" style="min-width: 16rem">
+          From
+          <p-sortIcon field="from" />
+        </th>
+        <th pSortableColumn="to" style="min-width: 16rem">
+          To
+          <p-sortIcon field="to" />
+        </th>
+        <th pSortableColumn="duration" style="min-width: 16rem">
+          Duration
+          <p-sortIcon field="duration" />
+        </th>
+        <th pSortableColumn="user" style="min-width: 16rem">
+          User
+          <p-sortIcon field="user" />
+        </th>
+        <th pSortableColumn="items" style="min-width: 16rem">
+          Items
+          <p-sortIcon field="items" />
+        </th>
+      </tr>
+    </ng-template>
+    <ng-template #body let-reservation>
+      <tr (click)="showDetails(reservation.id)">
+        <td style="width: 3rem">
+          <p-tableCheckbox [value]="reservation" />
+        </td>
+        <td style="min-width: 12rem">{{ reservation.name }}
+          <div class="row-meta">
+            <span class="status-badge status-converted" data-bind="css: css, text: text"><div class="circle mr-1"></div>{{ reservation.status }}</span>
+          </div>
+        </td>
+        <td style="min-width: 16rem">
+          <span data-bind="text: $data.fromDate.format('D MMM' + ($data.fromDate.year() != $root.getCurrentYear()?' YYYY':''))">10 Jan</span>
+          <br>
+          <small data-bind="text: global.dateHelper.roundTimeFrom($data.fromDate).format('ddd ' + global.central.hoursFormat()), visible: $root.useHours">Fri 9:00 am</small>
+        </td>
+        <td style="min-width: 16rem">
+          <span data-bind="text: $data.fromDate.format('D MMM' + ($data.fromDate.year() != $root.getCurrentYear()?' YYYY':''))">10 Jan</span>
+          <br>
+          <small data-bind="text: global.dateHelper.roundTimeFrom($data.fromDate).format('ddd ' + global.central.hoursFormat()), visible: $root.useHours">Fri 9:00 am</small>
+        </td>
+        <td style="min-width: 16rem">{{ reservation.duration + ' days' }}</td>
+        <td style="min-width: 16rem" class="md:inline-flex align-items-center">
+          <span type="circle" color="indigo" title="{{reservation.user}}" class="Avatarstyles__StyledAvatar-sc-ueoe40-0 deGDOT mr-1">{{reservation.user[0]}}</span>
+          {{ reservation.user }}
+        </td>
+        <td>
+          <ul class="Stackstyles__StyledStack-sc-uxq0c0-0 fpQRIc ImageGroup___StyledStack-sc-1hv20lx-0 fnbGii">
+            @for (item of reservation.items; track item) {
+            <li  class="ImageGroupstyles__StyledListItem-sc-fc089o-1 dZJniH">
+                <img alt="" src="{{'https://primefaces.org/cdn/primeng/images/demo/product/' +item}}" class="Imagestyles__StyledImage-sc-ge4iq2-0 jwsKoM">
+            </li>
+            }
+            @empty {
+            <li>There are no items.</li>
+            }
+          </ul>
+        </td>
+      </tr>
+    </ng-template>
+    <ng-template #summary>
+      <div class="flex items-center justify-between">
+        In total there are {{ reservations ? reservations.length : 0 }} reservations.
+      </div>
+    </ng-template>
+  </p-table>
+
+<p-confirmDialog [style]="{ width: '450px' }" />
+</div>

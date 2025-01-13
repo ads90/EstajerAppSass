@@ -39,8 +39,9 @@ export class AppComponent {
   }
 
   constructor(private router: Router, private translateService: CustomTranslateService) {
-    // todo move this 
-    translateService.setLanguage(StorageLanguage.Arabic);
+    // todo move this
+   // translateService.setLanguage(StorageLanguage.Arabic);
+    translateService.setLanguage(StorageLanguage.English);
     }
 
   ngOnInit() {
@@ -49,4 +50,5 @@ export class AppComponent {
         this.currentRoute = event.urlAfterRedirects;
       });
     }
+
 }
