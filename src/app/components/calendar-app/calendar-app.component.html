@@ -1,10 +1,10 @@
 <section>
   <div class="header">
-    <h4>Cleander</h4>
+    <h4>{{ 'Calendar' | translate }}</h4>
     <button class="btn" (click)="showlist()">
       <i class="pi pi-align-justify"></i>
-      <span *ngIf="Showlist"> Hide list</span>
-      <span *ngIf="!Showlist"> Show list</span>
+      <span *ngIf="Showlist"> {{ 'Hide list' | translate }}</span>
+      <span *ngIf="!Showlist">{{ 'Show list' | translate }}</span>
     </button>
   </div>
   <div class="content">
@@ -20,7 +20,7 @@
     </div>
 
     <!-- Event Details -->
-    <div class="rentals-container">
+    <!-- <div class="rentals-container">
       <h3>Rental Details</h3>
       <div *ngIf="selectedEvent">
         <p><strong>ID:</strong> {{ selectedEvent.id }}</p>
@@ -31,7 +31,7 @@
       <div *ngIf="!selectedEvent">
         <p>Select an event to view details.</p>
       </div>
-    </div>
+    </div> -->
   </div>
   @if (Showlist) {
   <div class="List" >

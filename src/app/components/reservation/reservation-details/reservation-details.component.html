@@ -1,23 +1,22 @@
 <div >
-  <h3>Product one</h3>
+  <h3>المنتج الأول</h3>
   <div class="mb-5">
     <div class="flex items-center m-2">
       <div class="w-3 h-3 bg-blue-500 rounded-full mr-2"></div>
-      <span class="text-md">Converted</span>
+      <span class="text-md">{{ 'converted' | translate }}</span>
     </div>
-    <span>#RESERVATION-0001</span>
+    <span>#حجز-0001</span>
   </div>
   <span>
-		This reservation was converted to
-		<a>a check-out</a>
+    تم تحويل هذه الحجز إلى		<a>{{ 'Checked out' | translate }}</a>
 	</span>
 </div>
 
 <p-tabs value="0">
   <p-tablist>
-    <p-tab value="0">Info</p-tab>
-    <p-tab value="1">Comments</p-tab>
-    <p-tab value="2">Attachments</p-tab>
+    <p-tab value="0">{{ 'INFO' | translate }}</p-tab>
+    <p-tab value="1">{{ 'COMMENTS' | translate }}</p-tab>
+    <p-tab value="2">{{ 'ATTACHMENTS' | translate }}</p-tab>
   </p-tablist>
   <p-tabpanels>
     <p-tabpanel value="0">
@@ -26,22 +25,22 @@
           <div class=" gap-4 ">
             <div class="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-4">
               <div class="p-4">
-                  <h6>WHEN</h6>
+                <h6>{{ 'WHEN' | translate }}</h6>
                   <div class="pb-2 min-w-5">
                     <p-floatlabel variant="in">
                       <p-datepicker inputId="calendar-12h-1" [disabled]="true" [(ngModel)]="datetime12h1" [showTime]="true" [showIcon]="true" [hourFormat]="'12'" />
-                      <label for="calendar-12h-1">From</label>
+                      <label for="calendar-12h-1">{{ 'FROM' | translate }}</label>
                     </p-floatlabel>
                   </div>
                   <div class="min-w-5">
                     <p-floatlabel variant="in">
                       <p-datepicker inputId="calendar-12h-2" [disabled]="true" [(ngModel)]="datetime12h2" [showTime]="true" [showIcon]="true" [hourFormat]="'12'" />
-                      <label for="calendar-12h-2">To</label>
+                      <label for="calendar-12h-2">{{ 'TO' | translate }}</label>
                     </p-floatlabel>
                   </div>
               </div>
               <div class="p-4">
-                  <h6>USER</h6>
+                <h6>{{ 'USER' | translate }}</h6>
                   <p-card >
                     <div class="flex flex-col sm:flex-row sm:items-center p-6 gap-4">
                       <div class="lg:w-40 md:w-20 sm:w-10 relative ">
@@ -63,14 +62,14 @@
               <p-table [value]="products">
                 <ng-template #caption>
                   <div class="flex items-center justify-between">
-                    <span class="text-xl font-bold">EQUIPMENT</span>
+                    <span class="text-xl font-bold">{{ 'EQUIPMENT' | translate }}</span>
                   </div>
                 </ng-template>
                 <ng-template #header>
                   <tr>
-                    <th>Image</th>
-                    <th>Name</th>
-                    <th>Quantity</th>
+                    <th>{{ 'IMAGE' | translate }}</th>
+                    <th>{{ 'NAME' | translate }}</th>
+                    <th>{{ 'QUANTITY' | translate }}</th>
                   </tr>
                 </ng-template>
                 <ng-template #body let-product>
@@ -86,21 +85,21 @@
                     <td>{{ product.quantity }}</td>
                   </tr>
                 </ng-template>
-                <ng-template #footer> In total there are {{ products ? products.length : 0 }} products. </ng-template>
+                <ng-template #footer> {{ 'TOTAL_PRODUCTS' | translate }} {{ products ? products.length : 0 }} products. </ng-template>
               </p-table>
             </div>
           </div>
         </div>
         <div class="p-8 bg-gray-100 rounded-[10px]">
           <div class="mb-5">
-            <h6>EXTRA INFO</h6>
+            <h6>{{ 'EXTRA_INFO' | translate }}</h6>
             <p-floatlabel variant="in">
               <input class="w-full" pInputText id="in_label"  autocomplete="off" />
-              <label for="in_label">Project Code</label>
+              <label for="in_label">{{ 'PROJECT_CODE' | translate }}</label>
             </p-floatlabel>
           </div>
           <div class="align-self-center">
-            <h6>TIMELINE</h6>
+            <h6>{{ 'TIMELINE' | translate }}</h6>
             <p-timeline [value]="events">
               <ng-template #opposite let-event>
                 <small class="text-surface-500 dark:text-surface-400">{{ event.date }}</small>
@@ -122,39 +121,39 @@
     <p-tabpanel value="1">
       <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div class="p-4 bg-gray-100 rounded-[10px]">
-          <h6>COMMENTS</h6>
+          <h6>{{ 'COMMENTS' | translate }}</h6>
           <div class="m-1">
             @for (comment of comments; track comment) {
             <div class="flex flex-row mb-7 gap-2">
               <div class="basis-1/12 circle-img">
-                <img class="p-1" style="border-radius: 50%" alt="Abdullah Tahan" class="lazyload" loading="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAAAAXNSR0IArs4c6QAABU9JREFUeF7tmltMVFcUhv9BB5C23qqCWpGqjWAVtSIqKiVUtE7QBlBCEGO1LWnjJabRxBffjSZ9sFYTG2+JJQQLxEumWKKlk3g3EYgWGotaotZqW61aCs5MMWeQI5zZw9lnZpqVzF7zOuvsNfN/59//Ohfbx5t2dII/ZArYGACZ9r7GDIBWfwZArD8DYADUChD35wxgAMQKELdnBzAAYgWI27MDGACxAsTt2QEMgFgB4vbsAAZArABxe3YAAyBWgLg9O4ABECtA3J4dwACIFSBuzw5gAMQKELdnBzAAYgWI27MDGACxAsTt2QEqA8jKmIZljncRE2PXZfB6/0Ot6zIqnS4paVYtX4R56VOkakMtevT3U+wrd6L5l9ZQl9KPJ3XA+jX5SE0Z5/dnWu/cx4495WjveGb6RxmAqUTignFjR6J0xRK8PmSgX0FHhxvfOn9E3dl609UZgKlE4oICRyZyMtPQr1+Ur6CzsxM2m00vbmy6gS/3V5muzgBMJRIXbFlbjPFJo3Txb92+h6Q3EnQIj5+04UDFd7jafDPIDv6HzZkxCcV5CxAbE61/2XS9FV/srQhbD6sLkWTArOkpKM57D3EDYn2/t+OZG67zDZiXnooBsV3iWA1jmT/OAF6oVJKfg8zZqfrZrk0XB4/UoHBJFkbFD9O1tBLGDEBGAQDxw4dg3eo8JAwfqh/Rcusutn1VhlWFizA3bQq6o8BKGMu0ZwcAyJ47HfmOTMREd83+WvjWnatHWfUpZKRNRtEH2fo2pH0vG8YMQEYBAMbZ/5+2dhyurMXlxp994bj5syIkjh6hrxbOMFbeAckTEvFRkQODB70acJ835kNPh0gyDlimPADR7N+9/XSrlpY6ESUFOXglrmtC0j7hCmPlAWzduBKJo+N1YZ88bcOhIyfR8FNLr7O25zWCb0y1cGXcl0uUBmCc/TWhrt+8je27y/00MzolXGGsNADjiOnxelHzw0UcPXnGD8Dk5DexunAxBr4WF9YwVhaAaPb/8+Fj7P3mOG78+ptw1/i8tBApbyXq32lh7DrfiMNVtUFnsbIA3s9Kx9KFGbDb++vimc33juxZyM2ZA3v/l8eEGsbKAjDO/m63B8e+P4uauosBz+akMQn4dKV2u3qQXhNqGCsJQLSf3//jEXbur8TvDx72uZ2UluRi5tTkXjVmzuEpyKCA/+wPXKpvxtdlJ0z3ctEjy1CujJV0gHH2t7KNiMI7lDBWDoBo9jc97SUK7j34C7sOVJtuYcallAPwSXEuZk5L1m8vS2grVWLFRT0XVAqAaPuQUleyKJgwVgqAaI73eLzQroCtfrSH9dF2ey8nBRPGSgEwzv6hhKfoFZZg1lMGgGj2D3TnU9YN6z7Mw9S3x/cqtxrGygBYnpuFBfPfQVRU1zs/2ifQnU9ZAKJrAu1tiiqnC6fPXJFaRgkAoseKfd35lFIOED6u1I61EsZKABDN/mZ3PmUhiJxlJYyVACCa/RuutWDXwWpZnQPWibLFShhHPABt9t+wpgAjhg0O2x1MIw3RG9WyYRzxAESzv6w4svYwvlekHef2eHCi9hycpy/0uUzEA/g/nmIZFQ10hS0TxhENQLQ/t/3b7nvj7cKVJtkTXKrO+O6QdpBMGEc0ACnluMhPAZLX05nDSwUYAPHZwAAYALECxO3ZAQyAWAHi9uwABkCsAHF7dgADIFaAuD07gAEQK0Dcnh3AAIgVIG7PDmAAxAoQt2cHMABiBYjbswMYALECxO3ZAQyAWAHi9uwABkCsAHF7dgADIFaAuD07gAEQK0Dcnh3AAIgVIG7PDiAG8BzHt8xOrPdwAAAAAABJRU5ErkJggg==">
+                <img class="p-1" style="border-radius: 50%" alt="سعود الحمدان" class="lazyload" loading="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAAAAXNSR0IArs4c6QAABU9JREFUeF7tmltMVFcUhv9BB5C23qqCWpGqjWAVtSIqKiVUtE7QBlBCEGO1LWnjJabRxBffjSZ9sFYTG2+JJQQLxEumWKKlk3g3EYgWGotaotZqW61aCs5MMWeQI5zZw9lnZpqVzF7zOuvsNfN/59//Ohfbx5t2dII/ZArYGACZ9r7GDIBWfwZArD8DYADUChD35wxgAMQKELdnBzAAYgWI27MDGACxAsTt2QEMgFgB4vbsAAZArABxe3YAAyBWgLg9O4ABECtA3J4dwACIFSBuzw5gAMQKELdnBzAAYgWI27MDGACxAsTt2QEqA8jKmIZljncRE2PXZfB6/0Ot6zIqnS4paVYtX4R56VOkakMtevT3U+wrd6L5l9ZQl9KPJ3XA+jX5SE0Z5/dnWu/cx4495WjveGb6RxmAqUTignFjR6J0xRK8PmSgX0FHhxvfOn9E3dl609UZgKlE4oICRyZyMtPQr1+Ur6CzsxM2m00vbmy6gS/3V5muzgBMJRIXbFlbjPFJo3Txb92+h6Q3EnQIj5+04UDFd7jafDPIDv6HzZkxCcV5CxAbE61/2XS9FV/srQhbD6sLkWTArOkpKM57D3EDYn2/t+OZG67zDZiXnooBsV3iWA1jmT/OAF6oVJKfg8zZqfrZrk0XB4/UoHBJFkbFD9O1tBLGDEBGAQDxw4dg3eo8JAwfqh/Rcusutn1VhlWFizA3bQq6o8BKGMu0ZwcAyJ47HfmOTMREd83+WvjWnatHWfUpZKRNRtEH2fo2pH0vG8YMQEYBAMbZ/5+2dhyurMXlxp994bj5syIkjh6hrxbOMFbeAckTEvFRkQODB70acJ835kNPh0gyDlimPADR7N+9/XSrlpY6ESUFOXglrmtC0j7hCmPlAWzduBKJo+N1YZ88bcOhIyfR8FNLr7O25zWCb0y1cGXcl0uUBmCc/TWhrt+8je27y/00MzolXGGsNADjiOnxelHzw0UcPXnGD8Dk5DexunAxBr4WF9YwVhaAaPb/8+Fj7P3mOG78+ptw1/i8tBApbyXq32lh7DrfiMNVtUFnsbIA3s9Kx9KFGbDb++vimc33juxZyM2ZA3v/l8eEGsbKAjDO/m63B8e+P4uauosBz+akMQn4dKV2u3qQXhNqGCsJQLSf3//jEXbur8TvDx72uZ2UluRi5tTkXjVmzuEpyKCA/+wPXKpvxtdlJ0z3ctEjy1CujJV0gHH2t7KNiMI7lDBWDoBo9jc97SUK7j34C7sOVJtuYcallAPwSXEuZk5L1m8vS2grVWLFRT0XVAqAaPuQUleyKJgwVgqAaI73eLzQroCtfrSH9dF2ey8nBRPGSgEwzv6hhKfoFZZg1lMGgGj2D3TnU9YN6z7Mw9S3x/cqtxrGygBYnpuFBfPfQVRU1zs/2ifQnU9ZAKJrAu1tiiqnC6fPXJFaRgkAoseKfd35lFIOED6u1I61EsZKABDN/mZ3PmUhiJxlJYyVACCa/RuutWDXwWpZnQPWibLFShhHPABt9t+wpgAjhg0O2x1MIw3RG9WyYRzxAESzv6w4svYwvlekHef2eHCi9hycpy/0uUzEA/g/nmIZFQ10hS0TxhENQLQ/t/3b7nvj7cKVJtkTXKrO+O6QdpBMGEc0ACnluMhPAZLX05nDSwUYAPHZwAAYALECxO3ZAQyAWAHi9uwABkCsAHF7dgADIFaAuD07gAEQK0Dcnh3AAIgVIG7PDmAAxAoQt2cHMABiBYjbswMYALECxO3ZAQyAWAHi9uwABkCsAHF7dgADIFaAuD07gAEQK0Dcnh3AAIgVIG7PDiAG8BzHt8xOrPdwAAAAAABJRU5ErkJggg==">
               </div>
               <div class="basis-11/12">
-                <div class="mb-2"><strong>{{"Abdullah Tahan"}}</strong></div>
+                <div class="mb-2"><strong>{{"سعود الحمدان"}}</strong></div>
                 <p-card>{{comment.text}}</p-card>
                  <small>
                     <span>{{comment.date}} <small>{{comment.time}}</small></span>
                     -
-                    <a>Edit</a>
+                    <a>{{'edit'|translate}}</a>
                     -
-                    <a>Delete</a>
+                    <a>{{'DELETE'|translate}}</a>
                  </small>
             </div>
           </div>
             }
             @empty {
-            <li>There are no comments.</li>
+              <li>{{ 'NO_ATTACHMENTS' | translate }}</li>
             }
           </div>
         </div>
         <div class="p-4 bg-gray-100 rounded-[10px]">
-          <h6>ADD NEW COMMENT</h6>
+          <h6>{{ 'ADD_NEW_COMMENT' | translate }}</h6>
           <div class="flex flex-row m-1">
             <div class="basis-1/12 circle-img mr-1">
-              <img style="border-radius: 50%" alt="Abdullah Tahan" class="lazyload" loading="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAAAAXNSR0IArs4c6QAABU9JREFUeF7tmltMVFcUhv9BB5C23qqCWpGqjWAVtSIqKiVUtE7QBlBCEGO1LWnjJabRxBffjSZ9sFYTG2+JJQQLxEumWKKlk3g3EYgWGotaotZqW61aCs5MMWeQI5zZw9lnZpqVzF7zOuvsNfN/59//Ohfbx5t2dII/ZArYGACZ9r7GDIBWfwZArD8DYADUChD35wxgAMQKELdnBzAAYgWI27MDGACxAsTt2QEMgFgB4vbsAAZArABxe3YAAyBWgLg9O4ABECtA3J4dwACIFSBuzw5gAMQKELdnBzAAYgWI27MDGACxAsTt2QEqA8jKmIZljncRE2PXZfB6/0Ot6zIqnS4paVYtX4R56VOkakMtevT3U+wrd6L5l9ZQl9KPJ3XA+jX5SE0Z5/dnWu/cx4495WjveGb6RxmAqUTignFjR6J0xRK8PmSgX0FHhxvfOn9E3dl609UZgKlE4oICRyZyMtPQr1+Ur6CzsxM2m00vbmy6gS/3V5muzgBMJRIXbFlbjPFJo3Txb92+h6Q3EnQIj5+04UDFd7jafDPIDv6HzZkxCcV5CxAbE61/2XS9FV/srQhbD6sLkWTArOkpKM57D3EDYn2/t+OZG67zDZiXnooBsV3iWA1jmT/OAF6oVJKfg8zZqfrZrk0XB4/UoHBJFkbFD9O1tBLGDEBGAQDxw4dg3eo8JAwfqh/Rcusutn1VhlWFizA3bQq6o8BKGMu0ZwcAyJ47HfmOTMREd83+WvjWnatHWfUpZKRNRtEH2fo2pH0vG8YMQEYBAMbZ/5+2dhyurMXlxp994bj5syIkjh6hrxbOMFbeAckTEvFRkQODB70acJ835kNPh0gyDlimPADR7N+9/XSrlpY6ESUFOXglrmtC0j7hCmPlAWzduBKJo+N1YZ88bcOhIyfR8FNLr7O25zWCb0y1cGXcl0uUBmCc/TWhrt+8je27y/00MzolXGGsNADjiOnxelHzw0UcPXnGD8Dk5DexunAxBr4WF9YwVhaAaPb/8+Fj7P3mOG78+ptw1/i8tBApbyXq32lh7DrfiMNVtUFnsbIA3s9Kx9KFGbDb++vimc33juxZyM2ZA3v/l8eEGsbKAjDO/m63B8e+P4uauosBz+akMQn4dKV2u3qQXhNqGCsJQLSf3//jEXbur8TvDx72uZ2UluRi5tTkXjVmzuEpyKCA/+wPXKpvxtdlJ0z3ctEjy1CujJV0gHH2t7KNiMI7lDBWDoBo9jc97SUK7j34C7sOVJtuYcallAPwSXEuZk5L1m8vS2grVWLFRT0XVAqAaPuQUleyKJgwVgqAaI73eLzQroCtfrSH9dF2ey8nBRPGSgEwzv6hhKfoFZZg1lMGgGj2D3TnU9YN6z7Mw9S3x/cqtxrGygBYnpuFBfPfQVRU1zs/2ifQnU9ZAKJrAu1tiiqnC6fPXJFaRgkAoseKfd35lFIOED6u1I61EsZKABDN/mZ3PmUhiJxlJYyVACCa/RuutWDXwWpZnQPWibLFShhHPABt9t+wpgAjhg0O2x1MIw3RG9WyYRzxAESzv6w4svYwvlekHef2eHCi9hycpy/0uUzEA/g/nmIZFQ10hS0TxhENQLQ/t/3b7nvj7cKVJtkTXKrO+O6QdpBMGEc0ACnluMhPAZLX05nDSwUYAPHZwAAYALECxO3ZAQyAWAHi9uwABkCsAHF7dgADIFaAuD07gAEQK0Dcnh3AAIgVIG7PDmAAxAoQt2cHMABiBYjbswMYALECxO3ZAQyAWAHi9uwABkCsAHF7dgADIFaAuD07gAEQK0Dcnh3AAIgVIG7PDiAG8BzHt8xOrPdwAAAAAABJRU5ErkJggg==">
+              <img style="border-radius: 50%" alt="سعود الحمدان" class="lazyload" loading="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAAAAXNSR0IArs4c6QAABU9JREFUeF7tmltMVFcUhv9BB5C23qqCWpGqjWAVtSIqKiVUtE7QBlBCEGO1LWnjJabRxBffjSZ9sFYTG2+JJQQLxEumWKKlk3g3EYgWGotaotZqW61aCs5MMWeQI5zZw9lnZpqVzF7zOuvsNfN/59//Ohfbx5t2dII/ZArYGACZ9r7GDIBWfwZArD8DYADUChD35wxgAMQKELdnBzAAYgWI27MDGACxAsTt2QEMgFgB4vbsAAZArABxe3YAAyBWgLg9O4ABECtA3J4dwACIFSBuzw5gAMQKELdnBzAAYgWI27MDGACxAsTt2QEqA8jKmIZljncRE2PXZfB6/0Ot6zIqnS4paVYtX4R56VOkakMtevT3U+wrd6L5l9ZQl9KPJ3XA+jX5SE0Z5/dnWu/cx4495WjveGb6RxmAqUTignFjR6J0xRK8PmSgX0FHhxvfOn9E3dl609UZgKlE4oICRyZyMtPQr1+Ur6CzsxM2m00vbmy6gS/3V5muzgBMJRIXbFlbjPFJo3Txb92+h6Q3EnQIj5+04UDFd7jafDPIDv6HzZkxCcV5CxAbE61/2XS9FV/srQhbD6sLkWTArOkpKM57D3EDYn2/t+OZG67zDZiXnooBsV3iWA1jmT/OAF6oVJKfg8zZqfrZrk0XB4/UoHBJFkbFD9O1tBLGDEBGAQDxw4dg3eo8JAwfqh/Rcusutn1VhlWFizA3bQq6o8BKGMu0ZwcAyJ47HfmOTMREd83+WvjWnatHWfUpZKRNRtEH2fo2pH0vG8YMQEYBAMbZ/5+2dhyurMXlxp994bj5syIkjh6hrxbOMFbeAckTEvFRkQODB70acJ835kNPh0gyDlimPADR7N+9/XSrlpY6ESUFOXglrmtC0j7hCmPlAWzduBKJo+N1YZ88bcOhIyfR8FNLr7O25zWCb0y1cGXcl0uUBmCc/TWhrt+8je27y/00MzolXGGsNADjiOnxelHzw0UcPXnGD8Dk5DexunAxBr4WF9YwVhaAaPb/8+Fj7P3mOG78+ptw1/i8tBApbyXq32lh7DrfiMNVtUFnsbIA3s9Kx9KFGbDb++vimc33juxZyM2ZA3v/l8eEGsbKAjDO/m63B8e+P4uauosBz+akMQn4dKV2u3qQXhNqGCsJQLSf3//jEXbur8TvDx72uZ2UluRi5tTkXjVmzuEpyKCA/+wPXKpvxtdlJ0z3ctEjy1CujJV0gHH2t7KNiMI7lDBWDoBo9jc97SUK7j34C7sOVJtuYcallAPwSXEuZk5L1m8vS2grVWLFRT0XVAqAaPuQUleyKJgwVgqAaI73eLzQroCtfrSH9dF2ey8nBRPGSgEwzv6hhKfoFZZg1lMGgGj2D3TnU9YN6z7Mw9S3x/cqtxrGygBYnpuFBfPfQVRU1zs/2ifQnU9ZAKJrAu1tiiqnC6fPXJFaRgkAoseKfd35lFIOED6u1I61EsZKABDN/mZ3PmUhiJxlJYyVACCa/RuutWDXwWpZnQPWibLFShhHPABt9t+wpgAjhg0O2x1MIw3RG9WyYRzxAESzv6w4svYwvlekHef2eHCi9hycpy/0uUzEA/g/nmIZFQ10hS0TxhENQLQ/t/3b7nvj7cKVJtkTXKrO+O6QdpBMGEc0ACnluMhPAZLX05nDSwUYAPHZwAAYALECxO3ZAQyAWAHi9uwABkCsAHF7dgADIFaAuD07gAEQK0Dcnh3AAIgVIG7PDmAAxAoQt2cHMABiBYjbswMYALECxO3ZAQyAWAHi9uwABkCsAHF7dgADIFaAuD07gAEQK0Dcnh3AAIgVIG7PDiAG8BzHt8xOrPdwAAAAAABJRU5ErkJggg==">
             </div>
             <div class="basis-11/12">
-              <div><strong>{{"Abdullah Tahan"}}</strong></div>
+              <div><strong>{{"سعود الحمدان"}}</strong></div>
               <div class="pt-2"><textarea class="w-full" pInputTextarea></textarea></div>
          </div>
           </div>
@@ -164,15 +163,15 @@
     <p-tabpanel value="2">
       <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div class="p-4 bg-gray-100 rounded-[10px]">
-          <h6>ATTACHMENTS</h6>
+          <h6>{{ 'ATTACHMENTS' | translate }}</h6>
           <div class="m-1">
             @for (file of files; track file) {
             <div class="flex flex-row mb-7 gap-2">
               <div class="basis-1/12 circle-img">
-                <img style="border-radius: 50%" alt="Abdullah Tahan" class="lazyload" loading="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAAAAXNSR0IArs4c6QAABU9JREFUeF7tmltMVFcUhv9BB5C23qqCWpGqjWAVtSIqKiVUtE7QBlBCEGO1LWnjJabRxBffjSZ9sFYTG2+JJQQLxEumWKKlk3g3EYgWGotaotZqW61aCs5MMWeQI5zZw9lnZpqVzF7zOuvsNfN/59//Ohfbx5t2dII/ZArYGACZ9r7GDIBWfwZArD8DYADUChD35wxgAMQKELdnBzAAYgWI27MDGACxAsTt2QEMgFgB4vbsAAZArABxe3YAAyBWgLg9O4ABECtA3J4dwACIFSBuzw5gAMQKELdnBzAAYgWI27MDGACxAsTt2QEqA8jKmIZljncRE2PXZfB6/0Ot6zIqnS4paVYtX4R56VOkakMtevT3U+wrd6L5l9ZQl9KPJ3XA+jX5SE0Z5/dnWu/cx4495WjveGb6RxmAqUTignFjR6J0xRK8PmSgX0FHhxvfOn9E3dl609UZgKlE4oICRyZyMtPQr1+Ur6CzsxM2m00vbmy6gS/3V5muzgBMJRIXbFlbjPFJo3Txb92+h6Q3EnQIj5+04UDFd7jafDPIDv6HzZkxCcV5CxAbE61/2XS9FV/srQhbD6sLkWTArOkpKM57D3EDYn2/t+OZG67zDZiXnooBsV3iWA1jmT/OAF6oVJKfg8zZqfrZrk0XB4/UoHBJFkbFD9O1tBLGDEBGAQDxw4dg3eo8JAwfqh/Rcusutn1VhlWFizA3bQq6o8BKGMu0ZwcAyJ47HfmOTMREd83+WvjWnatHWfUpZKRNRtEH2fo2pH0vG8YMQEYBAMbZ/5+2dhyurMXlxp994bj5syIkjh6hrxbOMFbeAckTEvFRkQODB70acJ835kNPh0gyDlimPADR7N+9/XSrlpY6ESUFOXglrmtC0j7hCmPlAWzduBKJo+N1YZ88bcOhIyfR8FNLr7O25zWCb0y1cGXcl0uUBmCc/TWhrt+8je27y/00MzolXGGsNADjiOnxelHzw0UcPXnGD8Dk5DexunAxBr4WF9YwVhaAaPb/8+Fj7P3mOG78+ptw1/i8tBApbyXq32lh7DrfiMNVtUFnsbIA3s9Kx9KFGbDb++vimc33juxZyM2ZA3v/l8eEGsbKAjDO/m63B8e+P4uauosBz+akMQn4dKV2u3qQXhNqGCsJQLSf3//jEXbur8TvDx72uZ2UluRi5tTkXjVmzuEpyKCA/+wPXKpvxtdlJ0z3ctEjy1CujJV0gHH2t7KNiMI7lDBWDoBo9jc97SUK7j34C7sOVJtuYcallAPwSXEuZk5L1m8vS2grVWLFRT0XVAqAaPuQUleyKJgwVgqAaI73eLzQroCtfrSH9dF2ey8nBRPGSgEwzv6hhKfoFZZg1lMGgGj2D3TnU9YN6z7Mw9S3x/cqtxrGygBYnpuFBfPfQVRU1zs/2ifQnU9ZAKJrAu1tiiqnC6fPXJFaRgkAoseKfd35lFIOED6u1I61EsZKABDN/mZ3PmUhiJxlJYyVACCa/RuutWDXwWpZnQPWibLFShhHPABt9t+wpgAjhg0O2x1MIw3RG9WyYRzxAESzv6w4svYwvlekHef2eHCi9hycpy/0uUzEA/g/nmIZFQ10hS0TxhENQLQ/t/3b7nvj7cKVJtkTXKrO+O6QdpBMGEc0ACnluMhPAZLX05nDSwUYAPHZwAAYALECxO3ZAQyAWAHi9uwABkCsAHF7dgADIFaAuD07gAEQK0Dcnh3AAIgVIG7PDmAAxAoQt2cHMABiBYjbswMYALECxO3ZAQyAWAHi9uwABkCsAHF7dgADIFaAuD07gAEQK0Dcnh3AAIgVIG7PDiAG8BzHt8xOrPdwAAAAAABJRU5ErkJggg==">
+                <img style="border-radius: 50%" alt="سعود الحمدان" class="lazyload" loading="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAAAAXNSR0IArs4c6QAABU9JREFUeF7tmltMVFcUhv9BB5C23qqCWpGqjWAVtSIqKiVUtE7QBlBCEGO1LWnjJabRxBffjSZ9sFYTG2+JJQQLxEumWKKlk3g3EYgWGotaotZqW61aCs5MMWeQI5zZw9lnZpqVzF7zOuvsNfN/59//Ohfbx5t2dII/ZArYGACZ9r7GDIBWfwZArD8DYADUChD35wxgAMQKELdnBzAAYgWI27MDGACxAsTt2QEMgFgB4vbsAAZArABxe3YAAyBWgLg9O4ABECtA3J4dwACIFSBuzw5gAMQKELdnBzAAYgWI27MDGACxAsTt2QEqA8jKmIZljncRE2PXZfB6/0Ot6zIqnS4paVYtX4R56VOkakMtevT3U+wrd6L5l9ZQl9KPJ3XA+jX5SE0Z5/dnWu/cx4495WjveGb6RxmAqUTignFjR6J0xRK8PmSgX0FHhxvfOn9E3dl609UZgKlE4oICRyZyMtPQr1+Ur6CzsxM2m00vbmy6gS/3V5muzgBMJRIXbFlbjPFJo3Txb92+h6Q3EnQIj5+04UDFd7jafDPIDv6HzZkxCcV5CxAbE61/2XS9FV/srQhbD6sLkWTArOkpKM57D3EDYn2/t+OZG67zDZiXnooBsV3iWA1jmT/OAF6oVJKfg8zZqfrZrk0XB4/UoHBJFkbFD9O1tBLGDEBGAQDxw4dg3eo8JAwfqh/Rcusutn1VhlWFizA3bQq6o8BKGMu0ZwcAyJ47HfmOTMREd83+WvjWnatHWfUpZKRNRtEH2fo2pH0vG8YMQEYBAMbZ/5+2dhyurMXlxp994bj5syIkjh6hrxbOMFbeAckTEvFRkQODB70acJ835kNPh0gyDlimPADR7N+9/XSrlpY6ESUFOXglrmtC0j7hCmPlAWzduBKJo+N1YZ88bcOhIyfR8FNLr7O25zWCb0y1cGXcl0uUBmCc/TWhrt+8je27y/00MzolXGGsNADjiOnxelHzw0UcPXnGD8Dk5DexunAxBr4WF9YwVhaAaPb/8+Fj7P3mOG78+ptw1/i8tBApbyXq32lh7DrfiMNVtUFnsbIA3s9Kx9KFGbDb++vimc33juxZyM2ZA3v/l8eEGsbKAjDO/m63B8e+P4uauosBz+akMQn4dKV2u3qQXhNqGCsJQLSf3//jEXbur8TvDx72uZ2UluRi5tTkXjVmzuEpyKCA/+wPXKpvxtdlJ0z3ctEjy1CujJV0gHH2t7KNiMI7lDBWDoBo9jc97SUK7j34C7sOVJtuYcallAPwSXEuZk5L1m8vS2grVWLFRT0XVAqAaPuQUleyKJgwVgqAaI73eLzQroCtfrSH9dF2ey8nBRPGSgEwzv6hhKfoFZZg1lMGgGj2D3TnU9YN6z7Mw9S3x/cqtxrGygBYnpuFBfPfQVRU1zs/2ifQnU9ZAKJrAu1tiiqnC6fPXJFaRgkAoseKfd35lFIOED6u1I61EsZKABDN/mZ3PmUhiJxlJYyVACCa/RuutWDXwWpZnQPWibLFShhHPABt9t+wpgAjhg0O2x1MIw3RG9WyYRzxAESzv6w4svYwvlekHef2eHCi9hycpy/0uUzEA/g/nmIZFQ10hS0TxhENQLQ/t/3b7nvj7cKVJtkTXKrO+O6QdpBMGEc0ACnluMhPAZLX05nDSwUYAPHZwAAYALECxO3ZAQyAWAHi9uwABkCsAHF7dgADIFaAuD07gAEQK0Dcnh3AAIgVIG7PDmAAxAoQt2cHMABiBYjbswMYALECxO3ZAQyAWAHi9uwABkCsAHF7dgADIFaAuD07gAEQK0Dcnh3AAIgVIG7PDiAG8BzHt8xOrPdwAAAAAABJRU5ErkJggg==">
               </div>
               <div class="basis-11/12">
-                <div class="mb-2"><strong>{{"Abdullah Tahan"}}</strong></div>
+                <div class="mb-2"><strong>{{"سعود الحمدان"}}</strong></div>
                 <p-card>
                   <div class="flex flex-col sm:flex-row sm:items-center p-6 gap-4">
                     <div class="lg:w-40 md:w-20 relative">
@@ -195,28 +194,28 @@
                  <small>
                   <span>{{file.date}} <small>{{file.time}}</small></span>
                   -
-                  <a>Delete</a>
-               </small>
+                  <a>{{'DELETE'|translate}}</a>
+                </small>
             </div>
           </div>
             }
             @empty {
-            <li>There are no attachments.</li>
+              <li>{{ 'NO_ATTACHMENTS' | translate }}</li>
             }
           </div>
         </div>
         <div class="p-4 bg-gray-100 rounded-[10px]">
-          <h6>ADD NEW ATTACHMENT</h6>
+          <h6>{{ 'ADD_NEW_ATTACHMENT' | translate }}</h6>
           <div class="flex flex-row m-1">
             <div class="basis-1/12 circle-img mr-1">
-              <img style="border-radius: 50%" alt="Abdullah Tahan" class="lazyload" loading="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAAAAXNSR0IArs4c6QAABU9JREFUeF7tmltMVFcUhv9BB5C23qqCWpGqjWAVtSIqKiVUtE7QBlBCEGO1LWnjJabRxBffjSZ9sFYTG2+JJQQLxEumWKKlk3g3EYgWGotaotZqW61aCs5MMWeQI5zZw9lnZpqVzF7zOuvsNfN/59//Ohfbx5t2dII/ZArYGACZ9r7GDIBWfwZArD8DYADUChD35wxgAMQKELdnBzAAYgWI27MDGACxAsTt2QEMgFgB4vbsAAZArABxe3YAAyBWgLg9O4ABECtA3J4dwACIFSBuzw5gAMQKELdnBzAAYgWI27MDGACxAsTt2QEqA8jKmIZljncRE2PXZfB6/0Ot6zIqnS4paVYtX4R56VOkakMtevT3U+wrd6L5l9ZQl9KPJ3XA+jX5SE0Z5/dnWu/cx4495WjveGb6RxmAqUTignFjR6J0xRK8PmSgX0FHhxvfOn9E3dl609UZgKlE4oICRyZyMtPQr1+Ur6CzsxM2m00vbmy6gS/3V5muzgBMJRIXbFlbjPFJo3Txb92+h6Q3EnQIj5+04UDFd7jafDPIDv6HzZkxCcV5CxAbE61/2XS9FV/srQhbD6sLkWTArOkpKM57D3EDYn2/t+OZG67zDZiXnooBsV3iWA1jmT/OAF6oVJKfg8zZqfrZrk0XB4/UoHBJFkbFD9O1tBLGDEBGAQDxw4dg3eo8JAwfqh/Rcusutn1VhlWFizA3bQq6o8BKGMu0ZwcAyJ47HfmOTMREd83+WvjWnatHWfUpZKRNRtEH2fo2pH0vG8YMQEYBAMbZ/5+2dhyurMXlxp994bj5syIkjh6hrxbOMFbeAckTEvFRkQODB70acJ835kNPh0gyDlimPADR7N+9/XSrlpY6ESUFOXglrmtC0j7hCmPlAWzduBKJo+N1YZ88bcOhIyfR8FNLr7O25zWCb0y1cGXcl0uUBmCc/TWhrt+8je27y/00MzolXGGsNADjiOnxelHzw0UcPXnGD8Dk5DexunAxBr4WF9YwVhaAaPb/8+Fj7P3mOG78+ptw1/i8tBApbyXq32lh7DrfiMNVtUFnsbIA3s9Kx9KFGbDb++vimc33juxZyM2ZA3v/l8eEGsbKAjDO/m63B8e+P4uauosBz+akMQn4dKV2u3qQXhNqGCsJQLSf3//jEXbur8TvDx72uZ2UluRi5tTkXjVmzuEpyKCA/+wPXKpvxtdlJ0z3ctEjy1CujJV0gHH2t7KNiMI7lDBWDoBo9jc97SUK7j34C7sOVJtuYcallAPwSXEuZk5L1m8vS2grVWLFRT0XVAqAaPuQUleyKJgwVgqAaI73eLzQroCtfrSH9dF2ey8nBRPGSgEwzv6hhKfoFZZg1lMGgGj2D3TnU9YN6z7Mw9S3x/cqtxrGygBYnpuFBfPfQVRU1zs/2ifQnU9ZAKJrAu1tiiqnC6fPXJFaRgkAoseKfd35lFIOED6u1I61EsZKABDN/mZ3PmUhiJxlJYyVACCa/RuutWDXwWpZnQPWibLFShhHPABt9t+wpgAjhg0O2x1MIw3RG9WyYRzxAESzv6w4svYwvlekHef2eHCi9hycpy/0uUzEA/g/nmIZFQ10hS0TxhENQLQ/t/3b7nvj7cKVJtkTXKrO+O6QdpBMGEc0ACnluMhPAZLX05nDSwUYAPHZwAAYALECxO3ZAQyAWAHi9uwABkCsAHF7dgADIFaAuD07gAEQK0Dcnh3AAIgVIG7PDmAAxAoQt2cHMABiBYjbswMYALECxO3ZAQyAWAHi9uwABkCsAHF7dgADIFaAuD07gAEQK0Dcnh3AAIgVIG7PDiAG8BzHt8xOrPdwAAAAAABJRU5ErkJggg==">
+              <img style="border-radius: 50%" alt="سعود الحمدان" class="lazyload" loading="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAAAAXNSR0IArs4c6QAABU9JREFUeF7tmltMVFcUhv9BB5C23qqCWpGqjWAVtSIqKiVUtE7QBlBCEGO1LWnjJabRxBffjSZ9sFYTG2+JJQQLxEumWKKlk3g3EYgWGotaotZqW61aCs5MMWeQI5zZw9lnZpqVzF7zOuvsNfN/59//Ohfbx5t2dII/ZArYGACZ9r7GDIBWfwZArD8DYADUChD35wxgAMQKELdnBzAAYgWI27MDGACxAsTt2QEMgFgB4vbsAAZArABxe3YAAyBWgLg9O4ABECtA3J4dwACIFSBuzw5gAMQKELdnBzAAYgWI27MDGACxAsTt2QEqA8jKmIZljncRE2PXZfB6/0Ot6zIqnS4paVYtX4R56VOkakMtevT3U+wrd6L5l9ZQl9KPJ3XA+jX5SE0Z5/dnWu/cx4495WjveGb6RxmAqUTignFjR6J0xRK8PmSgX0FHhxvfOn9E3dl609UZgKlE4oICRyZyMtPQr1+Ur6CzsxM2m00vbmy6gS/3V5muzgBMJRIXbFlbjPFJo3Txb92+h6Q3EnQIj5+04UDFd7jafDPIDv6HzZkxCcV5CxAbE61/2XS9FV/srQhbD6sLkWTArOkpKM57D3EDYn2/t+OZG67zDZiXnooBsV3iWA1jmT/OAF6oVJKfg8zZqfrZrk0XB4/UoHBJFkbFD9O1tBLGDEBGAQDxw4dg3eo8JAwfqh/Rcusutn1VhlWFizA3bQq6o8BKGMu0ZwcAyJ47HfmOTMREd83+WvjWnatHWfUpZKRNRtEH2fo2pH0vG8YMQEYBAMbZ/5+2dhyurMXlxp994bj5syIkjh6hrxbOMFbeAckTEvFRkQODB70acJ835kNPh0gyDlimPADR7N+9/XSrlpY6ESUFOXglrmtC0j7hCmPlAWzduBKJo+N1YZ88bcOhIyfR8FNLr7O25zWCb0y1cGXcl0uUBmCc/TWhrt+8je27y/00MzolXGGsNADjiOnxelHzw0UcPXnGD8Dk5DexunAxBr4WF9YwVhaAaPb/8+Fj7P3mOG78+ptw1/i8tBApbyXq32lh7DrfiMNVtUFnsbIA3s9Kx9KFGbDb++vimc33juxZyM2ZA3v/l8eEGsbKAjDO/m63B8e+P4uauosBz+akMQn4dKV2u3qQXhNqGCsJQLSf3//jEXbur8TvDx72uZ2UluRi5tTkXjVmzuEpyKCA/+wPXKpvxtdlJ0z3ctEjy1CujJV0gHH2t7KNiMI7lDBWDoBo9jc97SUK7j34C7sOVJtuYcallAPwSXEuZk5L1m8vS2grVWLFRT0XVAqAaPuQUleyKJgwVgqAaI73eLzQroCtfrSH9dF2ey8nBRPGSgEwzv6hhKfoFZZg1lMGgGj2D3TnU9YN6z7Mw9S3x/cqtxrGygBYnpuFBfPfQVRU1zs/2ifQnU9ZAKJrAu1tiiqnC6fPXJFaRgkAoseKfd35lFIOED6u1I61EsZKABDN/mZ3PmUhiJxlJYyVACCa/RuutWDXwWpZnQPWibLFShhHPABt9t+wpgAjhg0O2x1MIw3RG9WyYRzxAESzv6w4svYwvlekHef2eHCi9hycpy/0uUzEA/g/nmIZFQ10hS0TxhENQLQ/t/3b7nvj7cKVJtkTXKrO+O6QdpBMGEc0ACnluMhPAZLX05nDSwUYAPHZwAAYALECxO3ZAQyAWAHi9uwABkCsAHF7dgADIFaAuD07gAEQK0Dcnh3AAIgVIG7PDmAAxAoQt2cHMABiBYjbswMYALECxO3ZAQyAWAHi9uwABkCsAHF7dgADIFaAuD07gAEQK0Dcnh3AAIgVIG7PDiAG8BzHt8xOrPdwAAAAAABJRU5ErkJggg==">
             </div>
             <div class="basis-11/12">
-              <div><strong>{{"Abdullah Tahan"}}</strong></div>
+              <div><strong>{{"سعود الحمدان"}}</strong></div>
               <div class="pt-2" >
                 <p-fileupload name="demo[]" url="https://www.primefaces.org/cdn/api/upload.php"  [multiple]="true" accept="image/*" maxFileSize="1000000" mode="advanced">
                   <ng-template #empty>
-                    <div>Drag and drop files to here to upload.</div>
+                    <div>{{ 'DRAG_AND_DROP' | translate }}</div>
                   </ng-template>
                   <ng-template #content>
                     <ul *ngIf="uploadedFiles.length">

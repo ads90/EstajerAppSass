@@ -5,6 +5,7 @@ import {ButtonModule} from 'primeng/button';
 import {CheckboxModule} from 'primeng/checkbox';
 import {CommonModule, NgIf} from '@angular/common';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-add-items-dialog',
@@ -18,6 +19,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
     DialogModule,  // Required for PrimeNG dialogs
     TableModule,   // Required for PrimeNG tables
     CheckboxModule,  // Required for PrimeNG checkboxes
+    TranslateModule
   ],
 })
 export class AddItemsDialogComponent {
@@ -30,10 +32,10 @@ export class AddItemsDialogComponent {
   constructor() {
     // Sample data for the table
     this.items = [
-      { productName: 'Item 1', code: 'P001', selected: false},
-      { productName: 'Item 2', code: 'P002', selected: false },
-      { productName: 'Item 3', code: 'P003', selected: false },
-      { productName: 'Item 4', code: 'P004', selected: false }
+      { productName: 'منتج 1', code: 'P001', selected: false},
+      { productName: 'منتج 2', code: 'P002', selected: false },
+      { productName: 'منتج 3', code: 'P003', selected: false },
+      { productName: 'منتج 4', code: 'P004', selected: false }
     ];
   }
 

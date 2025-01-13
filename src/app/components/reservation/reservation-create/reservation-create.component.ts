@@ -40,6 +40,7 @@ import {InputTextarea} from 'primeng/inputtextarea';
 import {SkeletonModule} from 'primeng/skeleton';
 import {UserSearchDialogComponent} from '../../common/user-search-dialog/user-search-dialog.component';
 import {AddItemsDialogComponent} from '../../common/add-items-dialog/add-items-dialog.component';
+import { TranslateModule } from '@ngx-translate/core';
 
 interface EventItem {
   status?: string;
@@ -95,15 +96,16 @@ type FileData = {
      ToolbarModule,
      UserSearchDialogComponent,
      AddItemsDialogComponent,
+     TranslateModule
    ]
 })
 
 export class ReservationCreateApp implements OnInit {
 
   reservation : Reservation = {
-    name: "Untitled reservation",
-    status: "Draft"
-  }
+    name: "حجز بدون عنوان",
+    status: "مسودة"
+      }
   datetime12h1: Date[] | undefined;
   datetime12h2: Date[] | undefined;
   events: EventItem[] = [];
@@ -115,7 +117,7 @@ export class ReservationCreateApp implements OnInit {
   ];
 
   user = {
-    name: "Abdullah Tahan",
+    name: "سعود الحمدان",
     email: "care@softs.ca",
     img: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAAAAXNSR0IArs4c6QAABU9JREFUeF7tmltMVFcUhv9BB5C23qqCWpGqjWAVtSIqKiVUtE7QBlBCEGO1LWnjJabRxBffjSZ9sFYTG2+JJQQLxEumWKKlk3g3EYgWGotaotZqW61aCs5MMWeQI5zZw9lnZpqVzF7zOuvsNfN/59//Ohfbx5t2dII/ZArYGACZ9r7GDIBWfwZArD8DYADUChD35wxgAMQKELdnBzAAYgWI27MDGACxAsTt2QEMgFgB4vbsAAZArABxe3YAAyBWgLg9O4ABECtA3J4dwACIFSBuzw5gAMQKELdnBzAAYgWI27MDGACxAsTt2QEqA8jKmIZljncRE2PXZfB6/0Ot6zIqnS4paVYtX4R56VOkakMtevT3U+wrd6L5l9ZQl9KPJ3XA+jX5SE0Z5/dnWu/cx4495WjveGb6RxmAqUTignFjR6J0xRK8PmSgX0FHhxvfOn9E3dl609UZgKlE4oICRyZyMtPQr1+Ur6CzsxM2m00vbmy6gS/3V5muzgBMJRIXbFlbjPFJo3Txb92+h6Q3EnQIj5+04UDFd7jafDPIDv6HzZkxCcV5CxAbE61/2XS9FV/srQhbD6sLkWTArOkpKM57D3EDYn2/t+OZG67zDZiXnooBsV3iWA1jmT/OAF6oVJKfg8zZqfrZrk0XB4/UoHBJFkbFD9O1tBLGDEBGAQDxw4dg3eo8JAwfqh/Rcusutn1VhlWFizA3bQq6o8BKGMu0ZwcAyJ47HfmOTMREd83+WvjWnatHWfUpZKRNRtEH2fo2pH0vG8YMQEYBAMbZ/5+2dhyurMXlxp994bj5syIkjh6hrxbOMFbeAckTEvFRkQODB70acJ835kNPh0gyDlimPADR7N+9/XSrlpY6ESUFOXglrmtC0j7hCmPlAWzduBKJo+N1YZ88bcOhIyfR8FNLr7O25zWCb0y1cGXcl0uUBmCc/TWhrt+8je27y/00MzolXGGsNADjiOnxelHzw0UcPXnGD8Dk5DexunAxBr4WF9YwVhaAaPb/8+Fj7P3mOG78+ptw1/i8tBApbyXq32lh7DrfiMNVtUFnsbIA3s9Kx9KFGbDb++vimc33juxZyM2ZA3v/l8eEGsbKAjDO/m63B8e+P4uauosBz+akMQn4dKV2u3qQXhNqGCsJQLSf3//jEXbur8TvDx72uZ2UluRi5tTkXjVmzuEpyKCA/+wPXKpvxtdlJ0z3ctEjy1CujJV0gHH2t7KNiMI7lDBWDoBo9jc97SUK7j34C7sOVJtuYcallAPwSXEuZk5L1m8vS2grVWLFRT0XVAqAaPuQUleyKJgwVgqAaI73eLzQroCtfrSH9dF2ey8nBRPGSgEwzv6hhKfoFZZg1lMGgGj2D3TnU9YN6z7Mw9S3x/cqtxrGygBYnpuFBfPfQVRU1zs/2ifQnU9ZAKJrAu1tiiqnC6fPXJFaRgkAoseKfd35lFIOED6u1I61EsZKABDN/mZ3PmUhiJxlJYyVACCa/RuutWDXwWpZnQPWibLFShhHPABt9t+wpgAjhg0O2x1MIw3RG9WyYRzxAESzv6w4svYwvlekHef2eHCi9hycpy/0uUzEA/g/nmIZFQ10hS0TxhENQLQ/t/3b7nvj7cKVJtkTXKrO+O6QdpBMGEc0ACnluMhPAZLX05nDSwUYAPHZwAAYALECxO3ZAQyAWAHi9uwABkCsAHF7dgADIFaAuD07gAEQK0Dcnh3AAIgVIG7PDmAAxAoQt2cHMABiBYjbswMYALECxO3ZAQyAWAHi9uwABkCsAHF7dgADIFaAuD07gAEQK0Dcnh3AAIgVIG7PDiAG8BzHt8xOrPdwAAAAAABJRU5ErkJggg=="
   }
@@ -139,11 +141,11 @@ export class ReservationCreateApp implements OnInit {
 
     ngOnInit(): void {
       this.events = [
-        { user: 'Abdullah Tahan', status: 'converted reservation to check-out', date: '12:58am', icon: 'pi pi-user', color: '#9C27B0', image: 'game-controller.jpg' },
-        { user: 'Abdullah Tahan', status: 'reserved equipment', date: '10:58pm', icon: 'pi pi-user', color: '#673AB7' },
-        { user: '', status: 'Sent mail to care@softs.ca, care@softs.ca', date: '20:58pm', icon: 'pi pi-envelope', color: '#FF9800' },
-        { user: 'Abdullah Tahan', status: 'Delivered', date: '10:58pm', icon: 'pi pi-user', color: '#607D8B' }
-      ];
+        { user: 'سعود الحمدان', status: 'تم تحويل الحجز إلى تسجيل الخروج', date: '12:58ص', icon: 'pi pi-user', color: '#9C27B0', image: 'game-controller.jpg' },
+        { user: 'سعود الحمدان', status: 'تم حجز المعدات', date: '10:58م', icon: 'pi pi-user', color: '#673AB7' },
+        { user: '', status: 'تم إرسال البريد إلى care@softs.ca, care@softs.ca', date: '20:58م', icon: 'pi pi-envelope', color: '#FF9800' },
+        { user: 'سعود الحمدان', status: 'تم التوصيل', date: '10:58م', icon: 'pi pi-user', color: '#607D8B' }
+            ];
     }
 
   onUserSelected(user: { name: string }) {
