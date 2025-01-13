@@ -1,166 +1,75 @@
 <!-- todo make navigation bar horiziontal in ombile -->
-<div class="w-full rounded-3xl flex gap-6 overflow-hidden" style="height: calc(100vh);  padding: 1rem 0rem 1rem 1rem" >
-  <div
-    [ngClass]="{
-      'w-auto': isSlimMenu,
-      'w-72': !isSlimMenu
-    }"
+<div class="w-full rounded-3xl flex flex-col h-full overflow-hidden">
+  <!-- Top Navbar -->
+  <div class="flex items-center p-4  text-white">
+    <p-toolbar class="flex-1">
+      <!-- Left Section (Logo & Menu Toggle) -->
+      <div class="flex items-center gap-4">
+        <!-- Hamburger Menu Button to toggle Sidebar -->
+        <button pButton icon="pi pi-bars" (click)="toggleSidebar()" class="p-button-rounded p-button-text"></button>
 
-    class="rounded-2xl p-5 bg-surface-50 dark:bg-surface-900 h-full flex flex-col justify-between"
-  >
-    <div
-      [ngClass]="{
-        'w-12 flex flex-col items-center': isSlimMenu,
-        'w-auto': !isSlimMenu
-      }"
+        <!-- Logo and App Name -->
+        <img [src]="isDarkMode ? 'logowhite.svg' : 'logo.svg'" alt="Logo" height="30" width="40" />
+        <span class="text-2xl font-semibold">Estajer App</span>
+      </div>
 
-    >
-      <div class="flex items-center gap-3">
-        <div
-          class="w-11 h-11 border border-primary rounded-xl flex items-center justify-center"
-        >
-          <img [src]="isDarkMode ? 'logowhite.svg' : 'logo.svg'" alt="estajer" height="20" width="24" />
-        </div>
-        <div
-          [ngClass]="{
-            hidden: isSlimMenu,
-            block: !isSlimMenu
-          }"
-          class="text-surface-950 dark:text-surface-0 font-medium text-3xl"
-        >
-        Estajer App
-        </div>
-      </div>
-      <div class="mt-10 flex flex-col gap-2">
-        <div
-          *ngFor="let navItem of sampleAppsSidebarNavs"
-          [pTooltip]="isSlimMenu ? navItem.title : null"
-          (click)="setSelectedSampleAppsSidebarNav(navItem)"
-          class="px-4 py-1 flex items-center gap-1 cursor-pointer text-base rounded-lg transition-all select-none"
-          [ngClass]="{
-            'w-12 justify-center py-4': isSlimMenu,
-            'w-full': !isSlimMenu,
-            'text-muted-color hover:bg-emphasis bg-transparent':
-              selectedSampleAppsSidebarNav !== navItem.title,
-            'text-primary-contrast bg-primary hover:bg-primary-emphasis':
-              selectedSampleAppsSidebarNav === navItem.title
-          }"
-        >
-          <i [class]="navItem.icon"></i>
-          <span
-            [ngClass]="{
-              hidden: isSlimMenu,
-              'font-medium leading-8': !isSlimMenu
-            }"
-            >・</span
-          >
-          <span
-            [ngClass]="{
-              hidden: isSlimMenu,
-              'font-medium leading-none': !isSlimMenu
-            }"
-            >{{ navItem.title }}</span
-          >
-        </div>
-      </div>
-    </div>
-    <div
-      [ngClass]="{
-        'w-12 flex flex-col items-center': isSlimMenu,
-        'w-auto': !isSlimMenu
-      }"
-    >
-      <div class="mt-10 flex flex-col gap-2">
-        <div
-          *ngIf="false"
-          [pTooltip]="isSlimMenu ? 'Expanded Mode' : undefined"
-          class="px-4 py-1 flex items-center gap-1 cursor-pointer text-base rounded-lg transition-all select-none text-muted-color hover:bg-emphasis"
-          [ngClass]="{
-            'w-12 justify-center py-4': isSlimMenu,
-            'w-full': !isSlimMenu
-          }"
-        >
-          <a class="cursor-pointer block p-0 m-0 leading-none">
-            <a class="cursor-pointer block p-0 m-0 leading-none">
-              <i
-                [class]="
-                  isSlimMenu ? 'pi pi-window-maximize' : 'pi pi-window-minimize'
-                "
-              ></i>
-              <span [class]="isSlimMenu ? 'hidden' : 'font-medium leading-8'"
-                >・</span
-              >
-              <span
-                [class]="isSlimMenu ? 'hidden' : 'font-medium leading-none'"
-              >
-                Slim Mode</span
-              >
-            </a>
-          </a>
-        </div>
-        <div
-          *ngFor="let navItem of sampleAppsSidebarNavsMore"
-          [pTooltip]="isSlimMenu ? navItem.title : null"
-          class="px-4 py-1 flex items-center gap-1 cursor-pointer text-base rounded-lg transition-all select-none"
-          [ngClass]="{
-            'w-12 justify-center py-4': isSlimMenu,
-            'w-full': !isSlimMenu,
-            'text-muted-color hover:bg-emphasis bg-transparent':
-              selectedSampleAppsSidebarNav !== navItem.title,
-            'text-primary-contrast bg-primary hover:bg-primary-emphasis':
-              selectedSampleAppsSidebarNav === navItem.title
-          }"
-        >
-          <i [class]="navItem.icon"></i>
-          <span [class]="isSlimMenu ? 'hidden' : 'font-medium leading-8'"
-            >・</span
-          >
-          <span [class]="isSlimMenu ? 'hidden' : 'font-medium leading-none'">{{
-            navItem.title
-          }}</span>
-        </div>
-      </div>
-      <p-divider />
-      <div
-        [class]="isSlimMenu ? 'justify-center' : ' gap-3'"
-        class="px-4 py-1 flex items-center gap-1 cursor-pointer text-base rounded-lg transition-all select-none"
-      >
+      <!-- Right Section (User Profile and other actions) -->
+      <div class="flex items-center gap-4">
         <p-avatar
-
           (click)="dashboardSidebarVisible = true"
-          image="https://cdn.arabsstock.com/uploads/images/149020/image-149020-elegance-attention-external-appearance-personal-photos-of-preview.jpg"
-          size="large"
-          shape="circle"
-          class="shrink-0"
-        />
-        <div>
-          <div
-            [class]="
-              isSlimMenu
-                ? 'hidden'
-                : 'text-base font-medium text-color leading-5'
-            "
-          >
-            سعود الحمدان
+          image="https://cdn.arabsstock.com/uploads/images/149020/image-149020-elegance-attention-external-appearance-personal-photos-of-preview.jpg" shape="circle" size="large"></p-avatar>
+        <span class="text-lg">سعود الحمدان</span>
+        <button pButton icon="pi pi-sign-out" label="Logout" class="p-button-text"></button>
+      </div>
+    </p-toolbar>
+  </div>
+
+  <div class="flex-1 flex gap-6 p-4 overflow-hidden">
+    <!-- Sidebar Section (toggleable) -->
+    <div
+      [ngClass]="{
+        'w-12': isSlimMenu,
+        'w-72': !isSlimMenu,
+        'transition-all': true
+      }"
+      class="rounded-2xl p-5 bg-surface-50 dark:bg-surface-900 h-full flex flex-col justify-between"
+    >
+      <div class="flex flex-col items-center gap-3">
+        <div class="flex items-center gap-3">
+          <div class="w-11 h-11 border border-primary rounded-xl flex items-center justify-center">
+            <img [src]="isDarkMode ? 'logowhite.svg' : 'logo.svg'" alt="estajer" height="20" width="24" />
           </div>
-          <div
-            [class]="isSlimMenu ? 'hidden' : 'text-sm text-muted-color mt-1'"
-          >
-            hi&#64;robin.xyz
+          <div [ngClass]="{ 'hidden': isSlimMenu, 'block': !isSlimMenu }" class="text-surface-950 dark:text-surface-0 font-medium text-3xl">
+            Estajer App
+          </div>
+        </div>
+
+        <!-- Sidebar Navigation -->
+        <div class="mt-10 flex flex-col gap-2">
+          <div *ngFor="let navItem of sampleAppsSidebarNavs" [pTooltip]="isSlimMenu ? navItem.title : null"
+               (click)="setSelectedSampleAppsSidebarNav(navItem)" class="px-4 py-1 flex items-center gap-1 cursor-pointer text-base rounded-lg transition-all select-none"
+               [ngClass]="{
+              'w-12 justify-center py-4': isSlimMenu,
+              'w-full': !isSlimMenu,
+              'text-muted-color hover:bg-emphasis bg-transparent': selectedSampleAppsSidebarNav !== navItem.title,
+              'text-primary-contrast bg-primary hover:bg-primary-emphasis': selectedSampleAppsSidebarNav === navItem.title
+            }">
+            <i [class]="navItem.icon"></i>
+            <span [ngClass]="{ 'hidden': isSlimMenu, 'font-medium leading-8': !isSlimMenu }">・</span>
+            <span [ngClass]="{ 'hidden': isSlimMenu, 'font-medium leading-none': !isSlimMenu }">{{ navItem.title }}</span>
           </div>
         </div>
       </div>
     </div>
+
+    <!-- Content Section (Responsive width) -->
+    <div [style.width]="isSlimMenu ? 'calc(100vw - 3rem)' : 'calc(100vw - 18rem)'" style="padding: 1rem;" class="flex-1 h-full overflow-y-auto pb-0.5">
+      <router-outlet></router-outlet>
+    </div>
   </div>
-  <div [style.width]="isSlimMenu ? 'calc(100vw - 10rem)' : 'calc(100vw)'" style="padding: 1rem;" class="flex-1 h-full overflow-y-auto pb-0.5">
-    <router-outlet></router-outlet>
-  </div>
-  <!-- <chat-app *ngIf="selectedSampleAppsSidebarNav === 'Chat'" />
-                <inbox-app *ngIf="selectedSampleAppsSidebarNav === 'Inbox'" />
-                <cards-app *ngIf="selectedSampleAppsSidebarNav === 'Cards'" />
-                <movies-app *ngIf="selectedSampleAppsSidebarNav === 'Movies'" />
-                -->
 </div>
+
+
 
 <!-- Preferences -->
 <p-drawer

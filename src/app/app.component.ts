@@ -39,8 +39,14 @@ export class AppComponent {
   }
 
   constructor(private router: Router, private translateService: CustomTranslateService) {
-    // todo move this 
-    translateService.setLanguage(StorageLanguage.Arabic);
+
+    //redirect to overview page:
+    this.router.navigate(['/overview']);
+
+
+    // todo move this
+   // translateService.setLanguage(StorageLanguage.Arabic);
+    translateService.setLanguage(StorageLanguage.English);
     }
 
   ngOnInit() {

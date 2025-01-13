@@ -1,7 +1,7 @@
 import { CommonModule, isPlatformBrowser } from '@angular/common';
 import {
   ChangeDetectorRef,
-  Component,
+  Component, HostListener,
   Inject,
   inject,
   OnDestroy,
@@ -39,6 +39,7 @@ import { ShipmentsApp } from "../shipments/shipments.component";
 import { CalendarApp } from '../calendar-app/calendar-app.component';
 import {ReservationsApp} from '../reservation/reservations/reservations.component';
 import {ReservationDetailsApp} from '../reservation/reservation-details/reservation-details.component';
+import {ToolbarModule} from 'primeng/toolbar';
 
 @Component({
   selector: 'app-dashboard',
@@ -68,7 +69,8 @@ import {ReservationDetailsApp} from '../reservation/reservation-details/reservat
     DrawerModule,
     KnobModule,
     ToggleSwitchModule,
-    TranslateModule
+    TranslateModule,
+    ToolbarModule
 ],
 })
 export class Dashboard implements OnInit, OnDestroy {
@@ -248,6 +250,7 @@ export class Dashboard implements OnInit, OnDestroy {
     ];
 
     if (isPlatformBrowser(this.platformId)) {
+      this.checkScreenSize();
       this.chartData2 = this.setChartData();
       this.chartOptions2 = this.setChartOptions();
       this.lineChartData = this.setLineChartData();
@@ -652,6 +655,39 @@ toggleDarkMode() {
     if (this.subscription) {
       this.subscription.unsubscribe();
       this.subscription = null;
+    }
+  }
+
+  // Listen for window resize and update the sidebar mode accordingly
+  @HostListener('window:resize', ['$event'])
+  onResize(event: Event) {
+    // Ensure window is only accessed in the browser
+    if (isPlatformBrowser(this.platformId)) {
+      this.checkScreenSize(); // Check if the screen size has changed and update the sidebar
+    }
+  }
+
+  // Check screen size and update isSlimMenu accordingly
+  checkScreenSize() {
+    // Ensure window is only accessed in the browser
+    if (isPlatformBrowser(this.platformId)) {
+      const screenWidth = window.innerWidth; // Safely access window.innerWidth
+
+      // Only update if necessary (to avoid unnecessary state updates)
+      if (screenWidth < 768 && !this.isSlimMenu) {
+        this.isSlimMenu = true;  // Set slim menu for small screens
+      } else if (screenWidth >= 768 && this.isSlimMenu) {
+        this.isSlimMenu = false;  // Set expanded menu for larger screens
+      }
+    }
+  }
+
+  // Function to toggle the sidebar (expand/collapse)
+  toggleSidebar() {
+    // Ensure window is only accessed in the browser
+    if (isPlatformBrowser(this.platformId) && window.innerWidth >= 768) {
+      // If the screen is large, toggle the sidebar between slim and expanded
+      this.isSlimMenu = !this.isSlimMenu;
     }
   }
 }

@@ -14,9 +14,6 @@ import {ReservationCreateApp} from './components/reservation/reservation-create/
 
 export const routes: Routes = [
     { path: '', component: Dashboard, children:[
-        { path: 'login', component: Login },
-        { path: 'signup', component: Signup},
-        { path: 'forgetpassword', component: ForgetPassword},
         { path: 'overview', component: OverviewApp },
         { path: 'dashboard', component: Dashboard },
         { path: 'calender', component: CalendarApp },
@@ -25,6 +22,10 @@ export const routes: Routes = [
         { path: 'reservations', component: ReservationsApp },
         { path: 'productDetails/:id', component: ProductDetailsComponent },
         { path: 'reservation-details/:id', component: ReservationDetailsApp },
-      ] },
+        { path: 'reservation-create', component: ReservationCreateApp },
 
+      ] },
+    { path: 'login', component: Login },
+    { path: 'signup', component: Signup},
+    { path: 'forgetpassword', component: ForgetPassword},
 ];
