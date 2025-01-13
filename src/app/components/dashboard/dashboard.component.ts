@@ -37,7 +37,7 @@ import { CustomersApp } from '../customers/customers.component';
 import { ToggleSwitchModule } from 'primeng/toggleswitch';
 import { CustomTranslateService } from '../../services/custom-translate.service';
 import { StorageLanguage } from '../../shared/models/enum';
-import { TranslateModule } from '@ngx-translate/core';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { ProductsApp } from '../products/products.component';
 import { ShipmentsApp } from "../shipments/shipments.component";
 import { CalendarApp } from '../calendar-app/calendar-app.component';
@@ -147,6 +147,7 @@ export class Dashboard implements OnInit, OnDestroy {
 
   constructor(
     public translate: CustomTranslateService,
+    private trans:TranslateService,
     @Inject(PLATFORM_ID) private platformId: any,
     private cd: ChangeDetectorRef,
     private router: Router,
@@ -226,7 +227,7 @@ export class Dashboard implements OnInit, OnDestroy {
     this.selectedSampleOption = this.sampleOptions[0];
 
     this.sampleAppsSidebarNavs = [
-      { icon: 'pi pi-home', title: 'Overview', routerLink: '/overview' },
+      { icon: 'pi pi-home', title: this.trans.instant('Overview'), routerLink: '/overview' },
       { icon: 'pi pi-calendar', title: 'Calendar', routerLink: '/calender'},
       { icon: 'pi pi-objects-column', title: 'Products', routerLink: '/products'},
       { icon: 'pi pi-calendar-plus', title: 'Reservations', routerLink: '/reservations'},
