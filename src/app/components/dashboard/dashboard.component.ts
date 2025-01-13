@@ -75,7 +75,7 @@ export class Dashboard implements OnInit, OnDestroy {
 
   darkMode: boolean = false;
 
-  selectedLanguage: string = 'en';
+  selectedLanguage: string = 'ar';
 
   selectedSampleOption: any;
 
