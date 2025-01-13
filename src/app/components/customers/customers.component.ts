@@ -19,6 +19,7 @@ import { DrawerModule } from 'primeng/drawer';
 import { ToggleSwitchModule } from 'primeng/toggleswitch';
 import { CommonModule } from '@angular/common';
 import { DomSanitizer } from '@angular/platform-browser';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'customers-app',
@@ -43,7 +44,8 @@ import { DomSanitizer } from '@angular/platform-browser';
     OverlayBadgeModule,
     DrawerModule,
     ToggleSwitchModule,
-    PopoverModule
+    PopoverModule,
+    TranslateModule
   ],
 })
 export class CustomersApp {
@@ -73,132 +75,133 @@ export class CustomersApp {
   ) {}
 
   ngOnInit() {
-      this.tableData = [
-          {
-              id: 1,
-              image: 'https://www.primefaces.org/cdn/primevue/images/landing/apps/avatar2.png',
-              active: true,
-              name: 'Brook Simmons',
-              title: 'Sales Executive ',
-              company: { name: 'Mistranet', logo: 'mistranet' },
-              email: 'hi@brooksmmns.co',
-              lead: 'Linkedin',
-              status: 'Active'
-          },
-          {
-              id: 2,
-              image: 'https://www.primefaces.org/cdn/primevue/images/landing/apps/avatar9.jpg',
-              active: true,
-              name: 'Dianne Russell',
-              title: 'CEO',
-              company: { name: 'BriteMank', logo: 'britemank' },
-              email: 'hi@diannerussell.com',
-              lead: 'Website',
-              status: 'Inactive'
-          },
-          {
-              id: 3,
-              image: 'https://www.primefaces.org/cdn/primevue/images/landing/apps/avatar13.jpg',
-              active: undefined,
-              name: 'Amy Elsner',
-              title: 'Product Manager',
-              company: { name: 'ZenTrailMs', logo: 'zentrailms' },
-              email: 'hi@amyelsner.com',
-              lead: 'Cold Call',
-              status: 'Prospect'
-          },
-          {
-              id: 4,
-              image: 'https://www.primefaces.org/cdn/primevue/images/landing/apps/avatar11.jpg',
-              active: true,
-              name: 'Jacob Jones',
-              title: 'Manager',
-              company: { name: 'Streamlinz', logo: 'streamlinz' },
-              email: 'jacobjones@gmail.com',
-              lead: 'Partner',
-              status: 'Prospect'
-          },
-          {
-              id: 5,
-              image: '',
-              active: false,
-              name: 'Cameron Watson',
-              capName: 'CW',
-              title: 'Product Manager',
-              company: { name: 'BriteMank', logo: 'britemank' },
-              email: 'hi@cameronwilliamson',
-              lead: 'Social Media',
-              status: 'Active'
-          },
-          {
-              id: 6,
-              image: '',
-              active: true,
-              name: 'Wade Warren',
-              capName: 'WW',
-              title: 'Director',
-              company: { name: 'Streamlinz', logo: 'streamlinz' },
-              email: 'hi@annetteblack.com',
-              lead: 'Cold Call',
-              status: 'Inactive'
-          },
-          {
-              id: 7,
-              image: 'https://www.primefaces.org/cdn/primevue/images/landing/apps/avatar7.png',
-              active: true,
-              name: 'Guy Hawkins',
-              title: 'Director',
-              company: { name: 'Wavelength', logo: 'wavelength' },
-              email: 'hi@darrellsteward.com',
-              lead: 'Linkedin',
-              status: 'Active'
-          },
-          {
-              id: 8,
-              image: 'https://www.primefaces.org/cdn/primevue/images/landing/apps/avatar8.png',
-              active: true,
-              name: 'Annette Black',
-              title: 'Manager',
-              company: { name: 'Wavelength', logo: 'wavelength' },
-              email: 'jeromebell@gmail.com',
-              lead: 'Website',
-              status: 'Inactive'
-          },
-          {
-              id: 9,
-              image: 'https://www.primefaces.org/cdn/primevue/images/landing/apps/avatar10.jpg',
-              active: undefined,
-              name: 'Darrell Steward',
-              title: 'Product Manager',
-              company: { name: 'ZenTrailMs', logo: 'zentrailms' },
-              email: 'hi@onyamalimba.co',
-              lead: 'Website',
-              status: 'Active'
-          },
-          {
-              id: 10,
-              image: '',
-              active: true,
-              name: 'Jerome Bell',
-              capName: 'JB',
-              title: 'Marketing Manager',
-              company: { name: 'Mistranet', logo: 'mistranet' },
-              email: 'hi@courtneyhenryo',
-              lead: 'Social Media',
-              status: 'Active'
-          },
-          {
-              id: 11,
-              image: 'https://www.primefaces.org/cdn/primevue/images/landing/apps/avatar12.jpg',
-              active: undefined,
-              name: 'Onyama Limba',
-              title: 'Sales Executive ',
-              company: { name: 'BriteMank', logo: 'britemank' },
-              email: 'hi@arlenemccoy.com',
-              lead: 'Social Media',
-              status: 'Active'
-          }
-      ];
+    this.tableData = [
+      {
+        id: 1,
+        image: 'https://www.w3schools.com/w3images/avatar2.png', // Example for Arabic image
+        active: true,
+        name: 'سلمان العتيبي',
+        title: 'تنفيذي مبيعات',
+        company: { name: 'مسترانيت', logo: 'mistranet' },
+        email: 'care@softs.ca',
+        lead: 'لينكدإن',
+        status: 'نشط'
+      },
+      {
+        id: 2,
+        image: 'https://www.w3schools.com/w3images/avatar2.png', // Example for Arabic image
+        active: true,
+        name: 'فاطمة الزهراني',
+        title: 'الرئيس التنفيذي',
+        company: { name: 'برايتمانك', logo: 'britemank' },
+        email: 'care@softs.ca',
+        lead: 'موقع الكتروني',
+        status: 'غير نشط'
+      },
+      {
+        id: 3,
+        image: 'https://www.w3schools.com/w3images/avatar2.png', // Example for Arabic image
+        active: undefined,
+        name: 'أمل العنزي',
+        title: 'مدير المنتج',
+        company: { name: 'زين تريل ام اس', logo: 'zentrailms' },
+        email: 'care@softs.ca',
+        lead: 'اتصال بارد',
+        status: 'محتمل'
+      },
+      {
+        id: 4,
+        image: 'https://www.w3schools.com/w3images/avatar2.png', // Example for Arabic image
+        active: true,
+        name: 'عبدالله السبيعي',
+        title: 'مدير',
+        company: { name: 'ستريملينز', logo: 'streamlinz' },
+        email: 'care@softs.ca',
+        lead: 'شريك',
+        status: 'محتمل'
+      },
+      {
+        id: 5,
+        image: '',
+        active: false,
+        name: 'خالد التميمي',
+        capName: 'خ ت',
+        title: 'مدير منتج',
+        company: { name: 'برايتمانك', logo: 'britemank' },
+        email: 'care@softs.ca',
+        lead: 'وسائل التواصل الاجتماعي',
+        status: 'نشط'
+      },
+      {
+        id: 6,
+        image: '',
+        active: true,
+        name: 'محمد الجهني',
+        capName: 'م ج',
+        title: 'مدير',
+        company: { name: 'ستريملينز', logo: 'streamlinz' },
+        email: 'care@softs.ca',
+        lead: 'اتصال بارد',
+        status: 'غير نشط'
+      },
+      {
+        id: 7,
+        image: 'https://www.w3schools.com/w3images/avatar2.png', // Example for Arabic image
+        active: true,
+        name: 'علي العبدالله',
+        title: 'مدير',
+        company: { name: 'ويف لينك', logo: 'wavelength' },
+        email: 'care@softs.ca',
+        lead: 'لينكدإن',
+        status: 'نشط'
+      },
+      {
+        id: 8,
+        image: 'https://www.w3schools.com/w3images/avatar2.png', // Example for Arabic image
+        active: true,
+        name: 'نور الفرحان',
+        title: 'مدير',
+        company: { name: 'ويف لينك', logo: 'wavelength' },
+        email: 'care@softs.ca',
+        lead: 'موقع الكتروني',
+        status: 'غير نشط'
+      },
+      {
+        id: 9,
+        image: 'https://www.w3schools.com/w3images/avatar2.png', // Example for Arabic image
+        active: undefined,
+        name: 'ناصر المالكي',
+        title: 'مدير منتج',
+        company: { name: 'زين تريل ام اس', logo: 'zentrailms' },
+        email: 'care@softs.ca',
+        lead: 'موقع الكتروني',
+        status: 'نشط'
+      },
+      {
+        id: 10,
+        image: '',
+        active: true,
+        name: 'تركي العيسى',
+        capName: 'ت ع',
+        title: 'مدير تسويق',
+        company: { name: 'مسترانيت', logo: 'mistranet' },
+        email: 'care@softs.ca',
+        lead: 'وسائل التواصل الاجتماعي',
+        status: 'نشط'
+      },
+      {
+        id: 11,
+        image: 'https://www.w3schools.com/w3images/avatar2.png', // Example for Arabic image
+        active: undefined,
+        name: 'منيرة الشمري',
+        title: 'تنفيذي مبيعات',
+        company: { name: 'برايتمانك', logo: 'britemank' },
+        email: 'care@softs.ca',
+        lead: 'وسائل التواصل الاجتماعي',
+        status: 'نشط'
+      }
+    ];
+
 
       this.companyLogos = {
           mistranet: this.sanitizer.bypassSecurityTrustHtml(`

@@ -3,157 +3,152 @@ import { Product } from '../domain/product';
 
 @Injectable()
 export class ProductService {
+  constructor(){}
     getProductsData() : Product[]{
         return [
-            {
-                id: '1000',
-                code: 'f230fh0g3',
-                name: 'كرسي جلوس',
-                description: 'يوفر راحة فائقة بفضل تصميمه المنحني ودعمه الممتاز للظهر',
-                image: 'https://estajer.com/wp-content/uploads/2024/08/qxkw2h50jt71yes4r93vgumpfzi6nbla.jpg',
-                price: 50.00,
-                category: 'أثاث',
-                quantity: 24,
-                inventoryStatus: 'مستعمل',
-                rating: 5,
-                event:[{
-                  resourceId: '1000',  // Product ID
-                  title: 'CHECK-OUT-1000: كرسي جلوس - عبدالله',
-                  start: '2025-01-08T21:30:00',
-                  end: '2025-01-09T03:15:00',
-                }]
-            },
-            {
-                id: '1001',
-                code: 'nvklal433',
-                name: 'فوتوبوث مرايا',
-                description: 'صاروخ قص (Grinder) من ماركة Black+Decker، مصمم للاستخدامات الصناعية والمنزلية',
-                image: 'https://estajer.com/wp-content/uploads/2024/12/photobooth1.jpeg',
-                price: 72,
-                category: 'أثاث',
-                quantity: 61,
-                inventoryStatus: 'مستعمل',
-                rating: 4,
-                event:[{
-                  resourceId: '1001',  // Product ID
-                  title: 'RESERVATION-1001: فوتوبوث مرايا - احمد حامد',
-                  start: '2025-01-16T00:30:00',
-                  end: '2025-01-23T01:30:00',
-
-                }]
-            },
-            {
-                id: '1002',
-                code: 'zz21cz3c1',
-                name: 'طاولة خدمة زجاجية',
-                description: 'طاولة خدمة زجاجية حديثة بإطار معدني أبيض مناسبة للتقديمات في الحفلات والاستقبالات',
-                image: 'https://estajer.com/wp-content/uploads/2024/07/uf0pqyztj84mxlrn7o9a23s6g5vid1bw.jpg',
-                price: 79,
-                category: 'أثاث',
-                quantity: 2,
-                inventoryStatus: 'جديد',
-                rating: 3,
-                event:[{
-                  resourceId: '1002',  // Product ID
-                  title: 'RESERVATION-1002: طاولة خدمة زجاجية - محمدابراهيم',
-                  start: '2025-02-16T00:30:00',
-                  end: '2025-03-23T01:30:00',
-
-                }]
-            },
-            {
-                id: '1003',
-                code: '244wgerg2',
-                name: 'كنب مفرد من القماش',
-                description: 'كنب مفرد من القماش لون بيج مع ارجل خشبية ومساند جانبية',
-                image: 'https://estajer.com/wp-content/uploads/2024/08/ar48qj2uycg3hnsv5oel9m61fdiwtkxz.jpg',
-                price: 29,
-                category: 'أثاث',
-                quantity: 25,
-                inventoryStatus: 'مستعمل',
-                rating: 5,
-                event:[{
-                  resourceId: '1003',  // Product ID
-                  title: 'RESERVATION-1003: كنب مفرد من القماش - سالم',
-                  start: '2025-01-01T00:30:00',
-                  end: '2025-01-05T01:30:00',
-
-                }]
-            },
-            {
-                id: '1004',
-                code: 'h456wer53',
-                name: 'طاولة خدمة خشبية',
-                description: 'Product Description',
-                image: 'https://estajer.com/wp-content/uploads/2024/07/6xoe0cypg8uribqt9mz341flk2vhaw75.jpg',
-                price: 15,
-                category: 'أثات',
-                quantity: 73,
-                inventoryStatus: 'جديد',
-                rating: 4,
-                event:[{
-                  resourceId: '1004',  // Product ID
-                  title: 'RESERVATION-1004: طاولة خدمة خشبية - سعد على',
-                  start: '2025-01-10T12:00:00',
-                  end: '2025-01-12T12:00:00',
-                }]
-            },
-            {
-                id: '1005',
-                code: 'av2231fwg',
-                name: 'كرسي جلوس احمر',
-                description: 'كرسي جلوس احمر باطار ذهبي من المعدن مناسب للمناسبات',
-                image: 'https://estajer.com/wp-content/uploads/2024/07/a7lkiz4eboh65y83p1ug9fnm20xrcdtq.jpg',
-                price: 120,
-                category: 'أثات',
-                quantity: 0,
-                inventoryStatus: 'مستعمل',
-                rating: 4,
-                event:[{
-                  resourceId: '1005',
-                  title: 'CHECK-OUT-1005: كرسي جلوس احمر - رابح',
-                  start: '2025-01-20T08:30:00',
-                  end: '2025-01-21T14:30:00',
-
-                }]
-            },
-            {
-                id: '1006',
-                code: 'bib36pfvm',
-                name: 'دراجة هوائية',
-                description: 'دراجة هوائية هجين، إطار ٢٦ انش مع سلة وقفل أمان واضاءة أمامية وخلفية',
-                image: 'https://estajer.com/wp-content/uploads/2024/08/24tnwdskyf6j3zo7p980lxbgaq1erhcv-1118x1006.jpeg',
-                price: 32,
-                category: 'أجهزة رياضية',
-                quantity: 5,
-                inventoryStatus: 'مستعمل',
-                rating: 3,
-                event:[{
-                  resourceId: '1006',
-                  title: 'RESERVATION-1006: دراجة هوائية - سالم',
-                  start: '2025-02-01T10:00:00',
-                  end: '2025-02-02T16:00:00',
-
-                }]
-            },
-            {
-                id: '1007',
-                code: 'mbvjkgip5',
-                name: 'Galaxy Earrings',
-                description: 'صحون تقديم مناسبة للحفلات والمناسبات',
-                image: 'https://estajer.com/wp-content/uploads/2024/04/rwtc8oa0upgj4iz1x3q2y7bnmlvkfe6s-1118x1006.jpeg',
-                price: 34,
-                category: 'حفلات ومناسبات',
-                quantity: 23,
-                inventoryStatus: 'جديد',
-                rating: 5,
-                event:[{
-                  resourceId: '1007',
-                  title: 'CHECK-OUT-1007: صحون تقديم - سارة',
-                  start: '2025-03-05T13:00:00',
-                  end: '2025-03-06T18:00:00',
-
-                }]
+          {
+            id: '1000',
+            code: 'f230fh0g3',
+            name: 'كرسي جلوس',
+            description: 'يوفر راحة فائقة بفضل تصميمه المنحني ودعمه الممتاز للظهر',
+            image: 'https://estajer.com/wp-content/uploads/2024/08/qxkw2h50jt71yes4r93vgumpfzi6nbla.jpg',
+            price: 50.00,
+            category: 'أثاث',
+            quantity: 24,
+            inventoryStatus: 'مستعمل',
+            rating: 5,
+            event: [{
+              resourceId: '1000',
+              title: 'CHECK-OUT-1000: كرسي جلوس - عبدالله',
+              start: this.translateDateToArabic('2025-01-08T21:30:00'),
+              end: this.translateDateToArabic('2025-01-09T03:15:00'),
+            }]
+          },
+          {
+            id: '1001',
+            code: 'nvklal433',
+            name: 'فوتوبوث مرايا',
+            description: 'صاروخ قص (Grinder) من ماركة Black+Decker، مصمم للاستخدامات الصناعية والمنزلية',
+            image: 'https://estajer.com/wp-content/uploads/2024/12/photobooth1.jpeg',
+            price: 72,
+            category: 'أثاث',
+            quantity: 61,
+            inventoryStatus: 'مستعمل',
+            rating: 4,
+            event: [{
+              resourceId: '1001',
+              title: 'RESERVATION-1001: فوتوبوث مرايا - احمد حامد',
+              start: this.translateDateToArabic('2025-01-16T00:30:00'),
+              end: this.translateDateToArabic('2025-01-23T01:30:00'),
+            }]
+          },
+          {
+            id: '1002',
+            code: 'zz21cz3c1',
+            name: 'طاولة خدمة زجاجية',
+            description: 'طاولة خدمة زجاجية حديثة بإطار معدني أبيض مناسبة للتقديمات في الحفلات والاستقبالات',
+            image: 'https://estajer.com/wp-content/uploads/2024/07/uf0pqyztj84mxlrn7o9a23s6g5vid1bw.jpg',
+            price: 79,
+            category: 'أثاث',
+            quantity: 2,
+            inventoryStatus: 'جديد',
+            rating: 3,
+            event: [{
+              resourceId: '1002',
+              title: 'RESERVATION-1002: طاولة خدمة زجاجية - محمدابراهيم',
+              start: this.translateDateToArabic('2025-02-16T00:30:00'),
+              end: this.translateDateToArabic('2025-03-23T01:30:00'),
+            }]
+          },
+          {
+            id: '1003',
+            code: '244wgerg2',
+            name: 'كنب مفرد من القماش',
+            description: 'كنب مفرد من القماش لون بيج مع ارجل خشبية ومساند جانبية',
+            image: 'https://estajer.com/wp-content/uploads/2024/08/ar48qj2uycg3hnsv5oel9m61fdiwtkxz.jpg',
+            price: 29,
+            category: 'أثاث',
+            quantity: 25,
+            inventoryStatus: 'مستعمل',
+            rating: 5,
+            event: [{
+              resourceId: '1003',
+              title: 'RESERVATION-1003: كنب مفرد من القماش - سالم',
+              start: this.translateDateToArabic('2025-01-01T00:30:00'),
+              end: this.translateDateToArabic('2025-01-05T01:30:00'),
+            }]
+          },
+          {
+            id: '1004',
+            code: 'h456wer53',
+            name: 'طاولة خدمة خشبية',
+            description: 'Product Description',
+            image: 'https://estajer.com/wp-content/uploads/2024/07/6xoe0cypg8uribqt9mz341flk2vhaw75.jpg',
+            price: 15,
+            category: 'أثات',
+            quantity: 73,
+            inventoryStatus: 'جديد',
+            rating: 4,
+            event: [{
+              resourceId: '1004',
+              title: 'RESERVATION-1004: طاولة خدمة خشبية - سعد على',
+              start: this.translateDateToArabic('2025-01-10T12:00:00'),
+              end: this.translateDateToArabic('2025-01-12T12:00:00'),
+            }]
+          },
+          {
+            id: '1005',
+            code: 'av2231fwg',
+            name: 'كرسي جلوس احمر',
+            description: 'كرسي جلوس احمر باطار ذهبي من المعدن مناسب للمناسبات',
+            image: 'https://estajer.com/wp-content/uploads/2024/07/a7lkiz4eboh65y83p1ug9fnm20xrcdtq.jpg',
+            price: 120,
+            category: 'أثات',
+            quantity: 0,
+            inventoryStatus: 'مستعمل',
+            rating: 4,
+            event: [{
+              resourceId: '1005',
+              title: 'CHECK-OUT-1005: كرسي جلوس احمر - رابح',
+              start: this.translateDateToArabic('2025-01-20T08:30:00'),
+              end: this.translateDateToArabic('2025-01-21T14:30:00'),
+            }]
+          },
+          {
+            id: '1006',
+            code: 'bib36pfvm',
+            name: 'دراجة هوائية',
+            description: 'دراجة هوائية هجين، إطار ٢٦ انش مع سلة وقفل أمان واضاءة أمامية وخلفية',
+            image: 'https://estajer.com/wp-content/uploads/2024/08/24tnwdskyf6j3zo7p980lxbgaq1erhcv-1118x1006.jpeg',
+            price: 32,
+            category: 'أجهزة رياضية',
+            quantity: 5,
+            inventoryStatus: 'مستعمل',
+            rating: 3,
+            event: [{
+              resourceId: '1006',
+              title: 'RESERVATION-1006: دراجة هوائية - سالم',
+              start: this.translateDateToArabic('2025-02-01T10:00:00'),
+              end: this.translateDateToArabic('2025-02-02T16:00:00'),
+            }]
+          },
+          {
+            id: '1007',
+            code: 'mbvjkgip5',
+            name: 'Galaxy Earrings',
+            description: 'صحون تقديم مناسبة للحفلات والمناسبات',
+            image: 'https://estajer.com/wp-content/uploads/2024/04/rwtc8oa0upgj4iz1x3q2y7bnmlvkfe6s-1118x1006.jpeg',
+            price: 34,
+            category: 'حفلات ومناسبات',
+            quantity: 23,
+            inventoryStatus: 'جديد',
+            rating: 5,
+            event: [{
+              resourceId: '1007',
+              title: 'CHECK-OUT-1007: صحون تقديم - سارة',
+              start: this.translateDateToArabic('2025-03-05T13:00:00'),
+              end: this.translateDateToArabic('2025-03-06T18:00:00'),
+            }]
             },
 
         ];
@@ -1016,4 +1011,25 @@ export class ProductService {
     {
      return this.getProductsData().find(pro=>pro.id===id)
     }
+
+     translateDateToArabic(date: string): string {
+      const arabicMonths = [
+        "يناير", "فبراير", "مارس", "أبريل", "مايو", "يونيو",
+        "يوليو", "أغسطس", "سبتمبر", "أكتوبر", "نوفمبر", "ديسمبر"
+      ];
+
+      const arabicDays = [
+        "الأحد", "الإثنين", "الثلاثاء", "الأربعاء", "الخميس", "الجمعة", "السبت"
+      ];
+
+      const d = new Date(date);
+      const day = arabicDays[d.getUTCDay()];
+      const month = arabicMonths[d.getUTCMonth()];
+      const year = d.getUTCFullYear();
+      const dateOfMonth = d.getUTCDate();
+
+      return `${day}, ${dateOfMonth} ${month} ${year}`;
+    }
+
+
 };

@@ -18,6 +18,9 @@ import { Reservation } from '../../domain/reservation';
 import { ActivatedRoute, Router } from '@angular/router';
 import { event, Product } from '../../domain/product';
 import { ProductService } from '../../services/product.service';
+import { TranslateModule } from '@ngx-translate/core';
+import arLocale from '@fullcalendar/core/locales/ar'; // Import Arabic locale
+
 interface Column {
   field: string;
   header: string;
@@ -35,7 +38,8 @@ interface Column {
     InputTextModule,
     TableModule,
     IconField,
-    InputIcon
+    InputIcon,
+    TranslateModule
 ],
 providers:[ProductService],
   templateUrl: './product-details.component.html',
@@ -63,22 +67,21 @@ constructor(private location:Location ,private router:Router , private route:Act
   ngOnInit(): void {
     this.items = [
       {
-          label: 'Take custody',
+          label: 'استلام الحضانة',
           command: () => {
           }
       },
       {
-          label: 'Give custody',
+          label: 'إعطاء الحضانة',
           command: () => {
           }
       },
-      { label: 'Duplicate Website' },
       { separator: true },
-      { label: 'Delete'}
+      { label: 'حذف'}
   ];
   this.Location=[
     {
-      label: 'Set to adress',
+      label: 'تعيين إلى العنوان',
       command: () => {
       }
   },
@@ -108,6 +111,8 @@ constructor(private location:Location ,private router:Router , private route:Act
       center: 'title',
       right: 'dayGridMonth,timeGridWeek,timeGridDay',
     },
+    locale: arLocale, // Set Arabic locale
+
   };
 }
 goback()

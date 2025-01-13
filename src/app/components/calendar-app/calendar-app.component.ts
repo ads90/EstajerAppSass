@@ -27,6 +27,9 @@ import dayGridPlugin from '@fullcalendar/daygrid';
 import { PanelModule } from 'primeng/panel';
 import timeGridPlugin from '@fullcalendar/timegrid';
 import interactionPlugin from '@fullcalendar/interaction';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
+import arLocale from '@fullcalendar/core/locales/ar'; // Import Arabic locale
+import enLocale from '@fullcalendar/core/locales/en-gb';
 
 
 @Component({
@@ -54,6 +57,7 @@ import interactionPlugin from '@fullcalendar/interaction';
         DatePickerModule,
         FullCalendarModule,
         PanelModule,
+        TranslateModule
 
 
   ],
@@ -68,47 +72,49 @@ export class CalendarApp  implements OnInit {
     events = [
       {
         id: '0003',
-        title: 'CHECK-OUT-0003: fff - Abdullah Tahan',
+        title: 'تسجيل المغادرة-0003: ;كرسي متحرك - أحمد العلي',
         start: '2025-01-08T21:30:00',
         end: '2025-01-09T03:15:00',
-      },
-      {
+    },
+    {
         id: '0007',
-        title: 'RESERVATION-0007: Product one - Abdullah Tahan',
+        title: 'حجز-0007: المنتج الأول - ياسر',
         start: '2025-01-16T00:30:00',
         end: '2025-01-23T01:30:00',
-      },
-    ];
+    },
 
+    ];
+constructor(private trans:TranslateService){}
     list:any=[
       {
-        date:'Today 4:30 am - Jan 17 10:15 am',
-        itemname:'Product once',
-        personname:'mohamed',
-        Status:'open',
-        days:'8 days',
-
+        date: 'اليوم 4:30 صباحًا - 17 يناير 10:15 صباحًا',
+        itemname: 'منتج واحد',
+        personname: 'محمد',
+        Status: 'مفتوح',
+        days: '8 أيام'
       },
       {
-        date:'Today 4:30 am - Jan 17 10:15 am',
-        itemname:'Book',
-        personname:'Ahmed',
-        Status:'open',
-        days:'7 days',
-
+        date: 'اليوم 4:30 صباحًا - 17 يناير 10:15 صباحًا',
+        itemname: 'كتاب',
+        personname: 'أحمد',
+        Status: 'مفتوح',
+        days: '7 أيام'
       },
       {
-        date:'Today 4:30 am - Jan 17 10:15 am',
-        itemname:'Product once',
-        personname:'mohamed',
-        Status:'open',
-        days:'8 days',
-
+        date: 'اليوم 4:30 صباحًا - 17 يناير 10:15 صباحًا',
+        itemname: 'منتج واحد',
+        personname: 'محمد',
+        Status: 'مفتوح',
+        days: '8 أيام'
       }
+
     ];
 
     ngOnInit(): void {
+      const currentLang = this.trans.currentLang || 'en'; // Default to 'en'
+
       this.calendarOptions = {
+
         initialView: 'dayGridMonth',
         plugins: [dayGridPlugin, timeGridPlugin, interactionPlugin],
         events: this.events,
@@ -117,6 +123,7 @@ export class CalendarApp  implements OnInit {
           center: 'title',
           right: 'dayGridMonth,timeGridWeek,timeGridDay',
         },
+        locale: currentLang === 'ar' ? arLocale : enLocale, // Dynamically set locale
         eventClick: (info) => this.onEventClick(info),
       };
       const date = new Date();

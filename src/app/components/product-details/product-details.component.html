@@ -1,17 +1,17 @@
 <section class="flex">
   <div class="flex-col w-screen">
     <div class="header">
-      <a (click)="goback()" class="font-bold">Products</a>
+      <a (click)="goback()" class="font-bold">{{ 'Products' | translate }}</a>
       <span class="font-medium"> > {{ product.name }}</span>
     </div>
     <div class="up-box mt-5 flex justify-between items-center">
-      <div class="left-side flex">
+      <div class="left-side flex items-center">
         <div class="image">
           <img [src]="
               product.image
             " alt="" />
         </div>
-        <div class="mx-3">
+        <div class="mx-3 flex flex-col gap-3" >
           <h1 class="mb-0">{{ product.name }}</h1>
           <div class="flex">
             <svg width="16" height="16" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" color="#334155"
@@ -30,87 +30,86 @@
         </div>
       </div>
       <div class="right-side flex gap-3">
-        <p-splitbutton label="Action" [model]="items" raised severity="secondary" />
-        <p-button label="Reserve" [raised]="true" severity="secondary" />
-        <p-button label="Check out" [raised]="true" severity="secondary" />
-      </div>
+        <p-splitbutton label="{{ 'Action' | translate }}" [model]="items" raised severity="secondary"></p-splitbutton>
+        <p-button label="{{ 'Reserve' | translate }}" [raised]="true" severity="secondary"></p-button>
+        <p-button label="{{ 'Check out' | translate }}" [raised]="true" severity="secondary"></p-button>      </div>
     </div>
     <div class="mt-5">
       <p-tabView>
-        <p-tabPanel header="Dashboard">
+        <p-tabPanel header="{{ 'Dashboard' | translate }}">
           <ng-template pTemplate="content" class="">
-            <div class="font-bold mb-5">Bookings</div>
+            <div class="font-bold mb-5">{{ 'Bookings' | translate }}</div>
             <full-calendar class="max-h-96" #calendar [options]="calendarOptions"></full-calendar>
           </ng-template>
         </p-tabPanel>
-        <p-tabPanel header="Info" class="p-0">
+        <p-tabPanel header="{{ 'Info' | translate }}" class="p-0">
           <ng-template pTemplate="content" class="">
             <div class="flex gap-3">
               <div class="right-box border shadow-md flex flex-col gap-9 w-8/12 p-10 mb-9">
                 <div class="flex flex-col gap-3">
                   <div class="flex justify-between">
-                    <h4 class="m-0">Information</h4>
-                    <p-splitbutton label="Action" [model]="items" raised severity="secondary" />
+                    <h4 class="m-0">{{ 'Information' | translate }}</h4>
+                    <p-splitbutton label="{{ 'Action' | translate }}" [model]="items" raised severity="secondary" />
                   </div>
                   <hr class="border-t border border-slate-400 my-4" />
                 </div>
 
                 <form class="flex flex-col gap-3">
                   <div class="flex items-center justify-between">
-                    <p class="m-0 text-base text-slate-500">Item name</p>
+                    <p class="m-0 text-base text-slate-500">{{ 'Item name' | translate }}</p>
                     <input type="text " pInputText formControlName="text" class="w-3/4" />
                   </div>
                   <div class="flex items-center justify-between">
-                    <p class="m-0 text-base text-slate-500">Brand</p>
+                    <p class="m-0 text-base text-slate-500">{{ 'Brand' | translate }}</p>
                     <input type="text " pInputText formControlName="text" class="w-3/4" />
                   </div>
                   <div class="flex items-center justify-between">
-                    <p class="m-0 text-base text-slate-500">Model</p>
+                    <p class="m-0 text-base text-slate-500">{{ 'Model' | translate }}</p>
                     <input type="text " pInputText formControlName="text" class="w-3/4" />
                   </div>
                   <div class="flex items-center justify-between">
-                    <p class="m-0 text-base text-slate-500">Category</p>
+                    <p class="m-0 text-base text-slate-500">{{ 'Category' | translate }}</p>
                     <input type="text " pInputText formControlName="text" class="w-3/4" />
                   </div>
                   <div class="flex items-center justify-between">
-                    <p class="m-0 text-base text-slate-500">Location</p>
+                    <p class="m-0 text-base text-slate-500">{{ 'Location' | translate }}</p>
                     <input type="text " pInputText formControlName="text" class="w-3/4" />
                   </div>
                   <div class="flex items-center justify-between">
-                    <p class="m-0 text-base text-slate-500">Purchase date</p>
+                    <p class="m-0 text-base text-slate-500">{{ 'Purchase date' | translate }}</p>
                     <input type="text " pInputText formControlName="text" class="w-3/4" />
                   </div>
                   <div class="flex items-center justify-between">
-                    <p class="m-0 text-base text-slate-500">Purchase price</p>
+                    <p class="m-0 text-base text-slate-500">{{ 'Purchase price' | translate }}</p>
                     <input type="text " pInputText formControlName="text" class="w-3/4" />
                   </div>
                   <div class="flex items-center justify-between">
-                    <p class="m-0 text-base text-slate-500">Warranty date</p>
+                    <p class="m-0 text-base text-slate-500">{{ 'Warranty date' | translate }}</p>
                     <input type="text " pInputText formControlName="text" class="w-3/4" />
                   </div>
                   <div class="flex items-center justify-between">
-                    <p class="m-0 text-base text-slate-500">Residual value</p>
+                    <p class="m-0 text-base text-slate-500">{{ 'Residual value' | translate }}</p>
                     <input type="text " pInputText formControlName="text" class="w-3/4" />
                   </div>
                   <hr class="border-t border border-slate-400 my-4" />
                   <div class="flex items-center justify-between">
-                    <p class="m-0 text-base text-slate-500">Serial number</p>
+                    <p class="m-0 text-base text-slate-500">{{ 'Serial number' | translate }}</p>
                     <input type="text " pInputText formControlName="text" class="w-3/4" />
                   </div>
                   <div class="flex items-center justify-between">
-                    <p class="m-0 text-base text-slate-500">Description</p>
+                    <p class="m-0 text-base text-slate-500">{{ 'Description' | translate }}</p>
                     <input type="text " pInputText formControlName="text" class="w-3/4" />
                   </div>
                   <div class="flex items-center justify-between">
-                    <p class="m-0 text-base text-slate-500">Owner</p>
+                    <p class="m-0 text-base text-slate-500">{{ 'Owner' | translate }}</p>
                     <input type="text " pInputText formControlName="text" class="w-3/4" />
                   </div>
                   <div class="flex items-center justify-between">
-                    <p class="m-0 text-base text-slate-500">Hyperlink</p>
+                    <p class="m-0 text-base text-slate-500">{{ 'Hyperlink' | translate }}</p>
                     <input type="text " pInputText formControlName="text" class="w-3/4" />
                   </div>
                   <div class="flex items-center justify-between">
-                    <p class="m-0 text-base text-slate-500">Price</p>
+                    <p class="m-0 text-base text-slate-500">{{ 'Price' | translate }}</p>
                     <input type="text " pInputText formControlName="text" class="w-3/4" />
                   </div>
                 </form>
@@ -118,8 +117,8 @@
               <div class="left-box flex flex-col gap-6 w-4/12">
                 <div class="up-box border shadow-md">
                   <div class="flex p-8 pb-5 justify-between items-center">
-                    <h5 class="m-0">Tracking codes</h5>
-                    <p-button label="Add code" [raised]="true" severity="secondary" icon="pi pi-plus" />
+                    <h5 class="m-0">{{ 'Tracking codes' | translate }}</h5>
+                    <p-button label="{{ 'Add code' | translate }}" [raised]="true" severity="secondary" icon="pi pi-plus" />
                   </div>
                   <div class="border-t border-y-slate-200"></div>
                   <div class="flex items-center justify-between p-8 pt-5">
@@ -132,41 +131,35 @@
                 </div>
                 <div class="up-box border shadow-md">
                   <div class="flex p-5 pb-5 px-8 justify-between items-start">
-                    <h5 class="m-0">Settings</h5>
+                    <h5 class="m-0">{{ 'Settings' | translate }}</h5>
                   </div>
                   <div class="border-t border-y-slate-200"></div>
                   <div class="flex items-center justify-between p-5 pb-5 px-8">
                     <div class="flex flex-col">
-                      <div class="text-base font-medium">
-                        Available for reservation
-                      </div>
-                      <div class="text-sm text-slate-500">
-                        Item is available to be used in reservations
-                      </div>
+                      <div class="text-base font-medium">{{ 'Available for reservation' | translate }}</div>
+
+                      <div class="text-sm text-slate-500">{{ 'Item is available to be used in reservations' | translate }}</div>
+
                     </div>
                     <!-- <p-toggleswitch [(ngModel)]="checked" /> -->
                   </div>
                   <div class="border-t border-y-slate-200"></div>
                   <div class="flex items-center justify-between p-5 pb-5 px-8">
                     <div class="flex flex-col">
-                      <div class="text-base font-medium">
-                        Available for check out
-                      </div>
-                      <div class="text-sm text-slate-500">
-                        Item is available to be used in check out
-                      </div>
+                      <div class="text-base font-medium">{{ 'Available for check out' | translate }}</div>
+
+                      <div class="text-sm text-slate-500">{{ 'Item is available to be used in check out' | translate }}</div>
+
                     </div>
                     <!-- <p-toggleswitch [(ngModel)]="checked" /> -->
                   </div>
                   <div class="border-t border-y-slate-200"></div>
                   <div class="flex items-center justify-between p-5 pb-5 px-8">
                     <div class="flex flex-col">
-                      <div class="text-base font-medium">
-                        Available for custody
-                      </div>
-                      <div class="text-sm text-slate-500">
-                        Item can be taken into custody by a user
-                      </div>
+                      <div class="text-base font-medium">{{ 'Available for custody' | translate }}</div>
+
+                      <div class="text-sm text-slate-500">{{ 'Item can be taken into custody by a user' | translate }}</div>
+
                     </div>
                     <!-- <p-toggleswitch [(ngModel)]="checked" /> -->
                   </div>
@@ -175,7 +168,7 @@
             </div>
           </ng-template>
         </p-tabPanel>
-        <p-tabPanel header="Reservations">
+        <p-tabPanel header="{{ 'Reservations' | translate }}">
           <ng-template pTemplate="content">
             <p-table #dt [value]="reservations" [rows]="10" [columns]="cols" [paginator]="true" [globalFilterFields]="[
                 'name',
@@ -183,30 +176,30 @@
                 'representative.name',
                 'status'
               ]" [tableStyle]="{ 'min-width': '75rem' }" [rowHover]="true" dataKey="id"
-              currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
-              [showCurrentPageReport]="true">
+      currentPageReportTemplate="{{ 'Showing {first} to {last} of {totalRecords} entries' | translate }}"
+      [showCurrentPageReport]="true">
               <ng-template #caption>
                 <div class="flex items-center justify-between">
-                  <h5 class="m-0">Reservations</h5>
+                  <h5 class="m-0">{{ 'Reservations' | translate }}</h5>
                   <p-iconfield>
                     <p-inputicon styleClass="pi pi-search" />
                     <input pInputText type="text" (input)="dt.filterGlobal($event.target, 'contains')"
-                      placeholder="Search..." />
+                    placeholder="{{ 'searchpleaceholder' | translate }}" />
                   </p-iconfield>
                 </div>
               </ng-template>
               <ng-template pTemplate="header">
                 <tr>
                   <th pSortableColumn="name" style="min-width: 16rem">
-                    Name
+                    {{ 'Name' | translate }}
                     <p-sortIcon field="name" />
                   </th>
                   <th pSortableColumn="from" style="min-width: 16rem">
-                    From
+                    {{ 'From' | translate }}
                     <p-sortIcon field="from" />
                   </th>
                   <th pSortableColumn="to" style="min-width: 16rem">
-                    To
+                    {{ 'To' | translate }}
                     <p-sortIcon field="to" />
                   </th>
                 </tr>
@@ -238,7 +231,7 @@
             </p-table>
           </ng-template>
         </p-tabPanel>
-        <p-tabPanel header="Check-outs">
+        <p-tabPanel header="{{ 'CHECKOUTS' | translate }}">
           <ng-template pTemplate="content">
             <p-table #dt [value]="reservations" [rows]="10" [columns]="cols" [paginator]="true" [globalFilterFields]="[
                 'name',
@@ -246,11 +239,11 @@
                 'representative.name',
                 'status'
               ]" [tableStyle]="{ 'min-width': '75rem' }" [rowHover]="true" dataKey="id"
-              currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
-              [showCurrentPageReport]="true">
+      currentPageReportTemplate="{{ 'Showing {first} to {last} of {totalRecords} entries' | translate }}"
+      [showCurrentPageReport]="true">
               <ng-template #caption>
                 <div class="flex items-center justify-between">
-                  <h5 class="m-0">Check outs</h5>
+                  <h5 class="m-0">{{ 'CHECKOUTS' | translate }}</h5>
                   <p-iconfield>
                     <p-inputicon styleClass="pi pi-search" />
                     <input pInputText type="text" (input)="dt.filterGlobal($event.target, 'contains')"
@@ -261,15 +254,16 @@
               <ng-template pTemplate="header">
                 <tr>
                   <th pSortableColumn="name" style="min-width: 16rem">
-                    Name
+                    {{ 'Name' | translate }}
                     <p-sortIcon field="name" />
                   </th>
                   <th pSortableColumn="from" style="min-width: 16rem">
-                    From
+                    {{ 'From' | translate }}
                     <p-sortIcon field="from" />
                   </th>
                   <th pSortableColumn="to" style="min-width: 16rem">
-                    To
+                    {{ 'To' | translate }}
+
                     <p-sortIcon field="to" />
                   </th>
                 </tr>
@@ -302,18 +296,18 @@
           </ng-template>
         </p-tabPanel>
 
-        <p-tabPanel header="Map">
+        <p-tabPanel [header]="'MAP' | translate">
           <ng-template pTemplate="content" >
             <div class="flex flex-col gap-5">
-                <h5 class="font-bold ">Last known geo position</h5>
-            <div class="border shadow  rounded">
+              <h5 class="font-bold">{{ 'LAST_KNOWN_GEO_POSITION' | translate }}</h5>
+              <div class="border shadow  rounded">
               <div class="p-6 flex justify-end	">
-                <p-splitbutton label="Set to current" icon="pi pi-arrows-alt" [model]="Location" raised severity="secondary" />
+                <p-splitbutton [label]="'SET_TO_CURRENT' | translate" icon="pi pi-arrows-alt" [model]="Location" raised severity="secondary" />
               </div>
               <hr class=" border divide-zinc-300 m-1" />
               <div class="p-6 flex flex-col gap-3 items-center min-h-80 justify-center		">
                 <i class="pi pi-map-marker" style="font-size: 8rem"></i>
-                <div class="text-lg">Item geo position isn't known yet</div>
+                <div class="text-lg">{{ 'ITEM_GEO_POSITION_UNKNOWN' | translate }}</div>
               </div>
 
 
@@ -323,12 +317,12 @@
 
           </ng-template>
         </p-tabPanel>
-        <p-tabPanel header="History">
+        <p-tabPanel [header]="'HISTORY' | translate">
           <ng-template pTemplate="content">
             Complex Content to Lazy Load
           </ng-template>
         </p-tabPanel>
-        <p-tabPanel header="Attachments">
+        <p-tabPanel [header]="'ATTACHMENTS' | translate">
           <ng-template pTemplate="content">
             Complex Content to Lazy Load
           </ng-template>

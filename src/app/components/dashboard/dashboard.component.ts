@@ -228,7 +228,7 @@ export class Dashboard implements OnInit, OnDestroy {
       { icon: 'pi pi-check', title: 'Check In/Out', routerLink: '/checks-out-checks-in'},
       { icon: 'pi pi-users', title: 'Accounts', routerLink: '/accounts'},
     ];
-    this.sampleAppsSidebarNavsMore = [{ icon: 'pi pi-cog', title: 'Settings' }];
+    this.sampleAppsSidebarNavsMore = [{ icon: 'pi pi-cog', title: this.trans.instant('Settings') }];
 
     this.selectedSampleAppsSidebarNav = 'Overview';
     this.selectButtonValue = { label: 'Styled', value: 1 };

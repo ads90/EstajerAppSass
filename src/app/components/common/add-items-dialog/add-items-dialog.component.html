@@ -2,7 +2,7 @@
   <div class="relative p-fluid">
     <!-- Close Button -->
     <div class="flex justify-between items-center p-4">
-      <h2 class="text-xl font-semibold">Add Items</h2>
+      <h2 class="text-xl font-semibold">{{ 'addItems' | translate }}</h2>
       <button class="text-gray-600 p-2 rounded-full hover:bg-gray-200 focus:outline-none" (click)="closeDialog()">
         <i class="pi pi-times"></i>
       </button>
@@ -13,8 +13,8 @@
       <ng-template pTemplate="header">
         <tr>
           <th class="w-12"></th>  <!-- Checkbox column width -->
-          <th>Product Name</th>
-          <th>Code</th>
+          <th>{{ 'productName' | translate }}</th>
+          <th>{{ 'code' | translate }}</th>
         </tr>
       </ng-template>
       <ng-template pTemplate="body" let-item>
@@ -30,7 +30,7 @@
 
     <!-- Save Button -->
     <div class="flex justify-end gap-2 mt-4">
-      <button pButton type="button" label="Save" icon="pi pi-check" (click)="saveItems()" class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600"></button>
+      <button pButton type="button" label="{{'save' | translate}}" icon="pi pi-check" (click)="saveItems()" class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600"></button>
     </div>
   </div>
 </p-dialog>
