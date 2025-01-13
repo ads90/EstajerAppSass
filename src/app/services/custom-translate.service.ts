@@ -69,7 +69,7 @@ export class CustomTranslateService {
     const isArabicSelected = lang === StorageLanguage.Arabic
     this.configService.appState.update((state) => ({ ...state, RTL: isArabicSelected }));
     this.toggleRTL(isArabicSelected);
-    
+
     //for primeng default component translation
     this.translate
       .get('primeng')
@@ -151,8 +151,10 @@ export class CustomTranslateService {
 
     if (value) {
       htmlElement.setAttribute('dir', 'rtl');
+      htmlElement.setAttribute('lang', 'ar');
     } else {
       htmlElement.removeAttribute('dir');
+      htmlElement.setAttribute('lang', 'en');
     }
   }
 
