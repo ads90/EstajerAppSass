@@ -1,0 +1,62 @@
+.deGDOT{
+  display: flex
+;
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  justify-content: center;
+  overflow: hidden;
+  font-weight: 600;
+  line-height: 1;
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity, 1));
+  --tw-bg-opacity: 1;
+  background-color: rgb(123 97 255 / var(--tw-bg-opacity, 1));
+  border-radius: 9999px;
+  height: 30px;
+  min-height: 30px;
+  width: 30px;
+  min-width: 30px;
+  font-size: 16px;
+}
+.fnbGii {
+  margin-bottom: 0px;
+}
+.fpQRIc {
+ display: flex;
+}
+
+.dZJniH {
+  position: relative;
+  margin-right: -4px;
+  height: 40px;
+  width: 40px;
+  border-radius: 4px;
+  border-width: 1px;
+  --tw-border-opacity: 1;
+  border-color: rgb(226 232 240 / var(--tw-border-opacity, 1));
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity, 1));
+  padding: 4px;
+}
+
+
+.circle {
+  width: 10px;          /* Diameter of the circle */
+  height: 10px;         /* Diameter of the circle */
+  background-color: #3498db; /* Circle color */
+  border-radius: 50%;   /* Makes the element circular */
+  display: inline-block; /* Allows the circle to behave like an inline element */
+}
+
+.circle-img{
+  width: 30px;          /* Diameter of the circle */
+  height: 30px;         /* Diameter of the circle */
+  border-radius: 50% !important;
+  display: inline-block;
+}
+
+.p-img{
+  width: 50px;          /* Diameter of the circle */
+  height: 50px;         /* Diameter of the circle */
+}

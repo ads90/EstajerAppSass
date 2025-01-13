@@ -105,9 +105,9 @@
                 <small class="text-surface-500 dark:text-surface-400">{{ event.date }}</small>
               </ng-template>
               <ng-template #content let-event>
-                <div class="flex flex-row">
-                  <div class="basis-1/4"><i class="{{event.icon}}"></i></div>
-                  <div class="basis-3/4">
+                <div class="grid grid-cols-3 gap-1">
+                  <div class="p-1 col-span-1 "><i class="{{event.icon}}"></i></div>
+                  <div class="p-1 col-span-2">
                     <strong>{{event.user}}</strong>
                     <p>{{ event.status }}</p>
                   </div>

@@ -1,0 +1,12 @@
+<div class="flex flex-col items-center space-y-6 p-6">
+  <p-button
+    label="Start Scanning"
+    icon="pi pi-qrcode"
+    (onClick)="startScan()"
+    class="p-button-primary text-xl"
+  ></p-button>
+
+  <div *ngIf="isScanning" class="flex justify-center items-center w-full mt-6 border-2 border-gray-300 p-2">
+    <video id="video" class="w-full max-w-xs h-auto"></video>
+  </div>
+</div>
