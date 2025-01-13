@@ -18,6 +18,7 @@ import {CheckOutCreateComponent} from './components/check-out-check-in/check-out
 export const routes: Routes = [
     { path: '', component: Dashboard, children:[
         { path: '', component: OverviewApp },
+        { path: 'overview', component: OverviewApp },
         { path: 'dashboard', component: Dashboard },
         { path: 'calender', component: CalendarApp },
         { path: 'customers', component: CustomersApp },
