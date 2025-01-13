@@ -1,20 +1,20 @@
-import { Injectable, Inject } from '@angular/core';
-import { DOCUMENT } from "@angular/common";
 import { PrimeNG } from 'primeng/config';
-import { StorageService } from './storage.service';
-import { StorageLanguage } from '../shared/models/enum';
-import { IdentityService } from './identity.service';
-import { StorageKey } from '../shared/constants/storage-key';
-import { ConstVaribale } from '../shared/models/language';
+import { Injectable, Inject } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
+import { DOCUMENT } from '@angular/common';
+import { StorageKey } from '../shared/constants/storage-key';
+import { StorageLanguage } from '../shared/models/enum';
+import { ConstVaribale } from '../shared/models/language';
+import { IdentityService } from './identity.service';
+import { StorageService } from './storage.service';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class CustomTranslateService {
-  public ArabicIsDefaultLang = false;
-  private currentLanguage: StorageLanguage | undefined;
-  public globalDectionary:{ [id: string]: any} = {
+  public ArabicIsDefaultLang: any;
+  private currentLanguage: StorageLanguage = StorageLanguage.English;
+  public globalDectionary: Record<string, string> = {
     error: '',
     success: '',
     accountInformation: '',
@@ -22,83 +22,39 @@ export class CustomTranslateService {
     unauthorized: '',
     wrongLogin: '',
     productAvailability: '',
-    statusEnum1: '',
-    statusEnum0: '',
-    storeStatus0: '',
-    storeStatus1: '',
-    storeStatus2: '',
-    storeStatus3: '',
-    userStatus0: '',
-    userStatus1: '',
-    userStatus2: '',
-    userStatus3: '',
-    userRole1: '',
-    userRole2: '',
-    userRole3: '',
-    userRole4: ''
   };
 
   constructor(
-    private config: PrimeNG,
+    private PrimeNG: PrimeNG,
     @Inject(DOCUMENT) private document: Document,
     private translate: TranslateService,
     private storageService: StorageService,
-    private identityService: IdentityService) {
+    private identityService: IdentityService
+  ) {
+    this.checkDefaultlanguage();
   }
-  public translateInstant(key:string) 
-  {
-   return this.translate.instant(key);
+  public translateInstant(key: string) {
+    return this.translate.instant(key);
   }
-
-  public getDefaultLanguageForCurrentUser() {
+  public getDefailtLanguageForCurrentUser() {
     var defaultlanguage = this.identityService.getUserDefaultlanguage;
+
     if (defaultlanguage != null) {
-      this.currentLanguage = defaultlanguage === "0" ? StorageLanguage.Arabic : StorageLanguage.English;
+      this.currentLanguage =
+        defaultlanguage == '0'
+          ? StorageLanguage.Arabic
+          : StorageLanguage.English;
       this.storageService.set(StorageKey.Language, this.currentLanguage);
       this.setLanguage(this.currentLanguage);
-    } else {
-      this.setLanguage(StorageLanguage.Arabic);
     }
   }
 
   public checkDefaultlanguage() {
     this.currentLanguage = this.storageService.get(StorageKey.Language);
     if (this.currentLanguage == null) {
-      this.currentLanguage = StorageLanguage.Arabic;
+      this.currentLanguage = StorageLanguage.English;
     }
     this.setLanguage(this.currentLanguage);
-  }
-
-  public checkDirection() {
-    let htmlTag = this.document.getElementsByTagName(
-      "html"
-    )[0] as HTMLHtmlElement;
-    htmlTag.dir = this.isArabic ? "rtl" : "ltr";
-    this.changeCssFile(this.isArabic ? "ar" : "en");
-  }
-
-
-  changeCssFile(lang: string) {
-    let headTag = this.document.getElementsByTagName(
-      "head"
-    )[0] as HTMLHeadElement;
-    let existingLink = this.document.getElementById(
-      "langCss"
-    ) as HTMLLinkElement;
-
-    // let bundleName = lang === "ar" ? "css/classic-ar.css" : "css/classic.css";
-    let bundleName = "css/theme.css";
-
-    if (existingLink) {
-      existingLink.href = bundleName;
-    } else {
-      let newLink = this.document.createElement("link");
-      newLink.rel = "stylesheet";
-      newLink.type = "text/css";
-      newLink.id = "langCss";
-      newLink.href = bundleName;
-      headTag.appendChild(newLink);
-    }
   }
 
   public setLanguage(lang: StorageLanguage) {
@@ -107,18 +63,19 @@ export class CustomTranslateService {
     this.translate.setDefaultLang(ConstVaribale.Language[lang]);
     this.translate.use(ConstVaribale.Language[lang]);
 
-    this.translate.get('primeng').subscribe(res => this.config.setTranslation(res));
+    //for primeng default component translation
+    this.translate
+      .get('primeng')
+      .subscribe((res) => this.PrimeNG.setTranslation(res));
 
     this.setGlobalDictionary();
-    this.checkDirection();
   }
 
   public checkLanguage(lang: StorageLanguage): boolean {
     return lang === this.currentLanguage;
   }
 
-
-  public get isArabic(): boolean {
+  public isArabic(): boolean {
     if (StorageLanguage.Arabic == this.currentLanguage) {
       this.ArabicIsDefaultLang = true;
       return true;
@@ -126,10 +83,6 @@ export class CustomTranslateService {
       this.ArabicIsDefaultLang = false;
       return false;
     }
-  }
-
-  public get direction(): string {
-    return this.isArabic ? "rtl" : "ltr";
   }
 
   public getkeyName(key: string): Promise<string> {
@@ -148,49 +101,56 @@ export class CustomTranslateService {
     });
   }
 
-  public fillDictionary(dictionary: any): Promise<any> {
+  public fillDictionary(
+    dictionary: Record<string, string>
+  ): Promise<Record<string, string>> {
     return new Promise((resolve, reject) => {
-      const arr = [];
-      // tslint:disable-next-line:forin
-      for (const prop in dictionary) {
-        arr.push(dictionary[prop]);
-      }
-      this.getArraykeysName(arr).then((res: { [id: string]: any }) => {
-        // tslint:disable-next-line:forin
-        for (const prop in dictionary) {
-          dictionary[prop] = res[prop];
-        }
-        resolve(res);
-      }).catch(reject);
+      const keys = Object.keys(dictionary); // Get keys of the dictionary
+      const values = keys.map((key) => dictionary[key]); // Get corresponding values
+
+      this.getArraykeysName(values)
+        .then((translatedValues) => {
+          keys.forEach((key, index) => {
+            dictionary[key] = translatedValues[index]; // Map translated values back to dictionary
+          });
+          resolve(dictionary);
+        })
+        .catch((err) => {
+          console.error('Error while filling dictionary:', err);
+          reject(err);
+        });
     });
   }
 
-  public setGlobalDictionary(): Promise<any> {
+  public setGlobalDictionary(): Promise<void> {
     return new Promise((resolve, reject) => {
-      // tslint:disable-next-line:forin
       for (const key in this.globalDectionary) {
-        this.globalDectionary[key] = key;
+        if (Object.prototype.hasOwnProperty.call(this.globalDectionary, key)) {
+          this.globalDectionary[key] = key;
+        }
       }
-      this.fillDictionary(this.globalDectionary).then(resolve).catch(err => {
-        console.error(err);
-      });
+
+      this.fillDictionary(this.globalDectionary)
+        .then(() => resolve())
+        .catch((err) => {
+          console.error(err);
+          reject(err);
+        });
     });
   }
 
   initialize(): Promise<boolean> {
-    return new Promise((resolve) => {
-      this.currentLanguage = StorageLanguage.Arabic;
-      this.storageService.set(StorageKey.Language, this.currentLanguage);
-      this.translate.setDefaultLang(ConstVaribale.Language[this.currentLanguage]);
-      this.translate.use(ConstVaribale.Language[this.currentLanguage]);
-      this.translate.get('primeng').subscribe(res => this.config.setTranslation(res));
-      this.checkDirection();
-      this.setGlobalDictionary().then(languageTranslate => {
+    this.setGlobalDictionary()
+      .then((languageTranslate) => {
         console.log('Translate API loaded');
-        return resolve(true);
-      }).catch(err => {
+      })
+      .catch((err) => {
         console.error(err);
       });
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        resolve(true);
+      }, 200);
     });
   }
 }

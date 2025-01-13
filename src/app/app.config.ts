@@ -7,6 +7,7 @@ import { routes } from './routes';
 import Noir from './themes/app-theme';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { HttpClient, provideHttpClient } from '@angular/common/http';
+import { StaticTranslationLoader } from './static-translations-loader';
 
 const httpLoaderFactory: (http: HttpClient) => TranslateHttpLoader = (http: HttpClient) =>
   new TranslateHttpLoader(http, './i18n/', '.json');
@@ -24,9 +25,11 @@ export const appConfig: ApplicationConfig = {
     importProvidersFrom([TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
-        useFactory: httpLoaderFactory,
+        useClass: StaticTranslationLoader, // todo , better not use Static Loader 
+        // useFactory: httpLoaderFactory, // todo better use laoder factory
         deps: [HttpClient],
       },
-    })])
+    })
+  ]),
   ],
 };

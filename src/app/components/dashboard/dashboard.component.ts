@@ -1,9 +1,7 @@
 import { CommonModule, isPlatformBrowser } from '@angular/common';
 import {
-  ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
-  effect,
   Inject,
   inject,
   OnDestroy,
@@ -30,24 +28,18 @@ import { TooltipModule } from 'primeng/tooltip';
 import { Subscription } from 'rxjs';
 import { AppConfigService } from '../../services/appconfigservice';
 import { DividerModule } from 'primeng/divider';
-import { OverviewApp } from '../overview-app/overview-app.component';
 import { DrawerModule } from 'primeng/drawer';
 import { KnobModule } from 'primeng/knob';
-import { CustomersApp } from '../customers/customers.component';
 import { ToggleSwitchModule } from 'primeng/toggleswitch';
-import { CustomTranslateService } from '../../services/custom-translate.service';
 import { StorageLanguage } from '../../shared/models/enum';
 import { TranslateModule } from '@ngx-translate/core';
-import { ProductsApp } from '../products/products.component';
-import { ShipmentsApp } from "../shipments/shipments.component";
-import { CalendarApp } from '../calendar-app/calendar-app.component';
-import {ReservationsApp} from '../reservation/reservations/reservations.component';
-import {ReservationDetailsApp} from '../reservation/reservation-details/reservation-details.component';
+import { CustomTranslateService } from '../../services/custom-translate.service';
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss',
+  providers:[CustomTranslateService],
   imports: [
     CommonModule,
     RouterModule,
@@ -68,17 +60,10 @@ import {ReservationDetailsApp} from '../reservation/reservation-details/reservat
     OverlayBadgeModule,
     DatePickerModule,
     DividerModule,
-    OverviewApp,
     DrawerModule,
     KnobModule,
-    CustomersApp,
-    ProductsApp,
-    ReservationsApp,
-    ReservationDetailsApp,
     ToggleSwitchModule,
-    TranslateModule,
-    ShipmentsApp,
-    CalendarApp
+    TranslateModule
 ],
 })
 export class Dashboard implements OnInit, OnDestroy {
@@ -142,7 +127,7 @@ export class Dashboard implements OnInit, OnDestroy {
   get isDarkMode(): boolean {
     return this.configService.appState().darkTheme ?? false;
   }
-
+  
   configService = inject(AppConfigService);
 
   constructor(
@@ -226,7 +211,7 @@ export class Dashboard implements OnInit, OnDestroy {
     this.selectedSampleOption = this.sampleOptions[0];
 
     this.sampleAppsSidebarNavs = [
-      { icon: 'pi pi-home', title: 'Overview', routerLink: '/overview' },
+      { icon: 'pi pi-home', title: this.translate.translateInstant('overview_title'), routerLink: '/overview' },
       { icon: 'pi pi-calendar', title: 'Calendar', routerLink: '/calender'},
       { icon: 'pi pi-objects-column', title: 'Products', routerLink: '/products'},
       { icon: 'pi pi-calendar-plus', title: 'Reservations', routerLink: '/reservations'},
