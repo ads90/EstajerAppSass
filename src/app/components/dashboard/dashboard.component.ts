@@ -132,7 +132,7 @@ export class Dashboard implements OnInit, OnDestroy {
   get isDarkMode(): boolean {
     return this.configService.appState().darkTheme ?? false;
   }
-  
+
   customTranslateService = inject(CustomTranslateService);
   configService = inject(AppConfigService);
 
@@ -219,14 +219,14 @@ export class Dashboard implements OnInit, OnDestroy {
 
     this.sampleAppsSidebarNavs = [
       { icon: 'pi pi-home', title: this.trans.instant('Overview'), routerLink: '/overview' },
-      { icon: 'pi pi-calendar', title: 'Calendar', routerLink: '/calender'},
-      { icon: 'pi pi-objects-column', title: 'Products', routerLink: '/products'},
-      { icon: 'pi pi-calendar-plus', title: 'Reservations', routerLink: '/reservations'},
-      { icon: 'pi pi-user', title: 'Customers', routerLink: '/customers'},
-      { icon: 'pi pi-check', title: 'Check In/Out', routerLink: ''},
-      { icon: 'pi pi-users', title: 'Accounts', routerLink: ''},
+      { icon: 'pi pi-calendar', title:this.trans.instant('calendar'), routerLink: '/calender'},
+      { icon: 'pi pi-objects-column', title:this.trans.instant('product'), routerLink: '/products'},
+      { icon: 'pi pi-calendar-plus', title: this.trans.instant('Reservations'), routerLink: '/reservations'},
+      { icon: 'pi pi-user', title: this.trans.instant('Customers'), routerLink: '/customers'},
+      { icon: 'pi pi-check', title: this.trans.instant('CheckIn/Out'), routerLink: ''},
+      { icon: 'pi pi-users', title: this.trans.instant('Accounts'), routerLink: ''},
     ];
-    this.sampleAppsSidebarNavsMore = [{ icon: 'pi pi-cog', title: 'Settings' }];
+    this.sampleAppsSidebarNavsMore = [{ icon: 'pi pi-cog', title: this.trans.instant('Settings') }];
 
     this.selectedSampleAppsSidebarNav = 'Overview';
     this.selectButtonValue = { label: 'Styled', value: 1 };
@@ -635,7 +635,7 @@ export class Dashboard implements OnInit, OnDestroy {
   onLanguageChange(language: string): void {
     // const isArabicSelected = language === 'ar';
     // this.configService.appState.update((state) => ({ ...state, RTL: isArabicSelected }));
-    
+
     // this.changeLanguage(language);
     this.customTranslateService.setLanguage( language === 'ar' ? StorageLanguage.Arabic : StorageLanguage.English);
   }

@@ -1,14 +1,12 @@
 <div class="flex-1 h-full overflow-y-auto pb-0.5">
   <div class="flex items-start gap-2 justify-between">
     <div>
-      <div class="text-2xl leading-8 text-color font-medium">Customers</div>
-      <div class="mt-1 leading-6 text-muted-color">
-        The analysis list here shows all users
-      </div>
+      <div class="text-2xl leading-8 text-color font-medium">{{ 'customers' | translate }}</div>
+      <div class="mt-1 leading-6 text-muted-color">{{ 'analysis_list' | translate }}</div>
     </div>
     <p-button
       icon="pi pi-circle-fill text-green-500"
-      label="950 Active User"
+      label="{{'active_user'|translate}}"
       outlined
       severity="secondary"
     />
@@ -16,7 +14,7 @@
   <div class="mt-10 mb-4 flex items-center justify-between">
     <p-iconfield iconPosition="left">
       <p-inputicon class="pi pi-search"> </p-inputicon>
-      <input pInputText type="text" [(ngModel)]="search" placeholder="Search" />
+      <input pInputText type="text" [(ngModel)]="search" placeholder="{{'searchpleaceholder' | translate}}" />
     </p-iconfield>
     <div class="flex items-center gap-3">
       <p-button icon="pi pi-filter" outlined severity="secondary" />
@@ -42,13 +40,13 @@
           <th style="width: 1rem">
             <p-tableHeaderCheckbox />
           </th>
-          <th>Name</th>
-          <th>Title</th>
-          <th>Company Name</th>
-          <th>Email Address</th>
-          <th>Lead Source</th>
-          <th>Status</th>
-          <th>More</th>
+          <th>{{ 'name' | translate }}</th>
+          <th>{{ 'title' | translate }}</th>
+          <th>{{ 'company_name' | translate }}</th>
+          <th>{{ 'email_address' | translate }}</th>
+          <th>{{ 'lead_source' | translate }}</th>
+          <th>{{ 'status' | translate }}</th>
+          <th>{{ 'more' | translate }}</th>
         </tr>
       </ng-template>
       <ng-template #body let-data>

@@ -19,7 +19,7 @@ import { TagModule } from 'primeng/tag';
 import { TooltipModule } from 'primeng/tooltip';
 import { AppConfigService } from '../../services/appconfigservice';
 import { DesignerService } from '../../services/designerservice';
-import { TranslateModule } from '@ngx-translate/core';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { CustomTranslateService } from '../../services/custom-translate.service';
 
 
@@ -56,9 +56,9 @@ export class OverviewApp {
 
   dates: Date[] | undefined = [];
 
-  selectedTime: string = 'Monthly';
+  selectedTime: string = 'شهري';
 
-  timeOptions: string[] = ['Weekly', 'Monthly', 'Yearly'];
+  timeOptions: string[] = ['أسبوعي', 'شهري', 'سنوي'];
 
   menuItems: MenuItem[] | undefined;
 
@@ -83,11 +83,11 @@ export class OverviewApp {
   configService = inject(AppConfigService);
 
   appState = this.configService.appState();
-  
+
   customTranslateService = inject(CustomTranslateService);
   designerService = inject(DesignerService);
 
-  constructor(private cd: ChangeDetectorRef) {}
+  constructor(private cd: ChangeDetectorRef ,private trans:TranslateService) {}
 
   themeEffect = effect(() => {
       if (this.configService.transitionComplete()) {
@@ -110,96 +110,98 @@ export class OverviewApp {
       ];
 
       this.sampleAppsTableDatas = [
-        {
-          id: '#1254',
-          name: { text: 'Amy Yelsner', label: 'AY', color: 'blue' },
-          startTime: 'May 5th, 10:00 AM',
-          endTime: 'May 5th, 4:00 PM',
-          process: { value: 'Waiting for check-in' },
-          amount: '350 SR'
-        },
-        {
-          id: '#2355',
-          name: { text: 'Anna Fali', label: 'AF', color: '#ECFCCB' },
-          startTime: 'Mar 17th, 9:00 AM',
-          endTime: 'Mar 17th, 1:00 PM',
-          process: { value: 'Rented' },
-          amount: '50 SR'
-        },
-        {
-          id: '#1235',
-          name: { text: 'Stepen Shaw', label: 'SS', color: '#ECFCCB' },
-          startTime: 'May 24th, 11:00 AM',
-          endTime: 'May 24th, 3:30 PM',
-          process: { value: 'Returned' },
-          amount: '750 SR'
-        },
-        {
-          id: '#2355',
-          name: { text: 'Anna Fali', label: 'AF', color: '#ECFCCB' },
-          startTime: 'Mar 17th, 2:00 PM',
-          endTime: 'Mar 17th, 6:00 PM',
-          process: { value: 'Closed' },
-          amount: '85 SR'
-        },
-        {
-          id: '#2355',
-          name: { text: 'Anna Fali', label: 'AF', color: '#ECFCCB' },
-          startTime: 'Mar 17th, 8:00 AM',
-          endTime: 'Mar 17th, 12:00 PM',
-          process: { value: 'Draft' },
-          amount: '95 SR'
-        },
-        {
-          id: '#7896',
-          name: { text: 'John Doe', label: 'JD', color: 'green' },
-          startTime: 'Jun 12th, 10:30 AM',
-          endTime: 'Jun 12th, 3:00 PM',
-          process: { value: 'Overdue' },
-          amount: '400 SR'
-        },
-        {
-          id: '#5648',
-          name: { text: 'Jane Smith', label: 'JS', color: '#FFDDC1' },
-          startTime: 'Feb 23rd, 9:15 AM',
-          endTime: 'Feb 23rd, 12:45 PM',
-          process: { value: 'Waiting for check-out' },
-          amount: '650 SR'
-        },
-        {
-          id: '#3265',
-          name: { text: 'Michael Johnson', label: 'MJ', color: '#FFD700' },
-          startTime: 'Apr 30th, 1:00 PM',
-          endTime: 'Apr 30th, 5:00 PM',
-          process: { value: 'Draft' },
-          amount: '500 SR'
-        },
-        {
-          id: '#1423',
-          name: { text: 'Emily Davis', label: 'ED', color: '#FFCCCB' },
-          startTime: 'Jan 15th, 8:00 AM',
-          endTime: 'Jan 15th, 1:00 PM',
-          process: { value: 'Closed' },
-          amount: '930 SR'
-        },
-        {
-          id: '#6854',
-          name: { text: 'Robert Brown', label: 'RB', color: '#C0C0C0' },
-          startTime: 'Dec 2nd, 10:00 AM',
-          endTime: 'Dec 2nd, 2:00 PM',
-          process: { value: 'Returned' },
-          amount: '30 SR'
-        }
-      ];
+        
+          {
+            "id": "#1254",
+            "name": { "text": "أحمد العلي", "label": "AA", "color": "blue" },
+            "startTime": "5 مايو، 10:00 صباحًا",
+            "endTime": "5 مايو، 4:00 مساءً",
+            "process": { "value": "انتظار تسجيل الوصول" },
+            "amount": "350 ريال سعودي"
+          },
+          {
+            "id": "#2355",
+            "name": { "text": "سارة محمد", "label": "SM", "color": "#ECFCCB" },
+            "startTime": "17 مارس، 9:00 صباحًا",
+            "endTime": "17 مارس، 1:00 مساءً",
+            "process": { "value": "تم التأجير" },
+            "amount": "50 ريال سعودي"
+          },
+          {
+            "id": "#1235",
+            "name": { "text": "خالد الشمري", "label": "KS", "color": "#ECFCCB" },
+            "startTime": "24 مايو، 11:00 صباحًا",
+            "endTime": "24 مايو، 3:30 مساءً",
+            "process": { "value": "تم الإرجاع" },
+            "amount": "750 ريال سعودي"
+          },
+          {
+            "id": "#2355",
+            "name": { "text": "سارة محمد", "label": "SM", "color": "#ECFCCB" },
+            "startTime": "17 مارس، 2:00 مساءً",
+            "endTime": "17 مارس، 6:00 مساءً",
+            "process": { "value": "مغلق" },
+            "amount": "85 ريال سعودي"
+          },
+          {
+            "id": "#2355",
+            "name": { "text": "سارة محمد", "label": "SM", "color": "#ECFCCB" },
+            "startTime": "17 مارس، 8:00 صباحًا",
+            "endTime": "17 مارس، 12:00 مساءً",
+            "process": { "value": "مسودة" },
+            "amount": "95 ريال سعودي"
+          },
+          {
+            "id": "#7896",
+            "name": { "text": "محمد علي", "label": "MA", "color": "green" },
+            "startTime": "12 يونيو، 10:30 صباحًا",
+            "endTime": "12 يونيو، 3:00 مساءً",
+            "process": { "value": "متأخر" },
+            "amount": "400 ريال سعودي"
+          },
+          {
+            "id": "#5648",
+            "name": { "text": "فاطمة الزهراء", "label": "FZ", "color": "#FFDDC1" },
+            "startTime": "23 فبراير، 9:15 صباحًا",
+            "endTime": "23 فبراير، 12:45 مساءً",
+            "process": { "value": "انتظار تسجيل الخروج" },
+            "amount": "650 ريال سعودي"
+          },
+          {
+            "id": "#3265",
+            "name": { "text": "يوسف بن سعيد", "label": "YS", "color": "#FFD700" },
+            "startTime": "30 أبريل، 1:00 مساءً",
+            "endTime": "30 أبريل، 5:00 مساءً",
+            "process": { "value": "مسودة" },
+            "amount": "500 ريال سعودي"
+          },
+          {
+            "id": "#1423",
+            "name": { "text": "ليلى عبدالله", "label": "LA", "color": "#FFCCCB" },
+            "startTime": "15 يناير، 8:00 صباحًا",
+            "endTime": "15 يناير، 1:00 مساءً",
+            "process": { "value": "مغلق" },
+            "amount": "930 ريال سعودي"
+          },
+          {
+            "id": "#6854",
+            "name": { "text": "علي حسن", "label": "AH", "color": "#C0C0C0" },
+            "startTime": "2 ديسمبر، 10:00 صباحًا",
+            "endTime": "2 ديسمبر، 2:00 مساءً",
+            "process": { "value": "تم الإرجاع" },
+            "amount": "30 ريال سعودي"
+          }
+        ];
+
 
       this.metersData = [
-          { label: 'Available', color: '#F59E0B', value: 15, text: '27' },
-          { label: 'Unavailable', color: '#717179', value: 5, text: '4' },
-          { label: 'Checked out', color: '#22C55E', value: 25, text: '147' },
-          { label: 'In mantainance', color: '#84CC16', value: 11, text: '137' },
-          { label: 'Lost', color: '#14B8A6', value: 29, text: '133' },
-          { label: 'Retired', color: '#EAB308', value: 29, text: '200' }
-      ];
+        { label: this.trans.instant('Available'), color: '#F59E0B', value: 15, text: '27' },
+        { label: this.trans.instant('Unavailable'), color: '#717179', value: 5, text: '4' },
+        { label: this.trans.instant('Checked out'), color: '#22C55E', value: 25, text: '147' },
+        { label: this.trans.instant('In maintenance'), color: '#84CC16', value: 11, text: '137' },
+        { label: this.trans.instant('Lost'), color: '#14B8A6', value: 29, text: '133' },
+        { label: this.trans.instant('Retired'), color: '#EAB308', value: 29, text: '200' }
+          ];
 
       this.initChart();
   }
@@ -225,7 +227,7 @@ export class OverviewApp {
           datasets: [
               {
                   type: 'bar',
-                  label: 'Rentals for Check-out',
+                  label: 'إيجارات للتسجيل',
                   backgroundColor: primary400,
                   hoverBackgroundColor: primary600,
                   data: datasets.data![0],
@@ -233,7 +235,7 @@ export class OverviewApp {
               },
               {
                   type: 'bar',
-                  label: 'Rentals for Check-in',
+                  label: 'إيجارات للدخول',
                   backgroundColor: primary300,
                   hoverBackgroundColor: primary500,
                   data: datasets.data![1],
@@ -241,7 +243,7 @@ export class OverviewApp {
               },
               {
                   type: 'bar',
-                  label: 'Rentals Request',
+                  label: 'طلبات الإيجار',
                   backgroundColor: primary200,
                   hoverBackgroundColor: primary400,
                   data: datasets.data![2],
@@ -400,21 +402,21 @@ export class OverviewApp {
   createDatasets(val: string) {
       let data, labels;
 
-      if (val === 'Weekly') {
-          labels = ['6 May', '13 May', '20 May', '27 May', '3 June', '10 June', '17 June', '24 June', '1 July', '8 July', '15 July', '22 July'];
+      if (val === 'أسبوعي') {
+        labels = ['6 مايو', '13 مايو', '20 مايو', '27 مايو', '3 يونيو', '10 يونيو', '17 يونيو', '24 يونيو', '1 يوليو', '8 يوليو', '15 يوليو', '22 يوليو'];
           data = [
               [9000, 3000, 13000, 3000, 5000, 17000, 11000, 4000, 15000, 4000, 11000, 5000],
               [1800, 7600, 11100, 6800, 3300, 5800, 3600, 7200, 4300, 8100, 6800, 3700],
               [3800, 4800, 2100, 6600, 1000, 3800, 6500, 4200, 4300, 7000, 6800, 3700]
           ];
-      } else if (val === 'Monthly') {
-          labels = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+      } else if (val === 'شهري') {
+        labels = ['يناير', 'فبراير', 'مارس', 'أبريل', 'مايو', 'يونيو', 'يوليو', 'أغسطس', 'سبتمبر', 'أكتوبر', 'نوفمبر', 'ديسمبر'];
           data = [
               [4000, 10000, 15000, 4000, 16000, 8000, 12000, 14000, 17000, 5000, 12000, 6000],
               [2100, 8400, 2400, 7500, 3700, 6500, 7400, 8000, 4800, 9000, 7600, 4200],
               [4100, 5200, 2400, 7400, 2300, 4100, 7200, 8000, 4800, 9000, 7600, 4200]
           ];
-      } else if (val === 'Yearly') {
+      } else if (val === 'سنوي') {
           labels = ['2019', '2020', '2021', '2022', '2023', '2024'];
           data = [
               [4500, 10500, 15500, 4500, 16500, 8500, 12500, 14500, 17500, 5500, 12500, 6500],

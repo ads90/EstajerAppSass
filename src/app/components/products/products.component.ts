@@ -50,6 +50,7 @@ import interactionPlugin from '@fullcalendar/interaction';
 import resourceTimelinePlugin from '@fullcalendar/resource-timeline';
 import { Renderer2 } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
+import arLocale from '@fullcalendar/core/locales/ar'; // Import Arabic locale
 
 interface Column {
   field: string;
@@ -215,6 +216,7 @@ export class ProductsApp implements OnInit, AfterContentInit {
         center: 'title',
         right: 'resourceTimelineDay,resourceTimelineWeek,resourceTimelineMonth',
       },
+      locale: arLocale, // Set Arabic locale
       eventClick: (info) => {
         const resourceId = info.event._def.resourceIds![0];
          this.router.navigate(["/productDetails", resourceId]); // Navigate to the product detail page

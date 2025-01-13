@@ -30,6 +30,8 @@ import { TagModule } from 'primeng/tag';
 import { SelectModule } from 'primeng/select';
 import { RadioButton } from 'primeng/radiobutton';
 import { InputNumberModule } from 'primeng/inputnumber';
+import { TranslateModule } from '@ngx-translate/core';
+
 
 interface Column {
   field: string;
@@ -71,7 +73,8 @@ interface ExportColumn {
       RatingModule,
       SelectModule,
       ConfirmDialogModule,
-      InputNumberModule
+      InputNumberModule,
+      TranslateModule
     ]
 })
 export class ReservationsApp implements OnInit {
