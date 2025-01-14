@@ -10,7 +10,7 @@
 
         <!-- Logo and App Name -->
         <img [src]="isDarkMode ? 'logowhite.svg' : 'logo.svg'" alt="Logo" height="30" width="40" />
-        <span class="text-2xl font-semibold">Estajer App</span>
+        <span class="text-2xl font-semibold">استأجر بلس</span>
       </div>
 
       <!-- Right Section (User Profile and other actions) -->
@@ -19,7 +19,7 @@
           (click)="dashboardSidebarVisible = true"
           image="https://cdn.arabsstock.com/uploads/images/149020/image-149020-elegance-attention-external-appearance-personal-photos-of-preview.jpg" shape="circle" size="large"></p-avatar>
         <span class="text-lg">سعود الحمدان</span>
-        <button pButton icon="pi pi-sign-out" label="Logout" class="p-button-text"></button>
+        <button pButton icon="pi pi-sign-out"  [label]="'logout' | translate" class="p-button-text"></button>
       </div>
     </p-toolbar>
   </div>
