@@ -227,7 +227,7 @@ export class OverviewApp {
           datasets: [
               {
                   type: 'bar',
-                  label: 'إيجارات للتسجيل',
+                  label: 'مؤجرات للتسجيل',
                   backgroundColor: primary400,
                   hoverBackgroundColor: primary600,
                   data: datasets.data![0],
@@ -235,7 +235,7 @@ export class OverviewApp {
               },
               {
                   type: 'bar',
-                  label: 'إيجارات للدخول',
+                  label: 'مؤجرات للدخول',
                   backgroundColor: primary300,
                   hoverBackgroundColor: primary500,
                   data: datasets.data![1],
