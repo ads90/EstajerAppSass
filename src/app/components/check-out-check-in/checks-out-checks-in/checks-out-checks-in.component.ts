@@ -30,6 +30,7 @@ import { RadioButton } from 'primeng/radiobutton';
 import { InputNumberModule } from 'primeng/inputnumber';
 import {ChecksOutService} from '../../../services/check-out.service';
 import {ChecksOut} from '../../../domain/check-out';
+import { TranslateModule } from '@ngx-translate/core';
 
 interface Column {
   field: string;
@@ -71,7 +72,8 @@ interface ExportColumn {
       RatingModule,
       SelectModule,
       ConfirmDialogModule,
-      InputNumberModule
+      InputNumberModule,
+      TranslateModule
     ]
 })
 export class ChecksOutChecksInComponent implements OnInit {

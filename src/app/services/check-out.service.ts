@@ -3,18 +3,18 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class ChecksOutService {
     getChecksOutsData() {
-        return [
-          { id: '1',name: "Conference Room A", from: "2025-01-15T09:00:00", to: "2025-01-15T11:00:00", duration: 2, user: "Alice Johnson", status:'converted', items: ["bamboo-watch.jpg", "blue-t-shirt.jpg"]},
-          { id: '2',name: "Meeting Room B", from: "2025-01-16T13:00:00", to: "2025-01-16T14:30:00", duration: 1.5, user: "Bob Smith", status:'converted'},
-          { id: '3',name: "Board Room", from: "2025-01-17T10:00:00", to: "2025-01-17T12:00:00", duration: 2, user: "Charlie Brown", status:'converted'},
-          { id: '4',name: "Training Room", from: "2025-01-18T15:00:00", to: "2025-01-18T16:00:00", duration: 1, user: "Diana Prince", status:'converted', items: ["bamboo-watch.jpg"]},
-          { id: '5',name: "Webinar Room", from: "2025-01-19T11:00:00", to: "2025-01-19T12:30:00", duration: 1.5, user: "Emma Watson", status:'converted'},
-          { id: '6',name: "Executive Lounge", from: "2025-01-20T08:00:00", to: "2025-01-20T09:30:00", duration: 1.5, user: "Frank Castle", status:'converted',  items: ["bamboo-watch.jpg", "blue-t-shirt.jpg", "bracelet.jpg"]},
-          { id: '7',name: "Interview Room", from: "2025-01-21T14:00:00", to: "2025-01-21T15:00:00", duration: 1, user: "Gina Rodriguez", status:'converted' },
-          { id: '8',name: "Workshop Space", from: "2025-01-22T09:00:00", to: "2025-01-22T12:00:00", duration: 3, user: "Harry Potter" , status:'converted'},
-          { id: '9',name: "Presentation Room", from: "2025-01-23T12:00:00", to: "2025-01-23T13:00:00", duration: 1, user: "Isla Fisher", status:'converted' },
-          { id: '10',name: "Event Hall", from: "2025-01-24T18:00:00", to: "2025-01-24T20:00:00", duration: 2, user: "Jack Black" , status:'converted' },
-        ];
+      return [
+        { id: '1', name: "غرفة المؤتمرات A", from: "2025-01-15T09:00:00", to: "2025-01-15T11:00:00", duration: 2, user: "خالد العلي", status: 'محول', items: ["bamboo-watch.jpg", "blue-t-shirt.jpg"]},
+        { id: '2', name: "غرفة الاجتماعات B", from: "2025-01-16T13:00:00", to: "2025-01-16T14:30:00", duration: 1.5, user: "أحمد الزهراني", status: 'محول'},
+        { id: '3', name: "غرفة المجلس", from: "2025-01-17T10:00:00", to: "2025-01-17T12:00:00", duration: 2, user: "فهد الشمري", status: 'محول'},
+        { id: '4', name: "غرفة التدريب", from: "2025-01-18T15:00:00", to: "2025-01-18T16:00:00", duration: 1, user: "سارة العتيبي", status: 'محول', items: ["bamboo-watch.jpg"]},
+        { id: '5', name: "غرفة الويبينار", from: "2025-01-19T11:00:00", to: "2025-01-19T12:30:00", duration: 1.5, user: "أمينة محمد", status: 'محول'},
+        { id: '6', name: "الردهة التنفيذية", from: "2025-01-20T08:00:00", to: "2025-01-20T09:30:00", duration: 1.5, user: "حسن الدوسري", status: 'محول', items: ["bamboo-watch.jpg", "blue-t-shirt.jpg", "bracelet.jpg"]},
+        { id: '7', name: "غرفة المقابلات", from: "2025-01-21T14:00:00", to: "2025-01-21T15:00:00", duration: 1, user: "نورة الحربي", status: 'محول' },
+        { id: '8', name: "مساحة الورشة", from: "2025-01-22T09:00:00", to: "2025-01-22T12:00:00", duration: 3, user: "محمد السبيعي" , status: 'محول'},
+        { id: '9', name: "غرفة العروض", from: "2025-01-23T12:00:00", to: "2025-01-23T13:00:00", duration: 1, user: "فاطمة الزهراني", status: 'محول' },
+        { id: '10', name: "قاعة الفعاليات", from: "2025-01-24T18:00:00", to: "2025-01-24T20:00:00", duration: 2, user: "أحمد البريدي" , status: 'محول' },
+      ];
     }
 
     getChecksOutsWithItemsData() {

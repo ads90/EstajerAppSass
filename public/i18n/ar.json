@@ -303,7 +303,7 @@
   "Products": "المنتجات",
   "Action": "إجراء",
   "Reserve": "احجز",
-  "Check out": "إنهاء",
+  "Check out": "سحب",
   "Dashboard": "لوحة التحكم",
   "Bookings": "الحجوزات",
   "Info": "معلومات",
@@ -402,7 +402,18 @@
     "email_address": "عنوان البريد الإلكتروني",
     "lead_source": "مصدر العميل المحتمل",
     "more": "المزيد",
-    "details": "التفاصيل"
+    "details": "التفاصيل",
+    "Check-in": "تسجيل الوصول",
+    "Tracking Code": "رمز التتبع",
+    "New Check-out": "السحب الجديد",
+    "Open QR Scanner": "فتح ماسح QR",
+    "Completed": "أكتمل",
+    "CheckedIn": "تم التسجيل"
+
+
+
+
+
 
 
 
